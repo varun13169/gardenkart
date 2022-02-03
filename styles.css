@@ -1,0 +1,40 @@
+@import url("https://delta-ui-preview.netlify.app/library/component.css");
+
+@import "siteComponents/sidebar.css";
+@import "siteComponents/footer.css";
+
+.page-wrap {
+    width: 100%;
+    height: 100vh;
+    background-color: #F7F7F7;
+
+    display: grid;
+    grid-auto-columns: 15rem 15rem 1fr 1fr 1fr 1fr;
+    grid-auto-rows: 7.5rem auto auto 7.5rem;
+    grid-template-areas:
+        'p_nav p_nav p_nav p_nav p_nav p_nav'
+        'p_sidebar p_sidebar p_content p_content p_content p_content'
+        'p_sidebar p_sidebar p_content p_content p_content p_content'
+        'p_footer p_footer p_footer p_footer p_footer p_footer';
+}
+
+.page-nav {
+    grid-area: p_nav;
+}
+
+/* sidebar */
+.page-sidebar {
+    grid-area: p_sidebar;
+}
+
+
+/* content */
+.page-main {
+    grid-area: p_content;
+    overflow: auto;
+}
+
+/* footer */
+.page-footer {
+    grid-area: p_footer;
+}
