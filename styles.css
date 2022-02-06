@@ -2,6 +2,7 @@
 
 @import "siteComponents/sidebar.css";
 @import "siteComponents/footer.css";
+@import "siteComponents/utils.css";
 
 .page-wrap {
     width: 100%;
