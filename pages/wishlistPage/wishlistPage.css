@@ -1,0 +1,56 @@
+@import "/styles.css";
+
+.page-wrap {
+    grid-template-areas:
+        'p_nav p_nav p_nav p_nav p_nav p_nav'
+        'p_content p_content p_content p_content p_content p_content'
+        'p_content p_content p_content p_content p_content p_content'
+        'p_footer p_footer p_footer p_footer p_footer p_footer';
+}
+
+.page-sidebar {
+    display: none;
+}
+
+.main-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-content_wishlist-holder {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.main-content__wish-list-card {
+    position: relative;
+    margin: auto;
+}
+
+.main-content__wish-list-card-btn {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background-color: var(--light-theme);
+}
+
+.main-content__wish-list-card-btn>svg {
+    width: 4rem;
+    height: auto;
+}
+
+@media only screen and (max-width: 1570px) {
+    html {
+        font-size: 50%;
+    }
+}
+
+@media only screen and (max-width: 1290px) {
+    .main-content_wishlist-holder {
+        grid-template-columns: 1fr 1fr;
+    }
+}
