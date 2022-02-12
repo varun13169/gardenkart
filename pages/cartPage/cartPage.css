@@ -46,7 +46,7 @@
     padding-right: 7.5rem;
     padding-top: 4rem;
     padding-bottom: 4rem;
-    background-color: white;
+    background-color: var(--light-theme);
 
     display: flex;
     flex-direction: column;
