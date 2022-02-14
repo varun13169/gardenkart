@@ -32,9 +32,11 @@
                             <line x1="21" y1="21" x2="15" y2="15" />
                         </svg>
                     </i>
-                    <input
-                        class="dui-inp-txt__input dui-inp-txt__input--search dui-util-txt-sm dui-util-bdr-radi-5px-s reset-input-inherit-parent"
-                        type="text" placeholder="Search">
+                    <label>
+                        <input
+                            class="dui-inp-txt__input dui-inp-txt__input--search dui-util-txt-sm dui-util-bdr-radi-5px-s reset-input-inherit-parent"
+                            type="text" placeholder="Search">
+                    </label>
                 </div>
 
                 <div class="dui-nav__actions">
@@ -88,16 +90,16 @@
         <section class="page-main">
             <main class="page-main main-content dui-util-spc-pad-2_4rem-m">
 
-                <div class="dui-auth-card dui-util-bdr-radi-10px-m dui-util-gry-shdw">
+                <form class="dui-auth-card dui-util-bdr-radi-10px-m dui-util-gry-shdw">
                     <h2 class="dui-auth-card__title dui-util-fw-bld">Signup</h2>
 
 
                     <!-- Input Component Starts -->
                     <div class="dui-inp-txt">
-                        <label for="username" class="dui-util-txt-sm dui-util-fw-sbld">Email Address
-                            <input
+                        <label for="email-id" class="dui-util-txt-sm dui-util-fw-sbld">Email Address
+                            <input id="email-id"
                                 class="dui-inp-txt__input dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-input-inherit-parent"
-                                type="text" placeholder="sample@neog.camp">
+                                type="text" placeholder="sample@neog.camp"/>
                             <p class="dui-util-txt-xsm dui-util-disp-none">*Some Additional Info</p>
                         </label>
                     </div>
@@ -105,11 +107,22 @@
 
                     <!-- Input Component Starts -->
                     <div class="dui-inp-txt">
-                        <label for="username" class="dui-util-txt-sm dui-util-fw-sbld">Password
-                            <input
+                        <label for="password" class="dui-util-txt-sm dui-util-fw-sbld">Password
+                            <input id="password"
                                 class="dui-inp-txt__input dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-input-inherit-parent"
-                                type="text" placeholder="Password">
-                            <p class="dui-util-txt-xsm dui-util-disp-none">*Please enter correct input</p>
+                                type="text" placeholder="Password"/>
+                            <p class="dui-util-txt-sm dui-util-disp-none">*Please enter correct input</p>
+                        </label>
+                    </div>
+                    <!-- Input Component Ends -->
+
+                    <!-- Input Component Starts -->
+                    <div class="dui-inp-txt">
+                        <label for="confirm-password" class="dui-util-txt-sm dui-util-fw-sbld">Confirm Password
+                            <input id="confirm-password"
+                                class="dui-inp-txt__input dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-input-inherit-parent"
+                                type="text" placeholder="Confirm Password"/>
+                            <p class="dui-util-txt-sm dui-util-disp-none">*Please enter correct input</p>
                         </label>
                     </div>
                     <!-- Input Component Ends -->
@@ -120,14 +133,14 @@
                             <label class="dui-inp-chkbox dui-util-txt-sm dui-util-disp-inline-block">I accept all Terms
                                 &
                                 Conditions
-                                <input type="checkbox" checked="checked">
+                                <input type="checkbox" checked="checked"/>
                                 <span class="dui-inp-chkbox__checkmark"></span>
                             </label>
                             <!-- Checkbox Component Ends -->
                         </div>
 
                         <!-- Button Component Starts -- Primary -->
-                        <button
+                        <button type="submit"
                             class="dui-btn dui-btn--primary dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent">
                             Create New Account
                         </button>
@@ -141,10 +154,7 @@
                         </a>
                         <!-- Link Button Component Ends -- Link Txt Primary -->
                     </div>
-
-
-
-                </div>
+                </form>
             </main>
         </section>
 
