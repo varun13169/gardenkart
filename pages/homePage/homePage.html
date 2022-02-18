@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="./homePage.css">
+</head>
+
+<body>
+    <section class="page-wrap">
+        <section class="page-nav">
+            <nav class="dui-nav">
+                <a class="dui-nav__logo dui-util-txt-decoration-none" href="#">
+                    <h3 class="dui-util-fw-bld dui-util-clr-prim-p2">
+                        Garden Kart
+                    </h3>
+                </a>
+
+                <!-- Search -->
+                <div class="dui-nav__search dui-inp-txt dui-inp-txt--search">
+                    <i class="dui-inp-txt__icon dui-inp-txt__icon--search">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="dui-inp-txt__icon-content dui-inp-txt__icon-content--search icon icon-tabler icon-tabler-search"
+                            width="56" height="56" viewBox="0 0 24 24" stroke-width="1.5" stroke="#059669" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <circle cx="10" cy="10" r="7" />
+                            <line x1="21" y1="21" x2="15" y2="15" />
+                        </svg>
+                    </i>
+                    <label>
+                        <input
+                            class="dui-inp-txt__input dui-inp-txt__input--search dui-util-txt-sm dui-util-bdr-radi-5px-s reset-input-inherit-parent"
+                            type="text" placeholder="Search" />
+                    </label>
+                </div>
+
+                <div class="dui-nav__actions">
+                    <!-- Login Button -->
+                    <a class="dui-nav__login-btn dui-link dui-link--primary-p2 dui-util-txt-sm dui-util-spc-pad-0_8rem-xs dui-util-fw-bld"
+                        href="#">
+                        Login
+                    </a>
+
+                    <div>
+                        <button class="dui-nav__wish-lst-btn dui-btn reset-button-inherit-parent">
+                            <div class="dui-badge dui-badge--round-ele-0_5-top-0_5-right">
+                                <div>
+                                    0
+                                </div>
+                            </div>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart"
+                                width="56" height="56" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9A9A9A"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path
+                                    d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <button class="dui-nav__card_lst-btn btn reset-button-inherit-parent">
+                        <div class="dui-util-clr-prim-p2">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="btn__icon icon icon-tabler icon-tabler-shopping-cart" width="56" height="56"
+                                viewBox="0 0 24 24" stroke-width="1.5" stroke="#9A9A9A" fill="none"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <circle cx="6" cy="19" r="2" />
+                                <circle cx="17" cy="19" r="2" />
+                                <path d="M17 17h-11v-14h-2" />
+                                <path d="M6 5l14 1l-1 7h-13" />
+                            </svg>
+                            <p class="dui-util-fw-bld">Card</p>
+                        </div>
+                    </button>
+                </div>
+            </nav>
+        </section>
+
+        <section class="page-sidebar">
+
+        </section>
+
+        <section class="page-main">
+            <main class="main-content">
+                <header class="main-content__header">
+                    <!-- Slideshow container -->
+                    <div class="slideshow-container">
+
+                        <!-- Full-width images with number and caption text -->
+                        <div class="slideshow-container__slide fade dui-util-disp-none">
+                            <div class="slideshow-container__slide-number">1 / 3</div>
+                            <img src="/assets/images/carousal_1.jpg">
+                            <div class="slideshow-container__slide-caption">Caption Text</div>
+                        </div>
+
+                        <div class="slideshow-container__slide fade dui-util-disp-none">
+                            <div class="slideshow-container__slide-number">2 / 3</div>
+                            <img src="/assets/images/carousal_2.jpg">
+                            <div class="slideshow-container__slide-caption">Caption Two</div>
+                        </div>
+
+                        <div class="slideshow-container__slide fade dui-util-disp-none">
+                            <div class="slideshow-container__slide-number">3 / 3</div>
+                            <img src="/assets/images/carousal_1.jpg">
+                            <div class="slideshow-container__slide-caption">Caption Three</div>
+                        </div>
+
+                        <!-- Next and previous buttons -->
+                        <a class="slideshow-container__action-prev dui-util-txt-sn dui-util-fw-bld">&#10094;</a>
+                        <a class="slideshow-container__action-next dui-util-txt-sn dui-util-fw-bld">&#10095;</a>
+
+                        <br>
+                        <!-- The dots/circles -->
+                        <div class="slideshow-container__navigator-container dui-util-txt-align-cent">
+                            <span class="slideshow-container__navigator"></span>
+                            <span class="slideshow-container__navigator"></span>
+                            <span class="slideshow-container__navigator"></span>
+                        </div>
+                    </div>
+
+                </header>
+
+                <h2 class="promo-catagory-header">Shop By Category</h2>
+                <div class="promo-catagory-holder">
+                    <div class="promo-catagory dui-primary-p2-bdr-s dui-util-gry-shdw dui-util-bdr-radi-m">
+                        <img src="/assets/images/dummy-pot-plant.png" />
+                    </div>
+
+                    <div class="promo-catagory dui-primary-p2-bdr-s dui-util-gry-shdw dui-util-bdr-radi-m">
+                        <img src="/assets/images/dummy-pot-plant.png" />
+                    </div>
+
+                    <div class="promo-catagory dui-primary-p2-bdr-s dui-util-gry-shdw dui-util-bdr-radi-m">
+                        <img src="/assets/images/dummy-pot-plant.png" />
+                    </div>
+
+                    <div class="promo-catagory dui-primary-p2-bdr-s dui-util-gry-shdw dui-util-bdr-radi-m">
+                        <img src="/assets/images/dummy-pot-plant.png" />
+                    </div>
+                </div>
+
+            </main>
+        </section>
+
+        <section class="page-footer">
+
+        </section>
+    </section>
+
+    <script src="./homePage.js"></script>
+</body>
+
+</html>
