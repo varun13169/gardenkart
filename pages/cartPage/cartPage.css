@@ -4,11 +4,13 @@
     grid-template-areas:
         'p_nav p_nav p_nav p_nav p_nav p_nav'
         'p_content p_content p_content p_content p_content p_content'
-        'p_content p_content p_content p_content p_content p_content'
-        'p_footer p_footer p_footer p_footer p_footer p_footer';
+        'p_content p_content p_content p_content p_content p_content';
 }
 
 .page-sidebar {
+    display: none;
+}
+.page-footer {
     display: none;
 }
 

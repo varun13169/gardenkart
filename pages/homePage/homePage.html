@@ -14,9 +14,9 @@
     <section class="page-wrap">
         <section class="page-nav">
             <nav class="dui-nav">
-                <a class="dui-nav__logo dui-util-txt-decoration-none" href="#">
-                    <h3 class="dui-util-fw-bld dui-util-clr-prim-p2">
-                        Garden Kart
+                <a class="dui-nav__logo dui-util-txt-decoration-none" href="/pages/homePage/homePage.html">
+                    <h3 class="dui-util-fw-bld dui-primary-color">
+                        Garden Karts
                     </h3>
                 </a>
 
@@ -35,36 +35,45 @@
                     <label>
                         <input
                             class="dui-inp-txt__input dui-inp-txt__input--search dui-util-txt-sm dui-util-bdr-radi-5px-s reset-input-inherit-parent"
-                            type="text" placeholder="Search" />
+                            type="text" placeholder="Search">
                     </label>
                 </div>
 
                 <div class="dui-nav__actions">
-                    <!-- Login Button -->
-                    <a class="dui-nav__login-btn dui-link dui-link--primary-p2 dui-util-txt-sm dui-util-spc-pad-0_8rem-xs dui-util-fw-bld"
-                        href="#">
-                        Login
-                    </a>
+                    <div class="dui-nav__auth-actions">
+                        <!-- SignUp Button -->
+                        <a class="dui-nav__signup-btn dui-link dui-link--primary dui-util-txt-sm dui-util-spc-pad-0_8rem-xs dui-util-fw-bld"
+                            href="/pages/authpage/signup.html" style="margin-right: 2rem;">
+                            Sign Up
+                        </a>
 
-                    <div>
-                        <button class="dui-nav__wish-lst-btn dui-btn reset-button-inherit-parent">
-                            <div class="dui-badge dui-badge--round-ele-0_5-top-0_5-right">
-                                <div>
-                                    0
-                                </div>
-                            </div>
-
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart"
-                                width="56" height="56" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9A9A9A"
-                                fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path
-                                    d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
-                            </svg>
-                        </button>
+                        <!-- Login Button -->
+                        <a class="dui-nav__login-btn dui-link dui-link--primary dui-util-txt-sm dui-util-spc-pad-0_8rem-xs dui-util-fw-bld"
+                            href="/pages/authpage/login.html">
+                            Login
+                        </a>
                     </div>
 
-                    <button class="dui-nav__card_lst-btn btn reset-button-inherit-parent">
+                    <!-- <div> -->
+                    <a class="dui-nav__wish-lst-btn dui-util-disp-inline-block"
+                        href="/pages/wishlistPage/wishlistPage.html">
+                        <div class="dui-badge dui-badge--round-ele-0_5-top-0_5-right">
+                            <div>
+                                0
+                            </div>
+                        </div>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="56"
+                            height="56" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9A9A9A" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path
+                                d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                        </svg>
+                    </a>
+                    <!-- </div> -->
+
+                    <a class="dui-nav__card_lst-btn dui-link" href="/pages/cartPage/cartPage.html">
                         <div class="dui-util-clr-prim-p2">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 class="btn__icon icon icon-tabler icon-tabler-shopping-cart" width="56" height="56"
@@ -78,7 +87,7 @@
                             </svg>
                             <p class="dui-util-fw-bld">Card</p>
                         </div>
-                    </button>
+                    </a>
                 </div>
             </nav>
         </section>
