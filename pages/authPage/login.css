@@ -4,11 +4,14 @@
     grid-template-areas:
         'p_nav p_nav p_nav p_nav p_nav p_nav'
         'p_content p_content p_content p_content p_content p_content'
-        'p_content p_content p_content p_content p_content p_content'
-        'p_footer p_footer p_footer p_footer p_footer p_footer';
+        'p_content p_content p_content p_content p_content p_content';
 }
 
 .page-sidebar {
+    display: none;
+}
+
+.page-footer {
     display: none;
 }
 
@@ -25,7 +28,6 @@
 /*TODO: move to component library */
 .dui-auth-card {
     width: fit-content;
-    min-width: 50rem;
     height: fit-content;
     padding: 2rem;
     padding-left: 7.5rem;
@@ -54,7 +56,7 @@
 }
 
 .dui-auth-card__sub-actions .dui-link {
-    margin-left: auto;
+    margin-left: 3rem;
 }
 
 .dui-auth-card .dui-inp-txt,
@@ -68,3 +70,16 @@
 }
 
 /************  */
+
+
+@media only screen and (max-width: 550px) {
+    html {
+        font-size: 40%;
+    }
+    .dui-auth-card__sub-actions {
+        flex-direction: column;
+    }
+    .dui-auth-card__sub-actions .dui-link {
+        margin-left: 0rem;
+    }
+}
