@@ -23,23 +23,32 @@
 }
 
 /* TODO: Needs attention to get fixed */
-.dui-card {
-    width: 4rem;
-}
+/* .dui-card {
+    width: 50rem;
+} */
 
-.main-content__cart-container {
+.cart-container {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     gap: 3rem;
+    padding: 2rem;
+}
+
+.cart-container__cart-items {
+    width: 50rem;
+}
+
+.cart-container__price-details {
+    width: fit-content;
 }
 
 .dui-card:not(:last-child) {
     margin-bottom: 1.6rem;
 }
 
+/*TODO: move to component library */
 .dui-cart-details-card {
-
     width: fit-content;
     min-width: 50rem;
     height: fit-content;
@@ -53,4 +62,16 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+}
+
+@media only screen and (max-width: 1110px) {
+    .cart-container {
+        flex-direction: column-reverse;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    html {
+        font-size: 40%;
+    }
 }
