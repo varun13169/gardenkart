@@ -28,7 +28,6 @@
 /*TODO: move to component library */
 .dui-auth-card {
     width: fit-content;
-    /* min-width: 50rem; */
     height: fit-content;
     padding: 2rem;
     padding-left: 7.5rem;
