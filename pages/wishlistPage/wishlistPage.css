@@ -4,11 +4,14 @@
     grid-template-areas:
         'p_nav p_nav p_nav p_nav p_nav p_nav'
         'p_content p_content p_content p_content p_content p_content'
-        'p_content p_content p_content p_content p_content p_content'
-        'p_footer p_footer p_footer p_footer p_footer p_footer';
+        'p_content p_content p_content p_content p_content p_content';
 }
 
 .page-sidebar {
+    display: none;
+}
+
+.page-footer {
     display: none;
 }
 
@@ -21,9 +24,11 @@
 }
 
 .main-content_wishlist-holder {
+    padding: 2rem;
     display: grid;
     gap: 2rem;
-    grid-template-columns: 1fr 1fr 1fr;
+
+    grid-template-columns: repeat(auto-fit, minmax(50rem, 1fr));
 }
 
 .main-content__wish-list-card {
@@ -43,14 +48,8 @@
     height: auto;
 }
 
-@media only screen and (max-width: 1570px) {
+@media only screen and (max-width: 550px) {
     html {
-        font-size: 50%;
-    }
-}
-
-@media only screen and (max-width: 1290px) {
-    .main-content_wishlist-holder {
-        grid-template-columns: 1fr 1fr;
+        font-size: 40%;
     }
 }
