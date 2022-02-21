@@ -1,5 +1,4 @@
 @import "/styles.css";
-@import "./slider.css";
 
 :root {}
 
@@ -24,6 +23,11 @@ body {}
 /* footer */
 .page-footer {
     display: none;
+}
+
+/* Overriding existing property from library */
+.dui-inp-slider {
+    width: 80%;
 }
 
 .mobl-fltr-btn-helper {
