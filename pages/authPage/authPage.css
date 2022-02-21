@@ -69,6 +69,10 @@
     text-align: center;
 }
 
+.dui-auth-card-logout {
+    align-items: center;
+}
+
 /************  */
 
 
@@ -76,9 +80,11 @@
     html {
         font-size: 40%;
     }
+
     .dui-auth-card__sub-actions {
         flex-direction: column;
     }
+
     .dui-auth-card__sub-actions .dui-link {
         margin-left: 0rem;
     }
