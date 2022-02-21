@@ -205,6 +205,9 @@
     html {
         font-size: 50%;
     }
+    .slideshow-container__slide>img {
+        object-fit: cover;
+    }
 }
 
 @media only screen and (max-width: 890px) {
