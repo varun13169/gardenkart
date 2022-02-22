@@ -7,6 +7,7 @@
 - Responsive UI
 - Minimalistic Screens
 - Making use of beautiful responsive components from [Delta UI](https://delta-ui.netlify.app/).
+- With Working Dark Mode.
 
 ### Screens
 
