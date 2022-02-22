@@ -40,7 +40,7 @@
     position: absolute;
     top: 4px;
     right: 4px;
-    background-color: var(--light-theme);
+    background-color: var(--dui-light-theme-bg);
 }
 
 .main-content__wish-list-card-btn>svg {
