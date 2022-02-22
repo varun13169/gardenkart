@@ -4,10 +4,14 @@
 @import "siteComponents/footer.css";
 @import "siteComponents/utils.css";
 
+:root {
+    --site-bg-color: #F7F7F7;
+}
+
 .page-wrap {
     width: 100%;
     height: 100vh;
-    background-color: #F7F7F7;
+    background-color: var(--site-bg-color);
 
     display: grid;
     grid-auto-columns: 15rem 15rem 1fr 1fr 1fr 1fr;
