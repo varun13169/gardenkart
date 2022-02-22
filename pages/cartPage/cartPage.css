@@ -57,7 +57,7 @@
     padding-right: 7.5rem;
     padding-top: 4rem;
     padding-bottom: 4rem;
-    background-color: var(--light-theme);
+    background-color: var(--dui-light-theme-bg);
 
     display: flex;
     flex-direction: column;
