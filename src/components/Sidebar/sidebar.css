@@ -5,49 +5,50 @@
     background-color: var(--dui-light-theme-bg);
     display: flex;
     flex-direction: column;
-}
-
-.sidebar__fliter {
+  }
+  
+  .sidebar__fliter {
     display: flex;
     margin-bottom: 2.4rem;
-}
-
-.sidebar__fliter button {
+  }
+  
+  .sidebar__fliter button {
     margin-left: auto;
-}
-
-.sidebar__price {
+  }
+  
+  .sidebar__price {
     display: flex;
     flex-direction: column;
     margin-bottom: 2.4rem;
-}
-
-.sidebar__category {
+  }
+  
+  .sidebar__category {
     display: flex;
     flex-direction: column;
     margin-bottom: 2.4rem;
-}
-
-.sidebar__category p {
+  }
+  
+  .sidebar__category p {
     margin-bottom: 0.8rem;
-}
-
-.sidebar__rating {
+  }
+  
+  .sidebar__rating {
     display: flex;
     flex-direction: column;
-}
-
-.sidebar__rating p {
+  }
+  
+  .sidebar__rating p {
     margin-bottom: 0.8rem;
-}
-
-.sidebar__sort-by {
+  }
+  
+  .sidebar__sort-by {
     display: flex;
     flex-direction: column;
-}
-
-.sidebar__sort-by p {
+  }
+  
+  .sidebar__sort-by p {
     margin-bottom: 0.8rem;
-}
-
-/* sidebar Ends */
+  }
+  
+  /* sidebar Ends */
+  

@@ -1,26 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
-    <link rel="stylesheet" href="">
-    <link rel="stylesheet" href="./homePage.css">
-</head>
-
-<body>
-    <section class="page-wrap">
-        <section class="page-nav">
-            <nav class="dui-nav-sch-act">
+export default function Navbar() {
+    return(
+        <nav class="dui-nav-sch-act">
                 <a class="dui-nav-sch-act__logo dui-util-txt-decoration-none" href="/pages/homePage/homePage.html">
                     <h3 class="dui-util-fw-bld dui-primary-color">
                         Garden Kart
                     </h3>
                 </a>
 
-                <!-- Search -->
+                {/* <!-- Search --> */}
                 <div class="dui-nav-sch-act__search dui-inp-txt dui-inp-txt--search">
                     <i class="dui-inp-txt__icon dui-inp-txt__icon--search">
                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -35,20 +22,20 @@
                     <label>
                         <input
                             class="dui-inp-txt__input dui-inp-txt__input--search dui-util-txt-sm dui-util-bdr-radi-5px-s reset-input-inherit-parent"
-                            type="text" placeholder="Search">
+                            type="text" placeholder="Search"/>
                     </label>
                 </div>
 
                 <ul class="dui-nav-sch-act__actions dui-ul">
                     <li>
                         <div class="dui-nav-sch-act__auth-actions">
-                            <!-- SignUp Button -->
+                            {/* <!-- SignUp Button --> */}
                             <a class="dui-nav-sch-act__signup-btn dui-link dui-link--primary dui-util-txt-sm dui-util-spc-pad-0_8rem-xs dui-util-fw-bld"
                                 href="/pages/authpage/signup.html">
                                 Sign Up
                             </a>
 
-                            <!-- Login Button -->
+                            {/* <!-- Login Button --> */}
                             <a class="dui-nav-sch-act__login-btn dui-link dui-link--primary dui-util-txt-sm dui-util-spc-pad-0_8rem-xs dui-util-fw-bld"
                                 href="/pages/authpage/login.html">
                                 Login
@@ -119,93 +106,5 @@
                     </li>
                 </ul>
             </nav>
-        </section>
-
-        <section class="page-sidebar">
-
-        </section>
-
-        <section class="page-main">
-            <main class="main-content">
-                <header class="main-content__header">
-                    <!-- Slideshow container -->
-                    <div class="slideshow-container">
-
-                        <!-- Full-width images with number and caption text -->
-                        <div class="slideshow-container__slide fade dui-util-disp-none">
-                            <div class="slideshow-container__slide-number">1 / 3</div>
-                            <img src="/assets/images/carousal_1.jpg">
-                            <div class="slideshow-container__slide-caption dui-util-disp-none">Caption Text</div>
-                        </div>
-
-                        <div class="slideshow-container__slide fade dui-util-disp-none">
-                            <div class="slideshow-container__slide-number">2 / 3</div>
-                            <img src="/assets/images/carousal_2.jpg">
-                            <div class="slideshow-container__slide-caption dui-util-disp-none">Caption Two</div>
-                        </div>
-
-                        <div class="slideshow-container__slide fade dui-util-disp-none">
-                            <div class="slideshow-container__slide-number">3 / 3</div>
-                            <img src="/assets/images/carousal_3.jpg">
-                            <div class="slideshow-container__slide-caption dui-util-disp-none">Caption Three</div>
-                        </div>
-
-                        <!-- Next and previous buttons -->
-                        <a class="slideshow-container__action-prev dui-util-txt-sn dui-util-fw-bld">&#10094;</a>
-                        <a class="slideshow-container__action-next dui-util-txt-sn dui-util-fw-bld">&#10095;</a>
-
-                        <br>
-                        <!-- The dots/circles -->
-                        <div class="slideshow-container__navigator-container dui-util-txt-align-cent">
-                            <span class="slideshow-container__navigator"></span>
-                            <span class="slideshow-container__navigator"></span>
-                            <span class="slideshow-container__navigator"></span>
-                        </div>
-                    </div>
-
-                </header>
-
-                <h2 class="promo-catagory-header">Shop By Category</h2>
-                <div class="promo-catagory-holder">
-                    <div class="promo-catagory dui-primary-p2-bdr-s dui-util-gry-shdw dui-util-bdr-radi-m">
-                        <a href="/pages/productListingPage/productListingPage.html"
-                            class="dui-link dui-util-disp-inline-block">
-                            <img src="/assets/images/dummy-pot-plant.png" />
-                        </a>
-                    </div>
-
-                    <div class="promo-catagory dui-primary-p2-bdr-s dui-util-gry-shdw dui-util-bdr-radi-m">
-                        <a href="/pages/productListingPage/productListingPage.html"
-                            class="dui-link dui-util-disp-inline-block">
-                            <img src="/assets/images/dummy-pot-plant.png" />
-                        </a>
-                    </div>
-
-                    <div class="promo-catagory dui-primary-p2-bdr-s dui-util-gry-shdw dui-util-bdr-radi-m">
-                        <a href="/pages/productListingPage/productListingPage.html"
-                            class="dui-link dui-util-disp-inline-block">
-                            <img src="/assets/images/dummy-pot-plant.png" />
-                        </a>
-                    </div>
-
-                    <div class="promo-catagory dui-primary-p2-bdr-s dui-util-gry-shdw dui-util-bdr-radi-m">
-                        <a href="/pages/productListingPage/productListingPage.html"
-                            class="dui-link dui-util-disp-inline-block">
-                            <img src="/assets/images/dummy-pot-plant.png" />
-                        </a>
-                    </div>
-                </div>
-
-            </main>
-        </section>
-
-        <section class="page-footer">
-
-        </section>
-    </section>
-
-    <script src="/index.js"></script>
-    <script src="./homePage.js"></script>
-</body>
-
-</html>
+    )
+}
