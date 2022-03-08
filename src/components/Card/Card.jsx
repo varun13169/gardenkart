@@ -12,36 +12,63 @@ export default function Card(props) {
     (() => {
       console.log("No Seconday Action Defined");
     });
-  const itemDetails = props.itemDetails ?? {name: "Amazing Pot"};
-  const itemName = itemDetails.name;
-  console.log("Inside card: ");
-  console.log(props);
+  console.log("varundev")
+  const itemDetails = props.itemDetails ?? 
+    {
+      id: uuidv4(),
+      productName: "name 1",
+      productImg: "someurl",
+      isInStock: true,
+      isOnSale: true,
+      originalPrice: "123",
+      discountedPrice: "234",
+      discountedPctage: "50",
+    };
+  
+  const {
+    id,
+    productName,
+    productImg,
+    isInStock,
+    isOnSale,
+    originalPrice,
+    discountedPrice,
+    discountedPctage,
+  } = itemDetails;
+
+  console.log(originalPrice)
 
   return (
     <div className="dui-card-prod-hzntl dui-util-bdr-radi-5px-s dui-util-gry-shdw dui-util-pos-rel">
       {/* <!-- Badge Component Starts -- with Text --> */}
-      <div className="dui-badge">
-        <div className="dui-util-txt-sm dui-util-fw-reg">SALE</div>
-      </div>
+      {
+        isOnSale &&
+        <div className="dui-badge">
+          <div className="dui-util-txt-sm dui-util-fw-reg">SALE</div>
+        </div>
+      }
       {/* <!-- Badge Component Ends -- with Text --> */}
 
       <div className="dui-card-prod-hzntl__img-container">
         <img className="dui-card-prod-hzntl__img" src={imgg} alt="" />
-        <div className="dui-card-prod-hzntl__img-prod-status">
-          <p className="dui-light-theme-txt">OUT OF STOCK</p>
-        </div>
+        {
+          isInStock &&
+          <div className="dui-card-prod-hzntl__img-prod-status">
+            <p className="dui-light-theme-txt">OUT OF STOCK</p>
+          </div>
+        }
       </div>
 
       <div className="dui-card-prod-hzntl__info dui-util-spc-pad-0_8rem-xs">
-        <p className="dui-card-prod-hzntl__secondary-text">{itemName}</p>
+        <p className="dui-card-prod-hzntl__secondary-text">{productName}</p>
         <h3 className="dui-card-prod-hzntl__primary-text dui-util-fw-blk">
-          $2000{" "}
+          ${originalPrice}{" "}
           <s className="dui-card-prod-hzntl__secondary-text dui-util-txt-sm">
-            $3999
+            ${discountedPrice}
           </s>
         </h3>
         <p className="dui-card-prod-hzntl__secondary-text dui-util-txt-sm dui-util-spc-pad-0_8rem-xs dui-util-fw-sbld">
-          50% OFF
+          {discountedPctage}% OFF
         </p>
       </div>
 

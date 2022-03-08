@@ -1,7 +1,19 @@
+import axios from "axios";
+import { useState, useEffect } from "react";
 import { Navbar, Card, Sidebar } from "../../components";
 import "./product-listing-page.css";
 
 export default function ProductListingPage() {
+  const [products, setProducts] = useState([]) 
+
+  useEffect(() => {
+    (async function () {
+      const { data } = await axios.get("/v1/products");
+      console.log(data.products);
+      setProducts(data.products);
+    })();
+  }, []);
+
   return (
     <div className="page-wrap">
       <section className="page-nav">
@@ -14,11 +26,10 @@ export default function ProductListingPage() {
 
       <section className="page-main">
         <main className="main-content dui-util-spc-pad-2_4rem-m">
-          {[1,2,3,4,5,6,7,8].map((itemDetails) => {
+          {products.map((product) => {
             // console.log(a);
             return (
-              <Card
-              />
+              <Card key={product.id} itemDetails={product}/>
             );
           })}
           {/* <div className="mobl-fltr-btn-helper"></div>
