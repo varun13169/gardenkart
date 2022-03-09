@@ -1,3 +1,5 @@
+import "./navbar.css";
+
 export default function Navbar() {
     return(
         <nav className="dui-nav-sch-act">

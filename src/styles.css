@@ -1,4 +1,4 @@
-@import url("https://delta-ui-preview-2.netlify.app/library/component.css");
+
 
 /* @import "siteComponents/sidebar.css";
 @import "siteComponents/footer.css";
@@ -6,6 +6,12 @@
 
 :root {
     --site-bg-color: #F7F7F7;
+}
+
+.dark-theme {
+    --dui-light-theme-bg: #000000;
+    --dui-light-theme-contrast-txt: #ffffff;
+    --site-bg-color: #374151;
 }
 
 .page-wrap {
