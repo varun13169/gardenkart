@@ -1,6 +1,6 @@
-const darkModeBtn = document.querySelector(".dui-nav__drk-mode-btn");
-const darModeImg = document.querySelector(".dui-nav__drk-mode-lgt");
-const lgtModeImg = document.querySelector(".dui-nav__drk-mode-drk");
+const darkModeBtn = document.querySelector(".dui-nav-sch-act__drk-mode-btn");
+const darModeImg = document.querySelector(".dui-nav-sch-act__drk-mode-lgt");
+const lgtModeImg = document.querySelector(".dui-nav-sch-act__drk-mode-drk");
 
 darkModeBtn.addEventListener("click", () => {
     const isDarkModeEn = localStorage.getItem("isDarkModeEn");
