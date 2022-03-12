@@ -1,4 +1,5 @@
 import imgg from "./dummy-pot-plant.png";
+import "./card.css";
 
 export default function Card(props) {
   const priAction =
@@ -47,13 +48,13 @@ export default function Card(props) {
       <div className="dui-card-prod-hzntl__actions dui-util-spc-pad-1_6rem-s">
         <div className="dui-card-prod-hzntl__buttons">
           <button
-            className="dui-btn dui-btn--primary dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent"
+            className="product-card-btn dui-btn dui-btn--primary dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent"
             onClick={() => priAction(itemDetails)}
           >
             Go to Cart
           </button>
           <button
-            className="dui-btn dui-btn--secondary dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent"
+            className="product-card-btn dui-btn dui-btn--secondary dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent"
             onClick={() => secAction()}
           >
             Remove from Wishlist
