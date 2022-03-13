@@ -8,7 +8,7 @@ import { v4 as uuid } from "uuid";
 export const products = [
   {
     _id: uuid(),
-    categoryName: "non-fiction",
+    categoryName: "Exotic Indoor Plants",
     productName: "Rose",
     productImg: "someurl",
     isInStock: true,
@@ -19,7 +19,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    categoryName: "horror",
+    categoryName: "Garden Plants",
     productName: "Hydrangea",
     productImg: "someurl",
     isInStock: true,
@@ -30,7 +30,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    categoryName: "fiction",
+    categoryName: "Table Shrubs",
     productName: "Succulent",
     productImg: "someurl",
     isInStock: true,
@@ -41,7 +41,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    categoryName: "fiction",
+    categoryName: "Table Shrubs",
     productName: "Herb",
     productImg: "someurl",
     isInStock: true,
@@ -52,7 +52,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    categoryName: "fiction",
+    categoryName: "Table Shrubs",
     productName: "Fragrant Plants",
     productImg: "someurl",
     isInStock: true,
@@ -63,7 +63,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    categoryName: "fiction",
+    categoryName: "Seasonal Flowers",
     productName: "Climbing Vine",
     productImg: "someurl",
     isInStock: true,
@@ -74,7 +74,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    categoryName: "fiction",
+    categoryName: "Table Shrubs",
     productName: "Ornamental Tree",
     productImg: "someurl",
     isInStock: true,
@@ -85,7 +85,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    categoryName: "fiction",
+    categoryName: "Seasonal Flowers",
     productName: "Climbing Vine",
     productImg: "someurl",
     isInStock: true,
@@ -96,7 +96,7 @@ export const products = [
   },
   {
     _id: uuid(),
-    categoryName: "fiction",
+    categoryName: "Table Shrubs",
     productName: "Flowering Shrub",
     productImg: "someurl",
     isInStock: true,
