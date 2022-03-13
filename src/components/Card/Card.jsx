@@ -20,7 +20,7 @@ export default function Card(props) {
     isInStock: true,
     isOnSale: true,
     originalPrice: "123",
-    discountedPrice: "234",
+    salePrice: "234",
     discountedPctage: "50",
   };
 
@@ -31,7 +31,7 @@ export default function Card(props) {
     isInStock,
     isOnSale,
     originalPrice,
-    discountedPrice,
+    salePrice,
     discountedPctage,
   } = itemDetails;
 
@@ -57,9 +57,9 @@ export default function Card(props) {
       <div className="dui-card-prod-hzntl__info dui-util-spc-pad-0_8rem-xs">
         <p className="dui-card-prod-hzntl__secondary-text">{productName}</p>
         <h3 className="dui-card-prod-hzntl__primary-text dui-util-fw-blk">
-          ${originalPrice}{" "}
+          ${salePrice}{" "}
           <s className="dui-card-prod-hzntl__secondary-text dui-util-txt-sm">
-            ${discountedPrice}
+            ${originalPrice}
           </s>
         </h3>
         <p className="dui-card-prod-hzntl__secondary-text dui-util-txt-sm dui-util-spc-pad-0_8rem-xs dui-util-fw-sbld">
