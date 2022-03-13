@@ -1,15 +1,21 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Navbar, Card, Sidebar } from "../../components";
+import { useProductFilter } from "../../contexts/productFilterContext/productFilterContext";
 import "./product-listing-page.css";
 
 export default function ProductListingPage() {
   const [products, setProducts] = useState([]);
+  const { state, dispatch } = useProductFilter();
 
   useEffect(() => {
     (async function () {
       const { data } = await axios.get("/api/products");
       setProducts(data.products);
+      dispatch({
+        type: "SET_FRESH_DATA",
+        data: { orgProducts: data.products },
+      });
     })();
   }, []);
 
@@ -25,13 +31,8 @@ export default function ProductListingPage() {
 
       <section className="page-main">
         <main className="main-content dui-util-spc-pad-2_4rem-m">
-          {products.map((product) => {
-            return (
-              <Card
-                key={product.id}
-                itemDetails={product}
-              />
-            );
+          {state.productsToShow.map((product) => {
+            return <Card key={product.id} itemDetails={product} />;
           })}
           {/* <div className="mobl-fltr-btn-helper"></div>
             <button className="mobl-fltr-btn reset-button-inherit-parent" href="/pages/cartPage/cartPage.html">

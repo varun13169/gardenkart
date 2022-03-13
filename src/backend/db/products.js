@@ -14,7 +14,7 @@ export const products = [
     isInStock: true,
     isOnSale: true,
     originalPrice: "50",
-    discountedPrice: "49",
+    salePrice: "49",
     discountedPctage: "2",
   },
   {
@@ -25,7 +25,7 @@ export const products = [
     isInStock: true,
     isOnSale: true,
     originalPrice: "60",
-    discountedPrice: "55",
+    salePrice: "55",
     discountedPctage: "50",
   },
   {
@@ -36,7 +36,7 @@ export const products = [
     isInStock: true,
     isOnSale: true,
     originalPrice: "80",
-    discountedPrice: "75",
+    salePrice: "75",
     discountedPctage: "50",
   },
   {
@@ -47,7 +47,7 @@ export const products = [
     isInStock: true,
     isOnSale: true,
     originalPrice: "94",
-    discountedPrice: "90",
+    salePrice: "90",
     discountedPctage: "50",
   },
   {
@@ -58,7 +58,7 @@ export const products = [
     isInStock: true,
     isOnSale: true,
     originalPrice: "80",
-    discountedPrice: "75",
+    salePrice: "75",
     discountedPctage: "50",
   },
   {
@@ -69,7 +69,7 @@ export const products = [
     isInStock: true,
     isOnSale: true,
     originalPrice: "80",
-    discountedPrice: "75",
+    salePrice: "75",
     discountedPctage: "50",
   },
   {
@@ -80,7 +80,7 @@ export const products = [
     isInStock: true,
     isOnSale: true,
     originalPrice: "80",
-    discountedPrice: "75",
+    salePrice: "75",
     discountedPctage: "50",
   },
   {
@@ -91,7 +91,7 @@ export const products = [
     isInStock: true,
     isOnSale: true,
     originalPrice: "80",
-    discountedPrice: "75",
+    salePrice: "75",
     discountedPctage: "50",
   },
   {
@@ -102,7 +102,7 @@ export const products = [
     isInStock: true,
     isOnSale: true,
     originalPrice: "80",
-    discountedPrice: "75",
+    salePrice: "75",
     discountedPctage: "50",
   },
 ];

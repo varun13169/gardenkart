@@ -1,6 +1,9 @@
+import { useProductFilter } from "../../contexts/productFilterContext/productFilterContext";
 import "./sidebar.css";
 
 export default function SideBar() {
+  const { state, dispatch } = useProductFilter();
+
   return (
     <aside className="sidebar dui-util-spc-pad-1_6rem-s">
       <div className="sidebar__fliter">
@@ -8,7 +11,10 @@ export default function SideBar() {
           Filters
         </p>
 
-        <button className="dui-btn dui-util-txt-sm dui-util-bdr-radi-5px-s reset-button-inherit-parent">
+        <button
+          className="dui-btn dui-util-txt-sm dui-util-bdr-radi-5px-s reset-button-inherit-parent"
+          onClick={() => dispatch({ type: "DEFAULT_ALL_FILTERS", data: {} })}
+        >
           Clear
         </button>
       </div>
@@ -93,13 +99,33 @@ export default function SideBar() {
           {/* <!-- Radio Button Component Starts --> */}
           <label className="dui-inp-radio-btn dui-util-txt-sm">
             Price - Low to High
-            <input type="radio" name="sort-by" />
+            <input
+              type="radio"
+              name="sort-by"
+              checked={state.sortByPrice === "LOW_TO_HIGH"}
+              onChange={() =>
+                dispatch({
+                  type: "FILTER_SORT_BY_PRICE",
+                  data: { sortByPrice: "LOW_TO_HIGH" },
+                })
+              }
+            />
             <span className="dui-inp-radio-btn__checkmark"></span>
           </label>
 
           <label className="dui-inp-radio-btn dui-util-txt-sm">
             Price - High to Low
-            <input type="radio" checked="checked" name="sort-by" />
+            <input
+              type="radio"
+              name="sort-by"
+              checked={state.sortByPrice === "HIGH_TO_LOW"}
+              onChange={() =>
+                dispatch({
+                  type: "FILTER_SORT_BY_PRICE",
+                  data: { sortByPrice: "HIGH_TO_LOW" },
+                })
+              }
+            />
             <span className="dui-inp-radio-btn__checkmark"></span>
           </label>
           {/* <!-- Radio Button Component Ends --> */}
