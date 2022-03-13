@@ -4,11 +4,11 @@ import { Navbar, Card, Sidebar } from "../../components";
 import "./product-listing-page.css";
 
 export default function ProductListingPage() {
-  const [products, setProducts] = useState([]) 
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     (async function () {
-      const { data } = await axios.get("/v1/products");
+      const { data } = await axios.get("/api/products");
       console.log(data.products);
       setProducts(data.products);
     })();
@@ -28,9 +28,7 @@ export default function ProductListingPage() {
         <main className="main-content dui-util-spc-pad-2_4rem-m">
           {products.map((product) => {
             // console.log(a);
-            return (
-              <Card key={product.id} itemDetails={product}/>
-            );
+            return <Card key={product.id} itemDetails={product} />;
           })}
           {/* <div className="mobl-fltr-btn-helper"></div>
             <button className="mobl-fltr-btn reset-button-inherit-parent" href="/pages/cartPage/cartPage.html">
