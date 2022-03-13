@@ -17,7 +17,7 @@ export default function Card(props) {
     id: uuidv4(),
     productName: "name 1",
     productImg: "someurl",
-    isInStock: true,
+    isOutOfStock: false,
     isOnSale: true,
     originalPrice: "123",
     salePrice: "234",
@@ -28,7 +28,7 @@ export default function Card(props) {
     id,
     productName,
     productImg,
-    isInStock,
+    isOutOfStock,
     isOnSale,
     originalPrice,
     salePrice,
@@ -47,7 +47,7 @@ export default function Card(props) {
 
       <div className="dui-card-prod-hzntl__img-container">
         <img className="dui-card-prod-hzntl__img" src={imgg} alt="" />
-        {isInStock && (
+        {isOutOfStock && (
           <div className="dui-card-prod-hzntl__img-prod-status">
             <p className="dui-light-theme-txt">OUT OF STOCK</p>
           </div>
