@@ -14,6 +14,15 @@ const ProductFilterContextProvider = ({ children }) => {
           productsToShow: ww,
         };
 
+      case "FILTER_PRODUCTS_BY_RATING":
+        return applyFilter({
+          ...state,
+          filters: {
+            ...state.filters,
+            productRating: action.data.filterBytating,
+          },
+        });
+
       case "FILTER_SORT_BY_PRICE":
         let newState = {
           ...state,
@@ -40,7 +49,7 @@ const ProductFilterContextProvider = ({ children }) => {
     sortByPrice: "HIGH_TO_LOW",
     filters: {
       productCategories: [],
-      productRating: null,
+      productRating: -1,
       priceRange: {
         minPrice: null,
         maxPrice: null,
@@ -59,4 +68,13 @@ const useProductFilter = () => useContext(ProductFilterContext);
 
 export { ProductFilterContextProvider, useProductFilter };
 
-const applyFilter = (state) => {};
+const applyFilter = (state) => {
+  const f = state.filters;
+
+  return {
+    ...state,
+    productsToShow: state.orgProducts.filter((product) => {
+      return product.productRating >= f.productRating;
+    }),
+  };
+};

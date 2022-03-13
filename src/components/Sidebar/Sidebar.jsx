@@ -64,26 +64,66 @@ export default function SideBar() {
         <div>
           {/* <!-- Radio Button Component Starts --> */}
           <label className="dui-inp-radio-btn dui-util-txt-sm">
-            4 Star & above
-            <input type="radio" name="rating" defaultChecked />
+            4 Star &amp; above
+            <input
+              type="radio"
+              name="rating"
+              checked={state.filters.productRating === 4}
+              onChange={() =>
+                dispatch({
+                  type: "FILTER_PRODUCTS_BY_RATING",
+                  data: { filterBytating: 4 },
+                })
+              }
+            />
             <span className="dui-inp-radio-btn__checkmark"></span>
           </label>
 
           <label className="dui-inp-radio-btn dui-util-txt-sm">
-            3 Star & above
-            <input type="radio" name="rating" />
+            3 Star &amp; above
+            <input
+              type="radio"
+              name="rating"
+              checked={state.filters.productRating === 3}
+              onChange={() =>
+                dispatch({
+                  type: "FILTER_PRODUCTS_BY_RATING",
+                  data: { filterBytating: 3 },
+                })
+              }
+            />
             <span className="dui-inp-radio-btn__checkmark"></span>
           </label>
 
           <label className="dui-inp-radio-btn dui-util-txt-sm">
-            2 Star & above
-            <input type="radio" name="rating" />
+            2 Star &amp; above
+            <input
+              type="radio"
+              name="rating"
+              checked={state.filters.productRating === 2}
+              onChange={() =>
+                dispatch({
+                  type: "FILTER_PRODUCTS_BY_RATING",
+                  data: { filterBytating: 2 },
+                })
+              }
+            />
             <span className="dui-inp-radio-btn__checkmark"></span>
           </label>
 
           <label className="dui-inp-radio-btn dui-util-txt-sm">
-            1 Star & above
-            <input type="radio" name="rating" />
+            1 Star &amp; above
+            <input
+              type="radio"
+              name="rating"
+              checked={state.filters.productRating === 1}
+              onChange={() =>
+                dispatch({
+                  type: "FILTER_PRODUCTS_BY_RATING",
+                  data: { filterBytating: 1 },
+                })
+              }
+            />
             <span className="dui-inp-radio-btn__checkmark"></span>
           </label>
           {/* <!-- Radio Button Component Ends --> */}
