@@ -9,7 +9,6 @@ export default function ProductListingPage() {
   useEffect(() => {
     (async function () {
       const { data } = await axios.get("/api/products");
-      console.log(data.products);
       setProducts(data.products);
     })();
   }, []);
@@ -27,8 +26,12 @@ export default function ProductListingPage() {
       <section className="page-main">
         <main className="main-content dui-util-spc-pad-2_4rem-m">
           {products.map((product) => {
-            // console.log(a);
-            return <Card key={product.id} itemDetails={product} />;
+            return (
+              <Card
+                key={product.id}
+                itemDetails={product}
+              />
+            );
           })}
           {/* <div className="mobl-fltr-btn-helper"></div>
             <button className="mobl-fltr-btn reset-button-inherit-parent" href="/pages/cartPage/cartPage.html">

@@ -12,19 +12,18 @@ export default function Card(props) {
     (() => {
       console.log("No Seconday Action Defined");
     });
-  console.log("varundev")
-  const itemDetails = props.itemDetails ?? 
-    {
-      id: uuidv4(),
-      productName: "name 1",
-      productImg: "someurl",
-      isInStock: true,
-      isOnSale: true,
-      originalPrice: "123",
-      discountedPrice: "234",
-      discountedPctage: "50",
-    };
-  
+
+  const itemDetails = props.itemDetails ?? {
+    id: uuidv4(),
+    productName: "name 1",
+    productImg: "someurl",
+    isInStock: true,
+    isOnSale: true,
+    originalPrice: "123",
+    discountedPrice: "234",
+    discountedPctage: "50",
+  };
+
   const {
     id,
     productName,
@@ -36,27 +35,23 @@ export default function Card(props) {
     discountedPctage,
   } = itemDetails;
 
-  console.log(originalPrice)
-
   return (
     <div className="dui-card-prod-hzntl dui-util-bdr-radi-5px-s dui-util-gry-shdw dui-util-pos-rel">
       {/* <!-- Badge Component Starts -- with Text --> */}
-      {
-        isOnSale &&
+      {isOnSale && (
         <div className="dui-badge">
           <div className="dui-util-txt-sm dui-util-fw-reg">SALE</div>
         </div>
-      }
+      )}
       {/* <!-- Badge Component Ends -- with Text --> */}
 
       <div className="dui-card-prod-hzntl__img-container">
         <img className="dui-card-prod-hzntl__img" src={imgg} alt="" />
-        {
-          isInStock &&
+        {isInStock && (
           <div className="dui-card-prod-hzntl__img-prod-status">
             <p className="dui-light-theme-txt">OUT OF STOCK</p>
           </div>
-        }
+        )}
       </div>
 
       <div className="dui-card-prod-hzntl__info dui-util-spc-pad-0_8rem-xs">
