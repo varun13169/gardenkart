@@ -5,47 +5,46 @@
 @import "siteComponents/utils.css";
 
 :root {
-    --site-bg-color: #F7F7F7;
+  --site-bg-color: #f7f7f7;
 }
 
 .page-wrap {
-    width: 100%;
-    height: 100vh;
-    background-color: var(--site-bg-color);
+  width: 100%;
+  height: 100vh;
+  background-color: var(--site-bg-color);
 
-    display: grid;
-    grid-auto-columns: 15rem 15rem 1fr 1fr 1fr 1fr;
-    grid-auto-rows: 7.5rem auto auto 7.5rem;
-    grid-template-areas:
-        'p_nav p_nav p_nav p_nav p_nav p_nav'
-        'p_sidebar p_sidebar p_content p_content p_content p_content'
-        'p_sidebar p_sidebar p_content p_content p_content p_content'
-        'p_footer p_footer p_footer p_footer p_footer p_footer';
+  display: grid;
+  grid-auto-columns: 15rem 15rem 1fr 1fr 1fr 1fr;
+  grid-auto-rows: 7.5rem auto auto 7.5rem;
+  grid-template-areas:
+    "p_nav p_nav p_nav p_nav p_nav p_nav"
+    "p_sidebar p_sidebar p_content p_content p_content p_content"
+    "p_sidebar p_sidebar p_content p_content p_content p_content"
+    "p_footer p_footer p_footer p_footer p_footer p_footer";
 }
 
 .page-nav {
-    grid-area: p_nav;
+  grid-area: p_nav;
 }
 
 /* sidebar */
 .page-sidebar {
-    grid-area: p_sidebar;
+  grid-area: p_sidebar;
 }
-
 
 /* content */
 .page-main {
-    grid-area: p_content;
-    overflow: auto;
+  grid-area: p_content;
+  overflow: auto;
 }
 
 /* footer */
 .page-footer {
-    grid-area: p_footer;
+  grid-area: p_footer;
 }
 
 @media only screen and (max-width: 855px) {
-    .page-wrap {
+  .page-wrap {
     grid-auto-rows: 15rem auto auto 7.5rem;
-    }
+  }
 }
