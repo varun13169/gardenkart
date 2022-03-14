@@ -2,7 +2,8 @@ import { useProductFilter } from "../../contexts/productFilterContext/productFil
 import "./sidebar.css";
 
 export default function SideBar() {
-  const { state, dispatch } = useProductFilter();
+  const { productAndFilterState, setProductAndFilterState } =
+    useProductFilter();
 
   return (
     <aside className="sidebar dui-util-spc-pad-1_6rem-s">
@@ -13,7 +14,9 @@ export default function SideBar() {
 
         <button
           className="dui-btn dui-util-txt-sm dui-util-bdr-radi-5px-s reset-button-inherit-parent"
-          onClick={() => dispatch({ type: "DEFAULT_ALL_FILTERS", data: {} })}
+          onClick={() =>
+            setProductAndFilterState({ type: "DEFAULT_ALL_FILTERS", data: {} })
+          }
         >
           Clear
         </button>
@@ -68,9 +71,9 @@ export default function SideBar() {
             <input
               type="radio"
               name="rating"
-              checked={state.filters.productRating === 4}
+              checked={productAndFilterState.filters.productRating === 4}
               onChange={() =>
-                dispatch({
+                setProductAndFilterState({
                   type: "FILTER_PRODUCTS_BY_RATING",
                   data: { filterBytating: 4 },
                 })
@@ -84,9 +87,9 @@ export default function SideBar() {
             <input
               type="radio"
               name="rating"
-              checked={state.filters.productRating === 3}
+              checked={productAndFilterState.filters.productRating === 3}
               onChange={() =>
-                dispatch({
+                setProductAndFilterState({
                   type: "FILTER_PRODUCTS_BY_RATING",
                   data: { filterBytating: 3 },
                 })
@@ -100,9 +103,9 @@ export default function SideBar() {
             <input
               type="radio"
               name="rating"
-              checked={state.filters.productRating === 2}
+              checked={productAndFilterState.filters.productRating === 2}
               onChange={() =>
-                dispatch({
+                setProductAndFilterState({
                   type: "FILTER_PRODUCTS_BY_RATING",
                   data: { filterBytating: 2 },
                 })
@@ -116,9 +119,9 @@ export default function SideBar() {
             <input
               type="radio"
               name="rating"
-              checked={state.filters.productRating === 1}
+              checked={productAndFilterState.filters.productRating === 1}
               onChange={() =>
-                dispatch({
+                setProductAndFilterState({
                   type: "FILTER_PRODUCTS_BY_RATING",
                   data: { filterBytating: 1 },
                 })
@@ -142,9 +145,9 @@ export default function SideBar() {
             <input
               type="radio"
               name="sort-by"
-              checked={state.sortByPrice === "LOW_TO_HIGH"}
+              checked={productAndFilterState.sortByPrice === "LOW_TO_HIGH"}
               onChange={() =>
-                dispatch({
+                setProductAndFilterState({
                   type: "SORT_BY_PRICE",
                   data: { sortByPrice: "LOW_TO_HIGH" },
                 })
@@ -158,9 +161,9 @@ export default function SideBar() {
             <input
               type="radio"
               name="sort-by"
-              checked={state.sortByPrice === "HIGH_TO_LOW"}
+              checked={productAndFilterState.sortByPrice === "HIGH_TO_LOW"}
               onChange={() =>
-                dispatch({
+                setProductAndFilterState({
                   type: "SORT_BY_PRICE",
                   data: { sortByPrice: "HIGH_TO_LOW" },
                 })

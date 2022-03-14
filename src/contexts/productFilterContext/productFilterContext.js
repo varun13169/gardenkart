@@ -3,62 +3,69 @@ import { createContext, useReducer, useContext } from "react";
 const ProductFilterContext = createContext();
 
 const ProductFilterContextProvider = ({ children }) => {
-  const productFilterReducer = (state, action) => {
+  const productFilterReducer = (productAndFilterState, action) => {
     const actionType = action.type;
     const ww = action.data.orgProducts;
     switch (actionType) {
       case "SET_FRESH_DATA":
         return {
-          ...state,
+          ...productAndFilterState,
           orgProducts: ww,
           productsToShow: ww,
         };
 
       case "FILTER_PRODUCTS_BY_RATING":
         return applyFilter({
-          ...state,
+          ...productAndFilterState,
           filters: {
-            ...state.filters,
+            ...productAndFilterState.filters,
             productRating: action.data.filterBytating,
           },
         });
 
       case "SORT_BY_PRICE":
         return {
-          ...state,
+          ...productAndFilterState,
           sortByPrice: action.data.sortByPrice,
-          productsToShow: [...state.productsToShow].sort((a, b) => {
-            const beta = action.data.sortByPrice === "LOW_TO_HIGH" ? +1 : -1;
-            return beta * (Number(b.salePrice) - Number(a.salePrice));
-          }),
+          productsToShow: [...productAndFilterState.productsToShow].sort(
+            (a, b) => {
+              const beta = action.data.sortByPrice === "LOW_TO_HIGH" ? +1 : -1;
+              return beta * (Number(b.salePrice) - Number(a.salePrice));
+            }
+          ),
         };
 
       case "DEFAULT_ALL_FILTERS":
-        return state;
+        return productAndFilterState;
 
       default:
         console.log("");
     }
 
-    return state;
+    return productAndFilterState;
   };
 
-  const [state, dispatch] = useReducer(productFilterReducer, {
-    orgProducts: [],
-    productsToShow: [],
-    sortByPrice: "HIGH_TO_LOW",
-    filters: {
-      productCategories: [],
-      productRating: -1,
-      priceRange: {
-        minPrice: null,
-        maxPrice: null,
+  const [productAndFilterState, setProductAndFilterState] = useReducer(
+    productFilterReducer,
+    {
+      orgProducts: [],
+      productsToShow: [],
+      sortByPrice: "HIGH_TO_LOW",
+      filters: {
+        productCategories: [],
+        productRating: -1,
+        priceRange: {
+          minPrice: null,
+          maxPrice: null,
+        },
       },
-    },
-  });
+    }
+  );
 
   return (
-    <ProductFilterContext.Provider value={{ state, dispatch }}>
+    <ProductFilterContext.Provider
+      value={{ productAndFilterState, setProductAndFilterState }}
+    >
       {children}
     </ProductFilterContext.Provider>
   );
@@ -68,12 +75,12 @@ const useProductFilter = () => useContext(ProductFilterContext);
 
 export { ProductFilterContextProvider, useProductFilter };
 
-const applyFilter = (state) => {
-  const f = state.filters;
+const applyFilter = (productAndFilterState) => {
+  const f = productAndFilterState.filters;
 
   return {
-    ...state,
-    productsToShow: state.orgProducts.filter((product) => {
+    ...productAndFilterState,
+    productsToShow: productAndFilterState.orgProducts.filter((product) => {
       return product.productRating >= f.productRating;
     }),
   };

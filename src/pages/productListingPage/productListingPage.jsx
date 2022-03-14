@@ -6,13 +6,14 @@ import "./product-listing-page.css";
 
 export default function ProductListingPage() {
   const [products, setProducts] = useState([]);
-  const { state, dispatch } = useProductFilter();
+  const { productAndFilterState, setProductAndFilterState } =
+    useProductFilter();
 
   useEffect(() => {
     (async function () {
       const { data } = await axios.get("/api/products");
       setProducts(data.products);
-      dispatch({
+      setProductAndFilterState({
         type: "SET_FRESH_DATA",
         data: { orgProducts: data.products },
       });
@@ -31,7 +32,7 @@ export default function ProductListingPage() {
 
       <section className="page-main">
         <main className="main-content dui-util-spc-pad-2_4rem-m">
-          {state.productsToShow.map((product) => {
+          {productAndFilterState.productsToShow.map((product) => {
             return <Card key={product.id} itemDetails={product} />;
           })}
           {/* <div className="mobl-fltr-btn-helper"></div>
