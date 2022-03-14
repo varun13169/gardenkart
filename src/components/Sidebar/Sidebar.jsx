@@ -145,7 +145,7 @@ export default function SideBar() {
               checked={state.sortByPrice === "LOW_TO_HIGH"}
               onChange={() =>
                 dispatch({
-                  type: "FILTER_SORT_BY_PRICE",
+                  type: "SORT_BY_PRICE",
                   data: { sortByPrice: "LOW_TO_HIGH" },
                 })
               }
@@ -161,7 +161,7 @@ export default function SideBar() {
               checked={state.sortByPrice === "HIGH_TO_LOW"}
               onChange={() =>
                 dispatch({
-                  type: "FILTER_SORT_BY_PRICE",
+                  type: "SORT_BY_PRICE",
                   data: { sortByPrice: "HIGH_TO_LOW" },
                 })
               }

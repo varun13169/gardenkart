@@ -23,8 +23,8 @@ const ProductFilterContextProvider = ({ children }) => {
           },
         });
 
-      case "FILTER_SORT_BY_PRICE":
-        let newState = {
+      case "SORT_BY_PRICE":
+        return {
           ...state,
           sortByPrice: action.data.sortByPrice,
           productsToShow: [...state.productsToShow].sort((a, b) => {
@@ -32,7 +32,7 @@ const ProductFilterContextProvider = ({ children }) => {
             return beta * (Number(b.salePrice) - Number(a.salePrice));
           }),
         };
-        return newState;
+
       case "DEFAULT_ALL_FILTERS":
         return state;
 
