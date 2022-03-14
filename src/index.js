@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import ReactDOM from "react-dom";
 
 import App from "./App";
-import { ProductFilterContextProvider } from "./contexts/productFilterContext/productFilterContext";
+import { ProductFilterContextProvider } from "./contexts";
 import { makeServer } from "./server";
 
 // Call make Server

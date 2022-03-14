@@ -1,4 +1,4 @@
-import { useProductFilter } from "../../contexts/productFilterContext/productFilterContext";
+import { useProductFilter } from "../../contexts";
 import "./sidebar.css";
 
 export default function SideBar() {

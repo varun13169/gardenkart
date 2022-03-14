@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Navbar, Card, Sidebar } from "../../components";
-import { useProductFilter } from "../../contexts/productFilterContext/productFilterContext";
+import { useProductFilter } from "../../contexts";
 import "./product-listing-page.css";
 
 export default function ProductListingPage() {
