@@ -8,3 +8,19 @@
   /* while entering hover */
   transition: background-color 0.5s, border-radius 5s;
 }
+
+.dui-card-prod-hzntl {
+  position: relative;
+}
+
+.main-content__wish-list-card-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background-color: var(--dui-light-theme-bg);
+}
+
+.main-content__wish-list-card-btn > svg {
+  width: 4rem;
+  height: auto;
+}
