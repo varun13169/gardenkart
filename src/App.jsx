@@ -1,10 +1,15 @@
-import {ProductListingPage} from "./pages";
 import "./styles.css";
+import { ProductListingPage } from "./pages";
+import { Route, Routes } from "react-router-dom";
+import MockAPI from "./mockman/MockAPI";
 
 export default function App() {
   return (
     <div className="App">
-        <ProductListingPage></ProductListingPage>
+      <Routes>
+        <Route path="/products" element={<ProductListingPage />}></Route>
+        <Route path="/mock-api" element={<MockAPI />}></Route>
+      </Routes>
     </div>
   );
 }
