@@ -12,6 +12,11 @@ export default function Card(props) {
     (() => {
       console.log("No Seconday Action Defined");
     });
+  const wishlistAction =
+    props.wishlistAction ??
+    (() => {
+      console.log("No Seconday Action Defined");
+    });
 
   const itemDetails = props.itemDetails ?? {
     id: uuidv4(),
@@ -71,24 +76,27 @@ export default function Card(props) {
         <div className="dui-card-prod-hzntl__buttons">
           <button
             className="product-card-btn dui-btn dui-btn--primary dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent"
-            onClick={() => priAction(itemDetails)}
+            onClick={() => priAction.action(itemDetails)}
           >
-            Go to Cart
+            {priAction.name}
           </button>
           <button
             className="product-card-btn dui-btn dui-btn--secondary dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent"
-            onClick={() => secAction()}
+            onClick={() => secAction.action(itemDetails)}
           >
-            Remove from Wishlist
+            {secAction.name}
           </button>
         </div>
       </div>
 
       {/* <!-- Button Component Starts -- Icon --> */}
-      <button class="main-content__wish-list-card-btn dui-btn dui-util-bdr-radi-999px-mx reset-button-inherit-parent">
+      <button
+        className="dui-card-prod-hzntl__wishlist-btn dui-btn dui-util-bdr-radi-999px-mx reset-button-inherit-parent"
+        onClick={() => wishlistAction.action(itemDetails)}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="dui-util-spc-pad-0_8rem-xs icon icon-tabler icon-tabler-heart"
+          className="dui-card-prod-hzntl__wishlist-btn_svg dui-util-spc-pad-0_8rem-xs icon icon-tabler icon-tabler-heart"
           width="56"
           height="56"
           viewBox="0 0 24 24"

@@ -33,7 +33,30 @@ export default function ProductListingPage() {
       <section className="page-main">
         <main className="main-content dui-util-spc-pad-2_4rem-m">
           {productAndFilterState.productsToShow.map((product) => {
-            return <Card key={product.id} itemDetails={product} />;
+            return (
+              <Card
+                key={product.id}
+                itemDetails={product}
+                priAction={{
+                  name: "Add To Cart",
+                  action: (i) => {
+                    console.log(i.productName);
+                  },
+                }}
+                secAction={{
+                  name: "Add To Cart",
+                  action: (i) => {
+                    console.log(i.productName);
+                  },
+                }}
+                wishlistAction={{
+                  name: "Add To Wishlist",
+                  action: (i) => {
+                    console.log(i.productName);
+                  },
+                }}
+              />
+            );
           })}
           {/* <div className="mobl-fltr-btn-helper"></div>
             <button className="mobl-fltr-btn reset-button-inherit-parent" href="/pages/cartPage/cartPage.html">
