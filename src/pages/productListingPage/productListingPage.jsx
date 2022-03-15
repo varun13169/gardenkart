@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Navbar, Card, Sidebar } from "../../components";
 import { useProductFilter } from "../../contexts";
 import "./product-listing-page.css";
+import { addtoCart, addToWishlist } from "./productListingPageUtils";
 
 export default function ProductListingPage() {
   const [products, setProducts] = useState([]);
@@ -39,9 +40,7 @@ export default function ProductListingPage() {
                 itemDetails={product}
                 priAction={{
                   name: "Add To Cart",
-                  action: (i) => {
-                    console.log(i.productName);
-                  },
+                  action: addtoCart,
                 }}
                 secAction={{
                   name: "Add To Cart",
@@ -51,9 +50,7 @@ export default function ProductListingPage() {
                 }}
                 wishlistAction={{
                   name: "Add To Wishlist",
-                  action: (i) => {
-                    console.log(i.productName);
-                  },
+                  action: addToWishlist,
                 }}
               />
             );
