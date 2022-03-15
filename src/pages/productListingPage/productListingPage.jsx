@@ -2,25 +2,49 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Navbar, Card, Sidebar } from "../../components";
 import { useProductFilter } from "../../contexts";
+import { useWishlist } from "../../contexts";
 import "./product-listing-page.css";
-import { addtoCart, addToWishlist } from "./productListingPageUtils";
+import {
+  addtoCart,
+  addToWishlist,
+  getItemCardData,
+} from "./productListingPageUtils";
 
 export default function ProductListingPage() {
-  const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
+  const { wishlist, setWishlist } = useWishlist();
   const { productAndFilterState, setProductAndFilterState } =
     useProductFilter();
 
   useEffect(() => {
+    // Fetch Products
     (async function () {
       const { data } = await axios.get("/api/products");
-      setProducts(data.products);
+      // setProducts(data.products);
       setProductAndFilterState({
         type: "SET_FRESH_DATA",
         data: { orgProducts: data.products },
       });
     })();
-  }, []);
+    let config = {
+      headers: {
+        Accept: "*/*",
+        authorization: localStorage.getItem("token"),
+      },
+    };
 
+    // Fetch Cart
+    (async () => {
+      let res = await axios.get("/api/user/cart", config);
+      setCart(res.data.cart);
+    })();
+
+    // Fetch Wishlist
+    (async () => {
+      let res = await axios.get("/api/user/wishlist", config);
+      setWishlist(res.data.wishlist);
+    })();
+  }, []);
   return (
     <div className="page-wrap">
       <section className="page-nav">
@@ -37,21 +61,7 @@ export default function ProductListingPage() {
             return (
               <Card
                 key={product.id}
-                itemDetails={product}
-                priAction={{
-                  name: "Add To Cart",
-                  action: addtoCart,
-                }}
-                secAction={{
-                  name: "Add To Cart",
-                  action: (i) => {
-                    console.log(i.productName);
-                  },
-                }}
-                wishlistAction={{
-                  name: "Add To Wishlist",
-                  action: addToWishlist,
-                }}
+                itemCardData={getItemCardData(product, cart, wishlist)}
               />
             );
           })}

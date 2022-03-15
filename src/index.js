@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ProductFilterContextProvider } from "./contexts";
 import { makeServer } from "./server";
 import axios from "axios";
+import { WishlistContextProvider } from "./contexts";
 
 // Call make Server
 makeServer();
@@ -32,9 +33,11 @@ const rootElement = document.getElementById("root");
 ReactDOM.render(
   <StrictMode>
     <BrowserRouter>
-      <ProductFilterContextProvider>
-        <App />
-      </ProductFilterContextProvider>
+      <WishlistContextProvider>
+        <ProductFilterContextProvider>
+          <App />
+        </ProductFilterContextProvider>
+      </WishlistContextProvider>
     </BrowserRouter>
   </StrictMode>,
   rootElement

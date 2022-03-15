@@ -45,4 +45,41 @@ const removeFromWishlist = (itemDetails) => {
   })();
 };
 
-export { addtoCart, addToWishlist };
+const getItemCardData = (product, cart, wishlist) => {
+  const isProductInCart =
+    cart.filter((cartProduct) => {
+      return product._id === cartProduct._id;
+    }).length !== 0;
+
+  const isProductInWishlist =
+    wishlist.filter((wishlistProduct) => {
+      return product._id === wishlistProduct._id;
+    }).length !== 0;
+
+  const res = {};
+  res.itemDetails = { ...product };
+
+  res.priAction = isProductInCart
+    ? { name: "Go To Cart", isLink: true, action: addtoCart }
+    : {
+        name: "Add To Cart",
+        isLink: false,
+        action: addtoCart,
+      };
+  res.secAction = isProductInCart
+    ? { name: "Go To Cart", isLink: true, action: addtoCart }
+    : {
+        name: "Add To Cart",
+        isLink: false,
+        action: addtoCart,
+      };
+  res.wishlistAction = isProductInWishlist
+    ? { isProductInWishlist: isProductInWishlist, action: removeFromWishlist }
+    : {
+        isProductInWishlist: isProductInWishlist,
+        action: addToWishlist,
+      };
+  return res;
+};
+
+export { addtoCart, addToWishlist, getItemCardData };

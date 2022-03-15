@@ -1,33 +1,11 @@
+import axios from "axios";
 import imgg from "./dummy-pot-plant.png";
 import "./card.css";
+import WishlistHeart from "../../assets/WishlistHeart";
+import { useWishlist } from "../../contexts";
 
-export default function Card(props) {
-  const priAction =
-    props.priAction ??
-    (() => {
-      console.log("No Primary Action Defined");
-    });
-  const secAction =
-    props.secAction ??
-    (() => {
-      console.log("No Seconday Action Defined");
-    });
-  const wishlistAction =
-    props.wishlistAction ??
-    (() => {
-      console.log("No Seconday Action Defined");
-    });
-
-  const itemDetails = props.itemDetails ?? {
-    id: uuidv4(),
-    productName: "name 1",
-    productImg: "someurl",
-    isOutOfStock: false,
-    isOnSale: true,
-    originalPrice: "123",
-    salePrice: "234",
-    discountedPctage: "50",
-  };
+export default function Card({ itemCardData }) {
+  const { itemDetails, priAction, secAction, wishlistAction } = itemCardData;
 
   const {
     id,
@@ -40,6 +18,7 @@ export default function Card(props) {
     discountedPctage,
   } = itemDetails;
 
+  const { setWishlist } = useWishlist();
   return (
     <div className="dui-card-prod-hzntl dui-util-bdr-radi-5px-s dui-util-gry-shdw dui-util-pos-rel">
       {/* <!-- Badge Component Starts -- with Text --> */}
@@ -92,22 +71,45 @@ export default function Card(props) {
       {/* <!-- Button Component Starts -- Icon --> */}
       <button
         className="dui-card-prod-hzntl__wishlist-btn dui-btn dui-util-bdr-radi-999px-mx reset-button-inherit-parent"
-        onClick={() => wishlistAction.action(itemDetails)}
+        onClick={() => {
+          wishlistAction.action(itemDetails);
+
+          let config = {
+            headers: {
+              Accept: "*/*",
+              authorization: localStorage.getItem("token"),
+            },
+          };
+          // Fetch Wishlist
+          (async () => {
+            let res = await axios.get("/api/user/wishlist", config);
+            setWishlist(res.data.wishlist);
+          })();
+        }}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="dui-card-prod-hzntl__wishlist-btn_svg dui-util-spc-pad-0_8rem-xs icon icon-tabler icon-tabler-heart"
-          width="56"
-          height="56"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          fill="#F34E4E"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
-        </svg>
+        {wishlistAction.isProductInWishlist && (
+          <WishlistHeart
+            className="dui-card-prod-hzntl__wishlist-btn_svg dui-util-spc-pad-0_8rem-xs"
+            height="1rem"
+            width="1rem"
+            strokeWidth="1.5"
+            fill="#F34E4E"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          ></WishlistHeart>
+        )}
+        {!wishlistAction.isProductInWishlist && (
+          <WishlistHeart
+            className="dui-card-prod-hzntl__wishlist-btn_svg dui-util-spc-pad-0_8rem-xs"
+            height="1rem"
+            width="1rem"
+            strokeWidth="1.5"
+            fill="none"
+            stroke="#F34E4E"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          ></WishlistHeart>
+        )}
       </button>
       {/* <!-- Button Component Ends -- Icon --> */}
     </div>
