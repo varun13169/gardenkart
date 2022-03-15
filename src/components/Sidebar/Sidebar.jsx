@@ -1,6 +1,10 @@
+import { useProductFilter } from "../../contexts";
 import "./sidebar.css";
 
 export default function SideBar() {
+  const { productAndFilterState, setProductAndFilterState } =
+    useProductFilter();
+
   return (
     <aside className="sidebar dui-util-spc-pad-1_6rem-s">
       <div className="sidebar__fliter">
@@ -8,7 +12,12 @@ export default function SideBar() {
           Filters
         </p>
 
-        <button className="dui-btn dui-util-txt-sm dui-util-bdr-radi-5px-s reset-button-inherit-parent">
+        <button
+          className="dui-btn dui-util-txt-sm dui-util-bdr-radi-5px-s reset-button-inherit-parent"
+          onClick={() =>
+            setProductAndFilterState({ type: "DEFAULT_ALL_FILTERS", data: {} })
+          }
+        >
           Clear
         </button>
       </div>
@@ -58,26 +67,66 @@ export default function SideBar() {
         <div>
           {/* <!-- Radio Button Component Starts --> */}
           <label className="dui-inp-radio-btn dui-util-txt-sm">
-            4 Star & above
-            <input type="radio" name="rating" defaultChecked />
+            4 Star &amp; above
+            <input
+              type="radio"
+              name="rating"
+              checked={productAndFilterState.filters.productRating === 4}
+              onChange={() =>
+                setProductAndFilterState({
+                  type: "FILTER_PRODUCTS_BY_RATING",
+                  data: { filterBytating: 4 },
+                })
+              }
+            />
             <span className="dui-inp-radio-btn__checkmark"></span>
           </label>
 
           <label className="dui-inp-radio-btn dui-util-txt-sm">
-            3 Star & above
-            <input type="radio" name="rating" />
+            3 Star &amp; above
+            <input
+              type="radio"
+              name="rating"
+              checked={productAndFilterState.filters.productRating === 3}
+              onChange={() =>
+                setProductAndFilterState({
+                  type: "FILTER_PRODUCTS_BY_RATING",
+                  data: { filterBytating: 3 },
+                })
+              }
+            />
             <span className="dui-inp-radio-btn__checkmark"></span>
           </label>
 
           <label className="dui-inp-radio-btn dui-util-txt-sm">
-            2 Star & above
-            <input type="radio" name="rating" />
+            2 Star &amp; above
+            <input
+              type="radio"
+              name="rating"
+              checked={productAndFilterState.filters.productRating === 2}
+              onChange={() =>
+                setProductAndFilterState({
+                  type: "FILTER_PRODUCTS_BY_RATING",
+                  data: { filterBytating: 2 },
+                })
+              }
+            />
             <span className="dui-inp-radio-btn__checkmark"></span>
           </label>
 
           <label className="dui-inp-radio-btn dui-util-txt-sm">
-            1 Star & above
-            <input type="radio" name="rating" />
+            1 Star &amp; above
+            <input
+              type="radio"
+              name="rating"
+              checked={productAndFilterState.filters.productRating === 1}
+              onChange={() =>
+                setProductAndFilterState({
+                  type: "FILTER_PRODUCTS_BY_RATING",
+                  data: { filterBytating: 1 },
+                })
+              }
+            />
             <span className="dui-inp-radio-btn__checkmark"></span>
           </label>
           {/* <!-- Radio Button Component Ends --> */}
@@ -93,13 +142,33 @@ export default function SideBar() {
           {/* <!-- Radio Button Component Starts --> */}
           <label className="dui-inp-radio-btn dui-util-txt-sm">
             Price - Low to High
-            <input type="radio" name="sort-by" />
+            <input
+              type="radio"
+              name="sort-by"
+              checked={productAndFilterState.sortByPrice === "LOW_TO_HIGH"}
+              onChange={() =>
+                setProductAndFilterState({
+                  type: "SORT_BY_PRICE",
+                  data: { sortByPrice: "LOW_TO_HIGH" },
+                })
+              }
+            />
             <span className="dui-inp-radio-btn__checkmark"></span>
           </label>
 
           <label className="dui-inp-radio-btn dui-util-txt-sm">
             Price - High to Low
-            <input type="radio" checked="checked" name="sort-by" />
+            <input
+              type="radio"
+              name="sort-by"
+              checked={productAndFilterState.sortByPrice === "HIGH_TO_LOW"}
+              onChange={() =>
+                setProductAndFilterState({
+                  type: "SORT_BY_PRICE",
+                  data: { sortByPrice: "HIGH_TO_LOW" },
+                })
+              }
+            />
             <span className="dui-inp-radio-btn__checkmark"></span>
           </label>
           {/* <!-- Radio Button Component Ends --> */}

@@ -1,14 +1,10 @@
 .product-card-btn {
-    /* while exiting hover */
-    transition: 
-    background-color 0.5s,
-    border-radius 1s;
+  /* while exiting hover */
+  transition: background-color 0.5s, border-radius 1s;
 }
 
 .product-card-btn:hover {
-    border-radius: 999px;
-    /* while entering hover */
-    transition: 
-    background-color 0.5s,
-    border-radius 5s;
+  border-radius: 999px;
+  /* while entering hover */
+  transition: background-color 0.5s, border-radius 5s;
 }

@@ -29,7 +29,7 @@
 .mobl-fltr-btn-helper {
   width: 100%;
   height: 7rem;
-  display: none
+  display: none;
 }
 
 .mobl-fltr-btn {
@@ -49,41 +49,40 @@
   display: none;
 }
 
-.mobl-fltr-btn>div {
+.mobl-fltr-btn > div {
   display: flex;
   align-items: center;
 }
 
-.mobl-fltr-btn>div>svg {
+.mobl-fltr-btn > div > svg {
   width: 5rem;
   height: 5rem;
   margin-right: 1rem;
 }
 
-
 @media only screen and (max-width: 845px) {
   .page-sidebar {
-      display: none;
+    display: none;
   }
 
   .page-wrap {
-      grid-template-areas:
-          'p_nav p_nav p_nav p_nav p_nav p_nav'
-          'p_content p_content p_content p_content p_content p_content'
-          'p_content p_content p_content p_content p_content p_content';
+    grid-template-areas:
+      "p_nav p_nav p_nav p_nav p_nav p_nav"
+      "p_content p_content p_content p_content p_content p_content"
+      "p_content p_content p_content p_content p_content p_content";
   }
 
   .mobl-fltr-btn-helper {
-      display: block;
+    display: block;
   }
 
   .mobl-fltr-btn {
-      display: flex;
+    display: flex;
   }
 }
 
 @media only screen and (max-width: 550px) {
   html {
-      font-size: 40%;
+    font-size: 40%;
   }
 }
