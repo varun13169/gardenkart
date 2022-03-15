@@ -15,7 +15,7 @@ const addtoCart = (itemDetails) => {
   })();
 };
 
-const addToWishlist = (itemDetails) => {
+const addToWishlistAndSetWishlist = (itemDetails, setWishlist) => {
   console.log(itemDetails);
   let config = {
     headers: {
@@ -26,8 +26,14 @@ const addToWishlist = (itemDetails) => {
   let payload = { product: itemDetails };
   (async () => {
     let res = await axios.post("/api/user/wishlist", payload, config);
-    console.log(res);
+    console.log(res.data.wishlist);
+    setWishlist(res.data.wishlist);
   })();
+};
+const addToWishlist = (setWishlist) => {
+  return (itemDetails) => {
+    addToWishlistAndSetWishlist(itemDetails, setWishlist);
+  };
 };
 
 const removeFromWishlist = (itemDetails) => {
@@ -45,7 +51,7 @@ const removeFromWishlist = (itemDetails) => {
   })();
 };
 
-const getItemCardData = (product, cart, wishlist) => {
+const getItemCardData = ({ product, cart, wishlist, setWishlist }) => {
   const isProductInCart =
     cart.filter((cartProduct) => {
       return product._id === cartProduct._id;
@@ -77,7 +83,7 @@ const getItemCardData = (product, cart, wishlist) => {
     ? { isProductInWishlist: isProductInWishlist, action: removeFromWishlist }
     : {
         isProductInWishlist: isProductInWishlist,
-        action: addToWishlist,
+        action: addToWishlist(setWishlist),
       };
   return res;
 };

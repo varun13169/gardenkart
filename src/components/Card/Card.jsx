@@ -2,7 +2,6 @@ import axios from "axios";
 import imgg from "./dummy-pot-plant.png";
 import "./card.css";
 import WishlistHeart from "../../assets/WishlistHeart";
-import { useWishlist } from "../../contexts";
 
 export default function Card({ itemCardData }) {
   const { itemDetails, priAction, secAction, wishlistAction } = itemCardData;
@@ -18,7 +17,6 @@ export default function Card({ itemCardData }) {
     discountedPctage,
   } = itemDetails;
 
-  const { setWishlist } = useWishlist();
   return (
     <div className="dui-card-prod-hzntl dui-util-bdr-radi-5px-s dui-util-gry-shdw dui-util-pos-rel">
       {/* <!-- Badge Component Starts -- with Text --> */}
@@ -71,21 +69,7 @@ export default function Card({ itemCardData }) {
       {/* <!-- Button Component Starts -- Icon --> */}
       <button
         className="dui-card-prod-hzntl__wishlist-btn dui-btn dui-util-bdr-radi-999px-mx reset-button-inherit-parent"
-        onClick={() => {
-          wishlistAction.action(itemDetails);
-
-          let config = {
-            headers: {
-              Accept: "*/*",
-              authorization: localStorage.getItem("token"),
-            },
-          };
-          // Fetch Wishlist
-          (async () => {
-            let res = await axios.get("/api/user/wishlist", config);
-            setWishlist(res.data.wishlist);
-          })();
-        }}
+        onClick={() => wishlistAction.action(itemDetails)}
       >
         {wishlistAction.isProductInWishlist && (
           <WishlistHeart

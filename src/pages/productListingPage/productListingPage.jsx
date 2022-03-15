@@ -61,7 +61,12 @@ export default function ProductListingPage() {
             return (
               <Card
                 key={product.id}
-                itemCardData={getItemCardData(product, cart, wishlist)}
+                itemCardData={getItemCardData({
+                  product,
+                  cart,
+                  wishlist,
+                  setWishlist,
+                })}
               />
             );
           })}
