@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const addtoCart = (itemDetails) => {
+const addtoCartAndSetCartContext = (itemDetails, setCart) => {
   console.log(itemDetails);
   let config = {
     headers: {
@@ -10,9 +10,18 @@ const addtoCart = (itemDetails) => {
   };
   let payload = { product: itemDetails };
   (async () => {
-    let res = await axios.post("/api/user/cart", payload, config);
-    console.log(res);
+    try {
+      let res = await axios.post("/api/user/cart", payload, config);
+      setCart(res.data.cart);
+    } catch (err) {
+      console.log(err);
+    }
   })();
+};
+const addtoCart = (setCart) => {
+  return (itemDetails) => {
+    addtoCartAndSetCartContext(itemDetails, setCart);
+  };
 };
 
 const addToWishlistAndSetWishlist = (itemDetails, setWishlist) => {
@@ -63,7 +72,7 @@ const removeFromWishlist = (setWishlist) => {
   };
 };
 
-const getItemCardData = ({ product, cart, wishlist, setWishlist }) => {
+const getItemCardData = ({ product, cart, setCart, wishlist, setWishlist }) => {
   const isProductInCart =
     cart.filter((cartProduct) => {
       return product._id === cartProduct._id;
@@ -78,19 +87,13 @@ const getItemCardData = ({ product, cart, wishlist, setWishlist }) => {
   res.itemDetails = { ...product };
 
   res.priAction = isProductInCart
-    ? { name: "Go To Cart", isLink: true, action: addtoCart }
+    ? { name: "Go To Cart", isLink: true, action: () => {} }
     : {
         name: "Add To Cart",
         isLink: false,
-        action: addtoCart,
+        action: addtoCart(setCart),
       };
-  res.secAction = isProductInCart
-    ? { name: "Go To Cart", isLink: true, action: addtoCart }
-    : {
-        name: "Add To Cart",
-        isLink: false,
-        action: addtoCart,
-      };
+  res.secAction = { name: "Buy Now", isLink: true, action: () => {} };
   res.wishlistAction = isProductInWishlist
     ? {
         isProductInWishlist: isProductInWishlist,

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-import { ProductFilterContextProvider } from "./contexts";
+import { CartContextProvider, ProductFilterContextProvider } from "./contexts";
 import { makeServer } from "./server";
 import axios from "axios";
 import { WishlistContextProvider } from "./contexts";
@@ -33,11 +33,13 @@ const rootElement = document.getElementById("root");
 ReactDOM.render(
   <StrictMode>
     <BrowserRouter>
-      <WishlistContextProvider>
-        <ProductFilterContextProvider>
-          <App />
-        </ProductFilterContextProvider>
-      </WishlistContextProvider>
+      <CartContextProvider>
+        <WishlistContextProvider>
+          <ProductFilterContextProvider>
+            <App />
+          </ProductFilterContextProvider>
+        </WishlistContextProvider>
+      </CartContextProvider>
     </BrowserRouter>
   </StrictMode>,
   rootElement

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Navbar, Card, Sidebar } from "../../components";
-import { useProductFilter } from "../../contexts";
+import { useCart, useProductFilter } from "../../contexts";
 import { useWishlist } from "../../contexts";
 import "./product-listing-page.css";
 import {
@@ -11,7 +11,7 @@ import {
 } from "./productListingPageUtils";
 
 export default function ProductListingPage() {
-  const [cart, setCart] = useState([]);
+  const { cart, setCart } = useCart();
   const { wishlist, setWishlist } = useWishlist();
   const { productAndFilterState, setProductAndFilterState } =
     useProductFilter();
@@ -64,6 +64,7 @@ export default function ProductListingPage() {
                 itemCardData={getItemCardData({
                   product,
                   cart,
+                  setCart,
                   wishlist,
                   setWishlist,
                 })}
