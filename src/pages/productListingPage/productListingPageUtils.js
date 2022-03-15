@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const addtoCartAndSetCartContext = (itemDetails, setCart) => {
-  console.log(itemDetails);
   let config = {
     headers: {
       Accept: "*/*",
@@ -25,7 +24,6 @@ const addtoCart = (setCart) => {
 };
 
 const addToWishlistAndSetWishlist = (itemDetails, setWishlist) => {
-  console.log(itemDetails);
   let config = {
     headers: {
       Accept: "*/*",
@@ -35,7 +33,6 @@ const addToWishlistAndSetWishlist = (itemDetails, setWishlist) => {
   let payload = { product: itemDetails };
   (async () => {
     let res = await axios.post("/api/user/wishlist", payload, config);
-    console.log(res.data.wishlist);
     setWishlist(res.data.wishlist);
   })();
 };
@@ -46,7 +43,6 @@ const addToWishlist = (setWishlist) => {
 };
 
 const removeFromWishlistAndSetWishlist = (itemDetails, setWishlist) => {
-  console.log(itemDetails);
   let config = {
     headers: {
       Accept: "*/*",
@@ -59,7 +55,6 @@ const removeFromWishlistAndSetWishlist = (itemDetails, setWishlist) => {
         "/api/user/wishlist/" + itemDetails._id,
         config
       );
-      console.log(res);
       setWishlist(res.data.wishlist);
     } catch (err) {
       console.log(err);
