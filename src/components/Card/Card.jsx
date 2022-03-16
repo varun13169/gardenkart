@@ -2,6 +2,7 @@ import axios from "axios";
 import imgg from "./dummy-pot-plant.png";
 import "./card.css";
 import { WishlistHeartSVG } from "../../assets/svgReactComponents";
+import { Link } from "react-router-dom";
 
 export default function Card({ itemCardData }) {
   const { itemDetails, priAction, secAction, wishlistAction } = itemCardData;
@@ -16,7 +17,7 @@ export default function Card({ itemCardData }) {
     salePrice,
     discountedPctage,
   } = itemDetails;
-
+  console.log(priAction.toPath);
   return (
     <div className="dui-card-prod-hzntl dui-util-bdr-radi-5px-s dui-util-gry-shdw dui-util-pos-rel">
       {/* <!-- Badge Component Starts -- with Text --> */}
@@ -51,12 +52,22 @@ export default function Card({ itemCardData }) {
 
       <div className="dui-card-prod-hzntl__actions dui-util-spc-pad-1_6rem-s">
         <div className="dui-card-prod-hzntl__buttons">
-          <button
-            className="product-card-btn dui-btn dui-btn--primary dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent"
-            onClick={() => priAction.action(itemDetails)}
-          >
-            {priAction.name}
-          </button>
+          {!priAction.isLink && (
+            <button
+              className="product-card-btn dui-btn dui-btn--primary dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent"
+              onClick={() => priAction.action(itemDetails)}
+            >
+              {priAction.name}
+            </button>
+          )}
+          {priAction.isLink && (
+            <Link
+              to={priAction.toPath}
+              className="product-card-link dui-link dui-link--primary dui-util-txt-sm dui-util-spc-pad-xs dui-util-txt-align-cent"
+            >
+              {priAction.name}
+            </Link>
+          )}
           <button
             className="product-card-btn dui-btn dui-btn--secondary dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent"
             onClick={() => secAction.action(itemDetails)}

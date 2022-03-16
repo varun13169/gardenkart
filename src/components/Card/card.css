@@ -9,6 +9,17 @@
   transition: background-color 0.5s, border-radius 5s;
 }
 
+.product-card-link {
+  /* while exiting hover */
+  transition: background-color 0.5s, border-radius 1s;
+}
+
+.product-card-link:hover {
+  border-radius: 999px;
+  /* while entering hover */
+  transition: background-color 0.5s, border-radius 5s;
+}
+
 .dui-card-prod-hzntl {
   position: relative;
 }

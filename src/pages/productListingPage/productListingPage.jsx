@@ -1,15 +1,10 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { FilterSVG } from "../../assets/svgReactComponents";
 import { Navbar, Card, Sidebar } from "../../components";
-import { useCart, useProductFilter } from "../../contexts";
-import { useWishlist } from "../../contexts";
+import { useCart, useProductFilter, useWishlist } from "../../contexts";
 import "./product-listing-page.css";
-import {
-  addtoCart,
-  addToWishlist,
-  getItemCardData,
-} from "./productListingPageUtils";
+import { getItemCardData } from "./productListingPageUtils";
 
 export default function ProductListingPage() {
   const { cart, setCart } = useCart();
