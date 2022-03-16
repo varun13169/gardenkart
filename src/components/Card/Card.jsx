@@ -1,7 +1,8 @@
 import axios from "axios";
 import imgg from "./dummy-pot-plant.png";
 import "./card.css";
-import WishlistHeart from "../../assets/WishlistHeart";
+// import WishlistHeart from "../../assets/WishlistHeart";
+import { WishlistHeartSVG } from "../../assets/svgReactComponents";
 
 export default function Card({ itemCardData }) {
   const { itemDetails, priAction, secAction, wishlistAction } = itemCardData;
@@ -72,7 +73,7 @@ export default function Card({ itemCardData }) {
         onClick={() => wishlistAction.action(itemDetails)}
       >
         {wishlistAction.isProductInWishlist && (
-          <WishlistHeart
+          <WishlistHeartSVG
             className="dui-card-prod-hzntl__wishlist-btn_svg dui-util-spc-pad-0_8rem-xs"
             height="1rem"
             width="1rem"
@@ -80,10 +81,10 @@ export default function Card({ itemCardData }) {
             fill="#F34E4E"
             strokeLinecap="round"
             strokeLinejoin="round"
-          ></WishlistHeart>
+          ></WishlistHeartSVG>
         )}
         {!wishlistAction.isProductInWishlist && (
-          <WishlistHeart
+          <WishlistHeartSVG
             className="dui-card-prod-hzntl__wishlist-btn_svg dui-util-spc-pad-0_8rem-xs"
             height="1rem"
             width="1rem"
@@ -92,7 +93,7 @@ export default function Card({ itemCardData }) {
             stroke="#F34E4E"
             strokeLinecap="round"
             strokeLinejoin="round"
-          ></WishlistHeart>
+          ></WishlistHeartSVG>
         )}
       </button>
       {/* <!-- Button Component Ends -- Icon --> */}

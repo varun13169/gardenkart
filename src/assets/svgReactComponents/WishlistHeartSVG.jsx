@@ -1,4 +1,4 @@
-export default function WishlistHeart(props) {
+export default function WishlistHeartSVG(props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6,10 +6,6 @@ export default function WishlistHeart(props) {
       width="56"
       height="56"
       viewBox="0 0 24 24"
-      // stroke-width="1.5"
-      // fill="#F34E4E"
-      // stroke-linecap="round"
-      // stroke-linejoin="round"
       {...props}
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />

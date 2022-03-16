@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { FilterSVG } from "../../assets/svgReactComponents";
 import { Navbar, Card, Sidebar } from "../../components";
 import { useCart, useProductFilter } from "../../contexts";
 import { useWishlist } from "../../contexts";
@@ -20,7 +21,6 @@ export default function ProductListingPage() {
     // Fetch Products
     (async function () {
       const { data } = await axios.get("/api/products");
-      // setProducts(data.products);
       setProductAndFilterState({
         type: "SET_FRESH_DATA",
         data: { orgProducts: data.products },
@@ -71,18 +71,16 @@ export default function ProductListingPage() {
               />
             );
           })}
-          {/* <div className="mobl-fltr-btn-helper"></div>
-            <button className="mobl-fltr-btn reset-button-inherit-parent" href="/pages/cartPage/cartPage.html">
-                <div className="dui-util-clr-prim-p2">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-filter" width="56"
-                        height="56" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9A9A9A" fill="none"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M5.5 5h13a1 1 0 0 1 .5 1.5l-5 5.5l0 7l-4 -3l0 -4l-5 -5.5a1 1 0 0 1 .5 -1.5" />
-                    </svg>
-                    <p className="dui-util-fw-bld">Filter</p>
-                </div>
-            </button> */}
+          <div className="mobl-fltr-btn-helper"></div>
+          <button
+            className="mobl-fltr-btn reset-button-inherit-parent"
+            href="/pages/cartPage/cartPage.html"
+          >
+            <div>
+              <FilterSVG />
+              <p className="dui-util-fw-bld dui-util-clr-prim-p2">Filter</p>
+            </div>
+          </button>
         </main>
       </section>
 

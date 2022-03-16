@@ -7,8 +7,8 @@ export default function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/products" element={<ProductListingPage />}></Route>
-        <Route path="/mock-api" element={<MockAPI />}></Route>
+        <Route path="/products" element={<ProductListingPage />} />
+        <Route path="/mock-api" element={<MockAPI />} />
       </Routes>
     </div>
   );
