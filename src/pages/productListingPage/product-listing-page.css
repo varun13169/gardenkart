@@ -1,6 +1,6 @@
 @import "/src/styles.css";
 
-.page-wrap {
+.product-page-namespace.page-wrap {
   grid-template-areas:
     "p_nav p_nav p_nav p_nav p_nav p_nav"
     "p_sidebar p_sidebar p_content p_content p_content p_content"
@@ -8,7 +8,7 @@
 }
 
 /* main content */
-.main-content {
+.product-page-namespace.main-content {
   width: 100%;
   height: 100%;
   display: grid;
@@ -17,7 +17,7 @@
 }
 
 /* footer */
-.page-footer {
+.product-page-namespace.page-footer {
   display: none;
 }
 

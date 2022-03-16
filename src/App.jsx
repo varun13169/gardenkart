@@ -1,5 +1,5 @@
 import "./styles.css";
-import { ProductListingPage } from "./pages";
+import { ProductListingPage, SiginInPage, SiginUpPage } from "./pages";
 import { Route, Routes } from "react-router-dom";
 import MockAPI from "./mockman/MockAPI";
 
@@ -8,6 +8,8 @@ export default function App() {
     <div className="App">
       <Routes>
         <Route path="/products" element={<ProductListingPage />} />
+        <Route path="/sign-in" element={<SiginInPage />} />
+        <Route path="/sign-up" element={<SiginUpPage />} />
         <Route path="/mock-api" element={<MockAPI />} />
       </Routes>
     </div>

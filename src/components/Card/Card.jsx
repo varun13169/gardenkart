@@ -1,7 +1,6 @@
 import axios from "axios";
 import imgg from "./dummy-pot-plant.png";
 import "./card.css";
-// import WishlistHeart from "../../assets/WishlistHeart";
 import { WishlistHeartSVG } from "../../assets/svgReactComponents";
 
 export default function Card({ itemCardData }) {
