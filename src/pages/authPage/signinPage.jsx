@@ -1,6 +1,35 @@
 import "./auth-page.css";
+import { useReducer } from "react";
+import { signinHandler, signinReducer } from "./authUtils";
 
 export default function SiginInPage() {
+  //   const signinHandler = async (loginDetails) => {
+  //     try {
+  //       const response = await axios.post(`/api/auth/login`, loginDetails);
+  //       // saving the encodedToken in the localStorage
+  //       console.log(response.data.encodedToken);
+  //       localStorage.setItem("token", response.data.encodedToken);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   const signinReducer = (loginState, loginAction) => {
+  //     switch (loginAction.type) {
+  //       case "EMAIL_CHANGE":
+  //         return { ...loginState, email: loginAction.data.email };
+  //       case "PASSWORD_CHANGE":
+  //         return { ...loginState, password: loginAction.data.password };
+  //       case "RESET_LOGIN_FORM":
+  //         return { ...loginState, email: "", password: "" };
+  //       default:
+  //         console.log("Error: Check Action Type");
+  //     }
+  //   };
+  const [loginState, loginActionDispatch] = useReducer(signinReducer, {
+    email: "",
+    password: "",
+  });
+
   return (
     <section className="auth-page-namespace page-wrap">
       <section className="auth-page-namespace page-nav"></section>
@@ -9,7 +38,14 @@ export default function SiginInPage() {
 
       <section className="auth-page-namespace page-main">
         <main className="auth-page-namespace main-content">
-          <form className="dui-auth-card dui-util-bdr-radi-10px-m dui-util-gry-shdw">
+          <form
+            className="dui-auth-card dui-util-bdr-radi-10px-m dui-util-gry-shdw"
+            onSubmit={(e) => {
+              e.preventDefault();
+              signinHandler(loginState);
+              loginActionDispatch({ type: "RESET_LOGIN_FORM" });
+            }}
+          >
             <h2 className="dui-auth-card__title dui-util-fw-bld">Login</h2>
             {/* <!-- Input Component Starts --> */}
             <div className="dui-inp-txt">
@@ -23,6 +59,13 @@ export default function SiginInPage() {
                   className="dui-inp-txt__input dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-input-inherit-parent"
                   type="text"
                   placeholder="sample@neog.camp"
+                  value={loginState.email}
+                  onChange={(e) =>
+                    loginActionDispatch({
+                      type: "EMAIL_CHANGE",
+                      data: { email: e.currentTarget.value },
+                    })
+                  }
                 />
                 <p className="dui-util-txt-xsm dui-util-disp-none">
                   *Some Additional Info
@@ -43,6 +86,13 @@ export default function SiginInPage() {
                   className="dui-inp-txt__input dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-input-inherit-parent"
                   type="text"
                   placeholder="Password"
+                  value={loginState.password}
+                  onChange={(e) =>
+                    loginActionDispatch({
+                      type: "PASSWORD_CHANGE",
+                      data: { password: e.currentTarget.value },
+                    })
+                  }
                 />
                 <p className="dui-util-txt-sm dui-util-disp-none">
                   *Please enter correct input
