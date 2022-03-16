@@ -1,5 +1,6 @@
 import "./styles.css";
 import {
+  CartPage,
   ProductListingPage,
   SiginInPage,
   SiginUpPage,
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/sign-in" element={<SiginInPage />} />
         <Route path="/sign-up" element={<SiginUpPage />} />
         <Route path="/wishlist" element={<WishlistPage />} />
+        <Route path="/cart" element={<CartPage />} />
         <Route path="/mock-api" element={<MockAPI />} />
       </Routes>
     </div>
