@@ -1,30 +1,10 @@
 import "./auth-page.css";
+import "./auth-page.css";
 import { useReducer } from "react";
 import { signinHandler, signinReducer } from "./authUtils";
+import { Navbar } from "../../components";
 
 export default function SiginInPage() {
-  //   const signinHandler = async (loginDetails) => {
-  //     try {
-  //       const response = await axios.post(`/api/auth/login`, loginDetails);
-  //       // saving the encodedToken in the localStorage
-  //       console.log(response.data.encodedToken);
-  //       localStorage.setItem("token", response.data.encodedToken);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   const signinReducer = (loginState, loginAction) => {
-  //     switch (loginAction.type) {
-  //       case "EMAIL_CHANGE":
-  //         return { ...loginState, email: loginAction.data.email };
-  //       case "PASSWORD_CHANGE":
-  //         return { ...loginState, password: loginAction.data.password };
-  //       case "RESET_LOGIN_FORM":
-  //         return { ...loginState, email: "", password: "" };
-  //       default:
-  //         console.log("Error: Check Action Type");
-  //     }
-  //   };
   const [loginState, loginActionDispatch] = useReducer(signinReducer, {
     email: "",
     password: "",
@@ -32,7 +12,9 @@ export default function SiginInPage() {
 
   return (
     <section className="auth-page-namespace page-wrap">
-      <section className="auth-page-namespace page-nav"></section>
+      <section className="auth-page-namespace page-nav">
+        <Navbar></Navbar>
+      </section>
 
       <section className="auth-page-namespace page-sidebar"></section>
 

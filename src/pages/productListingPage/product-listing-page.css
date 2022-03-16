@@ -61,11 +61,11 @@
 }
 
 @media only screen and (max-width: 845px) {
-  .page-sidebar {
+  .product-page-namespace.page-sidebar {
     display: none;
   }
 
-  .page-wrap {
+  .product-page-namespace.page-wrap {
     grid-template-areas:
       "p_nav p_nav p_nav p_nav p_nav p_nav"
       "p_content p_content p_content p_content p_content p_content"

@@ -1,46 +1,9 @@
 import "./auth-page.css";
 import { useReducer } from "react";
 import { signupHandler, signupReducer } from "./authUtils";
+import { Navbar } from "../../components";
 
 export default function SiginUpPage() {
-  //   const signupHandler = async (signupDetails) => {
-  //     try {
-  //       const response = await axios.post(`/api/auth/signup`, signupDetails);
-  //       // saving the encodedToken in the localStorage
-  //       console.log(response.data.encodedToken);
-  //       localStorage.setItem("token", response.data.encodedToken);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   const signupReducer = (signupState, signupAction) => {
-  //     switch (signupAction.type) {
-  //       case "EMAIL_CHANGE":
-  //         return { ...signupState, email: signupAction.data.email };
-  //       case "PASSWORD_CHANGE":
-  //         return { ...signupState, password: signupAction.data.password };
-  //       case "CONFIRM_PASSWORD_CHANGE":
-  //         return {
-  //           ...signupState,
-  //           confirmPassword: signupAction.data.confirmPassword,
-  //         };
-  //       case "FIRST_NAME_CHANGE":
-  //         return { ...signupState, firstName: signupAction.data.firstName };
-  //       case "LAST_NAME_CHANGE":
-  //         return { ...signupState, lastName: signupAction.data.lastName };
-  //       case "RESET_LOGIN_FORM":
-  //         return {
-  //           ...signupState,
-  //           firstName: "",
-  //           lastName: "",
-  //           email: "",
-  //           password: "",
-  //           confirmPassword: "",
-  //         };
-  //       default:
-  //         console.log("Error: Check Action Type");
-  //     }
-  //   };
   const [signupState, signupActionDispatch] = useReducer(signupReducer, {
     firstName: "",
     lastName: "",
@@ -51,7 +14,9 @@ export default function SiginUpPage() {
   console.log(signupState);
   return (
     <section className="auth-page-namespace page-wrap">
-      <section className="auth-page-namespace page-nav"></section>
+      <section className="auth-page-namespace page-nav">
+        <Navbar></Navbar>
+      </section>
 
       <section className="auth-page-namespace page-sidebar"></section>
 
