@@ -1,4 +1,77 @@
 import axios from "axios";
+const incrementItemInCartAndSetCart = ({ itemDetails, cart, setCart }) => {
+  // setCart((cart) =>
+  //   cart.map((e) => {
+  //     e["id"] === itemDetails["id"] ? { ...e, qty: e.qty + 1 } : e;
+  //   })
+  // );
+
+  let config = {
+    headers: {
+      Accept: "*/*",
+      authorization: localStorage.getItem("token"),
+    },
+  };
+  let payload = {
+    action: {
+      type: "increment",
+    },
+  };
+  (async () => {
+    try {
+      let res = await axios.post(
+        "/api/user/cart/" + itemDetails._id,
+        payload,
+        config
+      );
+      setCart((cart) => res.data.cart);
+    } catch (err) {
+      console.log(err);
+    }
+  })();
+};
+const incrementItemInCart = ({ cart, setCart }) => {
+  return (itemDetails) => {
+    incrementItemInCartAndSetCart({ itemDetails, cart, setCart });
+  };
+};
+
+const decrementItemInCartAndSetCart = ({ itemDetails, cart, setCart }) => {
+  // setCart((cart) =>
+  //   cart.map((e) => {
+  //     e._id === itemDetails._id ? { ...e, qty: e.qty - 1 } : e;
+  //   })
+  // );
+
+  let config = {
+    headers: {
+      Accept: "*/*",
+      authorization: localStorage.getItem("token"),
+    },
+  };
+  let payload = {
+    action: {
+      type: "decrement",
+    },
+  };
+  (async () => {
+    try {
+      let res = await axios.post(
+        "/api/user/cart/" + itemDetails._id,
+        payload,
+        config
+      );
+      setCart((cart) => res.data.cart);
+    } catch (err) {
+      console.log(err);
+    }
+  })();
+};
+const decrementItemInCart = ({ cart, setCart }) => {
+  return (itemDetails) => {
+    decrementItemInCartAndSetCart({ itemDetails, cart, setCart });
+  };
+};
 
 const removeFromCartAndSetCart = ({ itemDetails, cart, setCart }) => {
   setCart((cart) => cart.filter((e) => e._id !== itemDetails._id));
@@ -12,7 +85,7 @@ const removeFromCartAndSetCart = ({ itemDetails, cart, setCart }) => {
   (async () => {
     try {
       let res = await axios.delete("/api/user/cart/" + itemDetails._id, config);
-      setCart(res.data.cart);
+      setCart((cart) => res.data.cart);
     } catch (err) {
       console.log(err);
     }
@@ -24,28 +97,28 @@ const removeFromCart = ({ cart, setCart }) => {
   };
 };
 
-const addtoCartAndSetCartContext = (itemDetails, setCart) => {
-  let config = {
-    headers: {
-      Accept: "*/*",
-      authorization: localStorage.getItem("token"),
-    },
-  };
-  let payload = { product: itemDetails };
-  (async () => {
-    try {
-      let res = await axios.post("/api/user/cart", payload, config);
-      setCart(res.data.cart);
-    } catch (err) {
-      console.log(err);
-    }
-  })();
-};
-const addtoCart = (setCart) => {
-  return (itemDetails) => {
-    addtoCartAndSetCartContext(itemDetails, setCart);
-  };
-};
+// const addtoCartAndSetCartContext = (itemDetails, setCart) => {
+//   let config = {
+//     headers: {
+//       Accept: "*/*",
+//       authorization: localStorage.getItem("token"),
+//     },
+//   };
+//   let payload = { product: itemDetails };
+//   (async () => {
+//     try {
+//       let res = await axios.post("/api/user/cart", payload, config);
+//       setCart((cart) => res.data.cart);
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   })();
+// };
+// const addtoCart = (setCart) => {
+//   return (itemDetails) => {
+//     addtoCartAndSetCartContext(itemDetails, setCart);
+//   };
+// };
 
 const addToWishlistAndSetWishlist = ({
   itemDetails,
@@ -63,7 +136,7 @@ const addToWishlistAndSetWishlist = ({
   let payload = { product: itemDetails };
   (async () => {
     let res = await axios.post("/api/user/wishlist", payload, config);
-    setWishlist(res.data.wishlist);
+    setWishlist((wishlist) => res.data.wishlist);
   })();
 };
 const addToWishlist = ({ wishlist, setWishlist }) => {
@@ -91,7 +164,7 @@ const removeFromWishlistAndSetWishlist = ({
         "/api/user/wishlist/" + itemDetails._id,
         config
       );
-      setWishlist(res.data.wishlist);
+      setWishlist((wishlist) => res.data.wishlist);
     } catch (err) {
       console.log(err);
     }
@@ -115,6 +188,10 @@ const getItemCardData = ({ product, cart, setCart, wishlist, setWishlist }) => {
   res.priAction = {
     name: "Increment Decrement",
     action: () => {},
+    cartActions: {
+      increment: incrementItemInCart({ cart, setCart }),
+      decrement: decrementItemInCart({ cart, setCart }),
+    },
   };
 
   res.secAction = {

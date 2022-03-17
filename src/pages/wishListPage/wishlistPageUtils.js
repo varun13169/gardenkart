@@ -1,6 +1,86 @@
 import axios from "axios";
 
-const addtoCartAndSetCartContext = (itemDetails, setCart) => {
+const incrementItemInCartAndSetCart = ({ itemDetails, cart, setCart }) => {
+  // setCart((cart) =>
+  //   cart.map((e) => {
+  //     e["id"] === itemDetails["id"] ? { ...e, qty: e.qty + 1 } : e;
+  //   })
+  // );
+
+  let config = {
+    headers: {
+      Accept: "*/*",
+      authorization: localStorage.getItem("token"),
+    },
+  };
+  let payload = {
+    action: {
+      type: "increment",
+    },
+  };
+  (async () => {
+    try {
+      let res = await axios.post(
+        "/api/user/cart/" + itemDetails._id,
+        payload,
+        config
+      );
+      setCart((cart) => res.data.cart);
+    } catch (err) {
+      console.log(err);
+    }
+  })();
+};
+const incrementItemInCart = ({ cart, setCart }) => {
+  return (itemDetails) => {
+    incrementItemInCartAndSetCart({ itemDetails, cart, setCart });
+  };
+};
+
+const decrementItemInCartAndSetCart = ({ itemDetails, cart, setCart }) => {
+  // setCart((cart) =>
+  //   cart.map((e) => {
+  //     e._id === itemDetails._id ? { ...e, qty: e.qty - 1 } : e;
+  //   })
+  // );
+
+  let config = {
+    headers: {
+      Accept: "*/*",
+      authorization: localStorage.getItem("token"),
+    },
+  };
+  let payload = {
+    action: {
+      type: "decrement",
+    },
+  };
+  (async () => {
+    try {
+      let res = await axios.post(
+        "/api/user/cart/" + itemDetails._id,
+        payload,
+        config
+      );
+      setCart((cart) => res.data.cart);
+    } catch (err) {
+      console.log(err);
+    }
+  })();
+};
+const decrementItemInCart = ({ cart, setCart }) => {
+  return (itemDetails) => {
+    decrementItemInCartAndSetCart({ itemDetails, cart, setCart });
+  };
+};
+
+/**
+ * Add To Cart And Set Cart Context
+ * @param {Object} Object
+ */
+const addtoCartAndSetCartContext = ({ itemDetails, cart, setCart }) => {
+  setCart((cart) => [...cart, { ...itemDetails }]);
+
   let config = {
     headers: {
       Accept: "*/*",
@@ -11,15 +91,22 @@ const addtoCartAndSetCartContext = (itemDetails, setCart) => {
   (async () => {
     try {
       let res = await axios.post("/api/user/cart", payload, config);
-      setCart(res.data.cart);
+      setCart((cart) => res.data.cart);
     } catch (err) {
       console.log(err);
     }
   })();
 };
-const addtoCart = (setCart) => {
+
+/**
+ * Add To Cart
+ * @param {Object} Object
+ * @return {addtoCartAndSetCartContext} addtoCartAndSetCartContext
+ */
+const addtoCart = ({ cart, setCart }) => {
+  console.log(cart);
   return (itemDetails) => {
-    addtoCartAndSetCartContext(itemDetails, setCart);
+    addtoCartAndSetCartContext({ itemDetails, cart, setCart });
   };
 };
 
@@ -42,7 +129,7 @@ const removeFromWishlistAndSetWishlist = ({
         "/api/user/wishlist/" + itemDetails._id,
         config
       );
-      setWishlist(res.data.wishlist);
+      setWishlist((wishlist) => res.data.wishlist);
     } catch (err) {
       console.log(err);
     }
@@ -66,10 +153,17 @@ const getItemCardData = ({ product, cart, setCart, wishlist, setWishlist }) => {
   res.itemDetails = { ...product };
 
   res.priAction = isProductInCart
-    ? { name: "", action: () => {} }
+    ? {
+        name: "Increment Decrement",
+        action: () => {},
+        cartActions: {
+          increment: incrementItemInCart({ cart, setCart }),
+          decrement: decrementItemInCart({ cart, setCart }),
+        },
+      }
     : {
         name: "Add To Cart",
-        action: () => {},
+        action: addtoCart({ cart, setCart }),
       };
   res.secAction = { name: "Buy Now", action: () => {} };
   res.wishlistAction = {

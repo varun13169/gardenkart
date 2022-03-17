@@ -25,7 +25,6 @@ export default function WishlistPage() {
               return (
                 <Card
                   key={product._id}
-                  ii={console.log(product)}
                   itemCardData={getItemCardData({
                     product,
                     cart,

@@ -1,7 +1,7 @@
 import axios from "axios";
 import imgg from "./dummy-pot-plant.png";
 import "./card.css";
-import { WishlistHeartSVG } from "../../assets/svgReactComponents";
+import { BinSVG, WishlistHeartSVG } from "../../assets/svgReactComponents";
 import { Link, useLocation } from "react-router-dom";
 import { useCart, useWishlist } from "../../contexts";
 
@@ -97,6 +97,10 @@ export default function Card({ itemCardData }) {
               <button
                 className="product-card-btn dui-btn dui-btn--primary dui-util-txt-md dui-util-spc-pad reset-button-inherit-parent"
                 style={{ flexGrow: "1" }}
+                onClick={() => priAction.cartActions.decrement(itemDetails)}
+                disabled={
+                  (qty ?? cart.filter((cp) => cp._id === _id)[0].qty) === 1
+                }
               >
                 -
               </button>
@@ -106,6 +110,7 @@ export default function Card({ itemCardData }) {
               <button
                 className="product-card-btn dui-btn dui-btn--primary dui-util-txt-md dui-util-spc-pad-0_8re-xs reset-button-inherit-parent"
                 style={{ flexGrow: "1" }}
+                onClick={() => priAction.cartActions.increment(itemDetails)}
               >
                 +
               </button>
