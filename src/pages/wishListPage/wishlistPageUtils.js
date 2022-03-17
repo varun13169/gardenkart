@@ -23,7 +23,13 @@ const addtoCart = (setCart) => {
   };
 };
 
-const removeFromWishlistAndSetWishlist = (itemDetails, setWishlist) => {
+const removeFromWishlistAndSetWishlist = ({
+  itemDetails,
+  wishlist,
+  setWishlist,
+}) => {
+  setWishlist((wishlist) => wishlist.filter((e) => e._id !== itemDetails._id));
+
   let config = {
     headers: {
       Accept: "*/*",
@@ -42,9 +48,9 @@ const removeFromWishlistAndSetWishlist = (itemDetails, setWishlist) => {
     }
   })();
 };
-const removeFromWishlist = (setWishlist) => {
+const removeFromWishlist = ({ wishlist, setWishlist }) => {
   return (itemDetails) => {
-    removeFromWishlistAndSetWishlist(itemDetails, setWishlist);
+    removeFromWishlistAndSetWishlist({ itemDetails, wishlist, setWishlist });
   };
 };
 
@@ -60,7 +66,7 @@ const getItemCardData = ({ product, cart, setCart, wishlist, setWishlist }) => {
   res.itemDetails = { ...product };
 
   res.priAction = isProductInCart
-    ? { name: "Go To Cart", action: () => {} }
+    ? { name: "", action: () => {} }
     : {
         name: "Add To Cart",
         action: () => {},
@@ -68,7 +74,7 @@ const getItemCardData = ({ product, cart, setCart, wishlist, setWishlist }) => {
   res.secAction = { name: "Buy Now", action: () => {} };
   res.wishlistAction = {
     isProductInWishlist: true,
-    action: removeFromWishlist(setWishlist),
+    action: removeFromWishlist({ wishlist, setWishlist }),
   };
 
   return res;

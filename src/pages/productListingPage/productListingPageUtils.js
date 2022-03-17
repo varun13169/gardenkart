@@ -81,6 +81,7 @@ const removeFromWishlistAndSetWishlist = ({
   setWishlist,
 }) => {
   setWishlist((wishlist) => wishlist.filter((e) => e._id !== itemDetails._id));
+
   let config = {
     headers: {
       Accept: "*/*",

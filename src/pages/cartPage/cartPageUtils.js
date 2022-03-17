@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const removeFromCartAndSetCart = (itemDetails, setCart) => {
+const removeFromCartAndSetCart = ({ itemDetails, cart, setCart }) => {
+  setCart((cart) => cart.filter((e) => e._id !== itemDetails._id));
+
   let config = {
     headers: {
       Accept: "*/*",
@@ -16,9 +18,9 @@ const removeFromCartAndSetCart = (itemDetails, setCart) => {
     }
   })();
 };
-const removeFromCart = (setCart) => {
+const removeFromCart = ({ cart, setCart }) => {
   return (itemDetails) => {
-    removeFromCartAndSetCart(itemDetails, setCart);
+    removeFromCartAndSetCart({ itemDetails, cart, setCart });
   };
 };
 
@@ -45,7 +47,13 @@ const addtoCart = (setCart) => {
   };
 };
 
-const addToWishlistAndSetWishlist = (itemDetails, setWishlist) => {
+const addToWishlistAndSetWishlist = ({
+  itemDetails,
+  wishlist,
+  setWishlist,
+}) => {
+  setWishlist((wishlist) => [...wishlist, { ...itemDetails }]);
+
   let config = {
     headers: {
       Accept: "*/*",
@@ -58,13 +66,19 @@ const addToWishlistAndSetWishlist = (itemDetails, setWishlist) => {
     setWishlist(res.data.wishlist);
   })();
 };
-const addToWishlist = (setWishlist) => {
+const addToWishlist = ({ wishlist, setWishlist }) => {
   return (itemDetails) => {
-    addToWishlistAndSetWishlist(itemDetails, setWishlist);
+    addToWishlistAndSetWishlist({ itemDetails, wishlist, setWishlist });
   };
 };
 
-const removeFromWishlistAndSetWishlist = (itemDetails, setWishlist) => {
+const removeFromWishlistAndSetWishlist = ({
+  itemDetails,
+  wishlist,
+  setWishlist,
+}) => {
+  setWishlist((wishlist) => wishlist.filter((e) => e._id !== itemDetails._id));
+
   let config = {
     headers: {
       Accept: "*/*",
@@ -83,9 +97,9 @@ const removeFromWishlistAndSetWishlist = (itemDetails, setWishlist) => {
     }
   })();
 };
-const removeFromWishlist = (setWishlist) => {
+const removeFromWishlist = ({ wishlist, setWishlist }) => {
   return (itemDetails) => {
-    removeFromWishlistAndSetWishlist(itemDetails, setWishlist);
+    removeFromWishlistAndSetWishlist({ itemDetails, wishlist, setWishlist });
   };
 };
 
@@ -105,17 +119,17 @@ const getItemCardData = ({ product, cart, setCart, wishlist, setWishlist }) => {
 
   res.secAction = {
     name: "Remove",
-    action: removeFromCart(setCart),
+    action: removeFromCart({ cart, setCart }),
   };
 
   res.wishlistAction = isProductInWishlist
     ? {
         isProductInWishlist: isProductInWishlist,
-        action: removeFromWishlist(setWishlist),
+        action: removeFromWishlist({ wishlist, setWishlist }),
       }
     : {
         isProductInWishlist: isProductInWishlist,
-        action: addToWishlist(setWishlist),
+        action: addToWishlist({ wishlist, setWishlist }),
       };
 
   return res;

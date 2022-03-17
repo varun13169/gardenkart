@@ -101,7 +101,7 @@ export default function Card({ itemCardData }) {
                 -
               </button>
               <p className="dui-util-txt-align-cent" style={{ flexGrow: "1" }}>
-                {qty}
+                {qty ?? cart.filter((cp) => cp._id === _id)[0].qty}
               </p>
               <button
                 className="product-card-btn dui-btn dui-btn--primary dui-util-txt-md dui-util-spc-pad-0_8re-xs reset-button-inherit-parent"
