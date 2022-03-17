@@ -22,7 +22,6 @@
 }
 
 .auth-page-namespace.page-footer {
-  grid-area: p_footer;
   display: none;
 }
 

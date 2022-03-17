@@ -100,13 +100,11 @@ const getItemCardData = ({ product, cart, setCart, wishlist, setWishlist }) => {
 
   res.priAction = {
     name: "Increment Decrement",
-    isLink: true,
     action: () => {},
   };
 
   res.secAction = {
     name: "Remove",
-    isLink: false,
     action: removeFromCart(setCart),
   };
 

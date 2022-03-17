@@ -131,13 +131,12 @@ const getItemCardData = ({ product, cart, setCart, wishlist, setWishlist }) => {
   res.itemDetails = { ...product };
 
   res.priAction = isProductInCart
-    ? { name: "Go To Cart", isLink: true, toPath: "/cart" }
+    ? { name: "Go To Cart", toPath: "/cart" }
     : {
         name: "Add To Cart",
-        isLink: false,
         action: addtoCart({ cart, setCart }),
       };
-  res.secAction = { name: "Buy Now", isLink: false, action: () => {} };
+  res.secAction = { name: "Buy Now", action: () => {} };
   res.wishlistAction = isProductInWishlist
     ? {
         isProductInWishlist: isProductInWishlist,

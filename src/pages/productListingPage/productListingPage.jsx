@@ -55,7 +55,7 @@ export default function ProductListingPage() {
           {productAndFilterState.productsToShow.map((product) => {
             return (
               <Card
-                key={product.id}
+                key={product._id}
                 itemCardData={getItemCardData({
                   product,
                   cart,

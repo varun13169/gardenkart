@@ -2,13 +2,17 @@ import axios from "axios";
 import imgg from "./dummy-pot-plant.png";
 import "./card.css";
 import { WishlistHeartSVG } from "../../assets/svgReactComponents";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useCart, useWishlist } from "../../contexts";
 
 export default function Card({ itemCardData }) {
   const { itemDetails, priAction, secAction, wishlistAction } = itemCardData;
 
+  const { cart, setCart } = useCart();
+  const { wishlist, setWishlist } = useWishlist();
+
   const {
-    id,
+    _id,
     productName,
     productImg,
     isOutOfStock,
@@ -16,8 +20,21 @@ export default function Card({ itemCardData }) {
     originalPrice,
     salePrice,
     discountedPctage,
+    qty,
   } = itemDetails;
-  console.log(priAction.toPath);
+
+  const isProductInCart =
+    cart.filter((cartProduct) => {
+      return itemDetails._id === cartProduct._id;
+    }).length !== 0;
+
+  const isProductInWishlist =
+    wishlist.filter((wishlistProduct) => {
+      return itemDetails._id === wishlistProduct._id;
+    }).length !== 0;
+
+  const { pathname } = useLocation();
+
   return (
     <div className="dui-card-prod-hzntl dui-util-bdr-radi-5px-s dui-util-gry-shdw dui-util-pos-rel">
       {/* <!-- Badge Component Starts -- with Text --> */}
@@ -52,7 +69,8 @@ export default function Card({ itemCardData }) {
 
       <div className="dui-card-prod-hzntl__actions dui-util-spc-pad-1_6rem-s">
         <div className="dui-card-prod-hzntl__buttons">
-          {!priAction.isLink && (
+          {((pathname === "/products" && !isProductInCart) ||
+            (pathname === "/wishlist" && !isProductInCart)) && (
             <button
               className="product-card-btn dui-btn dui-btn--primary dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent"
               onClick={() => priAction.action(itemDetails)}
@@ -60,13 +78,38 @@ export default function Card({ itemCardData }) {
               {priAction.name}
             </button>
           )}
-          {priAction.isLink && (
+          {pathname === "/products" && isProductInCart && (
             <Link
               to={priAction.toPath}
               className="product-card-link dui-link dui-link--primary dui-util-txt-sm dui-util-spc-pad-xs dui-util-txt-align-cent"
             >
               {priAction.name}
             </Link>
+          )}
+          {(pathname === "/cart" ||
+            (pathname === "/wishlist" && isProductInCart)) && (
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <button
+                className="product-card-btn dui-btn dui-btn--primary dui-util-txt-md dui-util-spc-pad reset-button-inherit-parent"
+                style={{ flexGrow: "1" }}
+              >
+                -
+              </button>
+              <p className="dui-util-txt-align-cent" style={{ flexGrow: "1" }}>
+                {qty}
+              </p>
+              <button
+                className="product-card-btn dui-btn dui-btn--primary dui-util-txt-md dui-util-spc-pad-0_8re-xs reset-button-inherit-parent"
+                style={{ flexGrow: "1" }}
+              >
+                +
+              </button>
+            </div>
           )}
           <button
             className="product-card-btn dui-btn dui-btn--secondary dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-button-inherit-parent"
