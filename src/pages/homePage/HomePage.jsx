@@ -46,17 +46,16 @@ function HomePage() {
           <div className="promo-catagory-holder">
             {categoryArr.map((category) => {
               return (
-                <div className="promo-catagory dui-primary-p2-bdr-s dui-util-gry-shdw dui-util-bdr-radi-m">
-                  <Link
-                    to={`/products?${category._id}`}
-                    className="dui-link dui-util-disp-inline-block"
-                  >
-                    <img src={imgg} />
-                  </Link>
-                  <p className="promo-catagory__title">
+                <Link
+                  key={category._id}
+                  className="promo-catagory dui-primary-p2-bdr-s dui-util-gry-shdw dui-util-bdr-radi-m dui-link dui-util-disp-inline-block"
+                  to={`/products?${category._id}`}
+                >
+                  <img src={imgg} />
+                  <p className="promo-catagory__title dui-primary-bg-color-opc-75pct">
                     {category.categoryName}
                   </p>
-                </div>
+                </Link>
               );
             })}
           </div>
