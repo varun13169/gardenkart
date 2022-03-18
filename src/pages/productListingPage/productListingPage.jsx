@@ -46,17 +46,17 @@ export default function ProductListingPage() {
     })();
   }, []);
   return (
-    <div className="page-wrap">
-      <section className="page-nav">
+    <div className="product-page-namespace page-wrap">
+      <section className="product-page-namespace page-nav">
         <Navbar></Navbar>
       </section>
 
-      <section className="page-sidebar">
+      <section className="product-page-namespace page-sidebar">
         <Sidebar></Sidebar>
       </section>
 
-      <section className="page-main">
-        <main className="main-content dui-util-spc-pad-2_4rem-m">
+      <section className="product-page-namespace page-main">
+        <main className="product-page-namespace main-content dui-util-spc-pad-2_4rem-m">
           {productAndFilterState.productsToShow.map((product) => {
             return (
               <Card
@@ -84,7 +84,7 @@ export default function ProductListingPage() {
         </main>
       </section>
 
-      <section className="page-footer"></section>
+      <section className="product-page-namespace page-footer"></section>
     </div>
   );
 }
