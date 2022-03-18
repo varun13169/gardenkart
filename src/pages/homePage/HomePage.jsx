@@ -5,18 +5,30 @@ import { Navbar } from "../../components";
 import axios from "axios";
 import imgg from "./dummy-pot-plant.png";
 import { Link } from "react-router-dom";
+import { useProductFilter } from "../../contexts";
 
 function HomePage() {
   const [categoryArr, setCategoryArr] = useState([]);
 
+  const { productAndFilterState, setProductAndFilterState } =
+    useProductFilter();
+
   useEffect(() => {
+    // Fetch Categories
     (async function () {
       const { data } = await axios.get("/api/categories");
       setCategoryArr((categoryArr) => data.categories);
     })();
-  }, []);
 
-  console.log(categoryArr);
+    // Fetch Products
+    (async function () {
+      const { data } = await axios.get("/api/products");
+      setProductAndFilterState({
+        type: "SET_FRESH_DATA",
+        data: { orgProducts: data.products },
+      });
+    })();
+  }, []);
 
   return (
     <div className="home-page-namespace page-wrap">

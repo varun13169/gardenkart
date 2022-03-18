@@ -44,17 +44,28 @@ export default function SideBar() {
 
         <div>
           {/* <!-- Checkbox Component Starts --> */}
-          <label className="dui-inp-chkbox dui-util-txt-sm">
-            Indoor
-            <input type="checkbox" defaultChecked />
-            <span className="dui-inp-chkbox__checkmark"></span>
-          </label>
-
-          <label className="dui-inp-chkbox dui-util-txt-sm">
-            Outdoor
-            <input type="checkbox" defaultChecked />
-            <span className="dui-inp-chkbox__checkmark"></span>
-          </label>
+          {Object.keys(productAndFilterState.filters.productCategories).map(
+            (e) => {
+              const productCategory =
+                productAndFilterState.filters.productCategories[e];
+              return (
+                <label className="dui-inp-chkbox dui-util-txt-sm">
+                  {productCategory.categoryName}
+                  <input
+                    type="checkbox"
+                    checked={productCategory.filterVal}
+                    onClick={() =>
+                      setProductAndFilterState({
+                        type: "FILTER_PRODUCTS_BY_CATEGORY",
+                        data: { categoryId: productCategory._id },
+                      })
+                    }
+                  />
+                  <span className="dui-inp-chkbox__checkmark"></span>
+                </label>
+              );
+            }
+          )}
           {/* <!-- Checkbox Component Ends --> */}
         </div>
       </div>
