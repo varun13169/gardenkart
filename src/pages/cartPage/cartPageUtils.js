@@ -97,29 +97,6 @@ const removeFromCart = ({ cart, setCart }) => {
   };
 };
 
-// const addtoCartAndSetCartContext = (itemDetails, setCart) => {
-//   let config = {
-//     headers: {
-//       Accept: "*/*",
-//       authorization: localStorage.getItem("token"),
-//     },
-//   };
-//   let payload = { product: itemDetails };
-//   (async () => {
-//     try {
-//       let res = await axios.post("/api/user/cart", payload, config);
-//       setCart((cart) => res.data.cart);
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   })();
-// };
-// const addtoCart = (setCart) => {
-//   return (itemDetails) => {
-//     addtoCartAndSetCartContext(itemDetails, setCart);
-//   };
-// };
-
 const addToWishlistAndSetWishlist = ({
   itemDetails,
   wishlist,
