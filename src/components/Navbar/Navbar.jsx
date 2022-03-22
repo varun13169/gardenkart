@@ -1,12 +1,14 @@
+import { Link } from "react-router-dom";
+
 export default function Navbar() {
   return (
     <nav className="dui-nav-sch-act">
-      <a
+      <Link
         className="dui-nav-sch-act__logo dui-util-txt-decoration-none"
-        href="/pages/homePage/homePage.html"
+        to="/"
       >
         <h3 className="dui-util-fw-bld dui-primary-color">Garden Kart</h3>
-      </a>
+      </Link>
 
       {/* <!-- Search --> */}
       <div className="dui-nav-sch-act__search dui-inp-txt dui-inp-txt--search">
@@ -41,27 +43,27 @@ export default function Navbar() {
         <li>
           <div className="dui-nav-sch-act__auth-actions">
             {/* <!-- SignUp Button --> */}
-            <a
+            <Link
               className="dui-nav-sch-act__signup-btn dui-link dui-link--primary dui-util-txt-sm dui-util-spc-pad-0_8rem-xs dui-util-fw-bld"
-              href="/pages/authpage/signup.html"
+              to="/sign-up"
             >
               Sign Up
-            </a>
+            </Link>
 
             {/* <!-- Login Button --> */}
-            <a
+            <Link
               className="dui-nav-sch-act__login-btn dui-link dui-link--primary dui-util-txt-sm dui-util-spc-pad-0_8rem-xs dui-util-fw-bld"
-              href="/pages/authpage/login.html"
+              to="/sign-in"
             >
               Login
-            </a>
+            </Link>
           </div>
         </li>
 
         <li>
-          <a
+          <Link
             className="dui-nav-sch-act__wish-lst-btn dui-util-disp-inline-block"
-            href="/pages/wishlistPage/wishlistPage.html"
+            to="/wishlist"
           >
             <div className="dui-badge dui-badge--round-ele-0_5-top-0_5-right">
               <div>0</div>
@@ -82,14 +84,11 @@ export default function Navbar() {
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
             </svg>
-          </a>
+          </Link>
         </li>
 
         <li>
-          <a
-            className="dui-nav-sch-act__cart_lst-btn dui-link"
-            href="/pages/cartPage/cartPage.html"
-          >
+          <Link className="dui-nav-sch-act__cart_lst-btn dui-link" to="/cart">
             <div className="dui-util-clr-prim-p2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -111,7 +110,7 @@ export default function Navbar() {
               </svg>
               <p className="dui-util-fw-bld dui-primary-color-p2">Cart</p>
             </div>
-          </a>
+          </Link>
         </li>
 
         <li>

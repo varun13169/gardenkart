@@ -1,10 +1,10 @@
 import axios from "axios";
 const incrementItemInCartAndSetCart = ({ itemDetails, cart, setCart }) => {
-  // setCart((cart) =>
-  //   cart.map((e) => {
-  //     e["id"] === itemDetails["id"] ? { ...e, qty: e.qty + 1 } : e;
-  //   })
-  // );
+  setCart((cart) =>
+    cart.map((e) =>
+      e["_id"] === itemDetails["_id"] ? { ...e, qty: e.qty + 1 } : e
+    )
+  );
 
   let config = {
     headers: {
