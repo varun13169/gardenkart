@@ -4,6 +4,7 @@ import {
   HomePage,
   ProductListingPage,
   SiginInPage,
+  SignOutPage,
   SiginUpPage,
   WishlistPage,
 } from "./pages";
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/products" element={<ProductListingPage />} />
         <Route path="/sign-in" element={<SiginInPage />} />
         <Route path="/sign-up" element={<SiginUpPage />} />
+        <Route path="/sign-out" element={<SignOutPage />} />
         <Route path="/wishlist" element={<WishlistPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/mock-api" element={<MockAPI />} />

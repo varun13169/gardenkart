@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { useAuth } from "../../contexts";
 
 export default function Navbar() {
-  const { auth, constcheckValidTokenAndSetAuth } = useAuth();
+  const { auth, checkValidTokenAndSetAuth } = useAuth();
   const { isSignnedIn, token } = auth;
+  const navigate = useNavigate();
 
   return (
     <nav className="dui-nav-sch-act">
@@ -49,12 +51,16 @@ export default function Navbar() {
             {isSignnedIn && (
               <>
                 {/* <!-- SignOut Button --> */}
-                <Link
-                  className="dui-nav-sch-act__signup-btn dui-link dui-link--primary dui-util-txt-sm dui-util-spc-pad-0_8rem-xs dui-util-fw-bld"
-                  to="/sign-up"
+                <button
+                  className="dui-nav-sch-act__signup-btn dui-link dui-link--primary dui-util-txt-sm dui-util-spc-pad-0_8rem-xs dui-util-fw-bld reset-input-inherit-parent"
+                  onClick={() => {
+                    localStorage.removeItem("token");
+                    checkValidTokenAndSetAuth();
+                    navigate("/sign-out");
+                  }}
                 >
                   Sign Out
-                </Link>
+                </button>
               </>
             )}
             {!isSignnedIn && (

@@ -14,7 +14,11 @@ const AuthContextProvider = ({ children }) => {
         token: localStorageToken,
       }));
     } else {
-      setAuth((auth) => ({ ...auth, token: localStorageToken }));
+      setAuth((auth) => ({
+        ...auth,
+        isSignnedIn: false,
+        token: localStorageToken,
+      }));
     }
   };
 
