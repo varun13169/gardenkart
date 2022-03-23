@@ -3,12 +3,16 @@ import "./auth-page.css";
 import { useReducer } from "react";
 import { signinHandler, signinReducer } from "./authUtils";
 import { Navbar } from "../../components";
+import { useAuth } from "../../contexts";
+import { useNavigate } from "react-router";
 
 export default function SiginInPage() {
   const [loginState, loginActionDispatch] = useReducer(signinReducer, {
     email: "",
     password: "",
   });
+  const { auth, checkValidTokenAndSetAuth } = useAuth();
+  const navigate = useNavigate();
 
   return (
     <section className="auth-page-namespace page-wrap">
@@ -23,9 +27,18 @@ export default function SiginInPage() {
           <form
             className="dui-auth-card dui-util-bdr-radi-10px-m dui-util-gry-shdw"
             onSubmit={(e) => {
-              e.preventDefault();
-              signinHandler(loginState);
-              loginActionDispatch({ type: "RESET_LOGIN_FORM" });
+              (async () => {
+                e.preventDefault();
+                try {
+                  await signinHandler(loginState);
+                  checkValidTokenAndSetAuth();
+                  navigate("/");
+                  loginActionDispatch({ type: "RESET_LOGIN_FORM" });
+                } catch (err) {
+                  console.log(err);
+                  throw err;
+                }
+              })();
             }}
           >
             <h2 className="dui-auth-card__title dui-util-fw-bld">Login</h2>

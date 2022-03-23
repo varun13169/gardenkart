@@ -7,6 +7,7 @@ import {
   WishlistContextProvider,
 } from "./wishlistContext/wishlistContext";
 import { useCart, CartContextProvider } from "./cartContext/cartContext";
+import { useAuth, AuthContextProvider } from "./authContext/authContext";
 
 export {
   ProductFilterContextProvider,
@@ -15,4 +16,6 @@ export {
   useWishlist,
   CartContextProvider,
   useCart,
+  AuthContextProvider,
+  useAuth,
 };

@@ -5,7 +5,7 @@ import { Navbar } from "../../components";
 import axios from "axios";
 import imgg from "./dummy-pot-plant.png";
 import { Link } from "react-router-dom";
-import { useProductFilter } from "../../contexts";
+import { useAuth, useProductFilter } from "../../contexts";
 
 function HomePage() {
   const [categoryArr, setCategoryArr] = useState([]);
@@ -13,7 +13,11 @@ function HomePage() {
   const { productAndFilterState, setProductAndFilterState } =
     useProductFilter();
 
+  const { auth, checkValidTokenAndSetAuth } = useAuth();
+
   useEffect(() => {
+    checkValidTokenAndSetAuth();
+
     // Fetch Categories
     (async function () {
       const { data } = await axios.get("/api/categories");

@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+import { useAuth } from "../../contexts";
 
 export default function Navbar() {
+  const { auth, constcheckValidTokenAndSetAuth } = useAuth();
+  const { isSignnedIn, token } = auth;
+
   return (
     <nav className="dui-nav-sch-act">
       <Link
@@ -42,21 +46,36 @@ export default function Navbar() {
       <ul className="dui-nav-sch-act__actions dui-ul">
         <li>
           <div className="dui-nav-sch-act__auth-actions">
-            {/* <!-- SignUp Button --> */}
-            <Link
-              className="dui-nav-sch-act__signup-btn dui-link dui-link--primary dui-util-txt-sm dui-util-spc-pad-0_8rem-xs dui-util-fw-bld"
-              to="/sign-up"
-            >
-              Sign Up
-            </Link>
+            {isSignnedIn && (
+              <>
+                {/* <!-- SignOut Button --> */}
+                <Link
+                  className="dui-nav-sch-act__signup-btn dui-link dui-link--primary dui-util-txt-sm dui-util-spc-pad-0_8rem-xs dui-util-fw-bld"
+                  to="/sign-up"
+                >
+                  Sign Out
+                </Link>
+              </>
+            )}
+            {!isSignnedIn && (
+              <>
+                {/* <!-- SignUp Button --> */}
+                <Link
+                  className="dui-nav-sch-act__signup-btn dui-link dui-link--primary dui-util-txt-sm dui-util-spc-pad-0_8rem-xs dui-util-fw-bld"
+                  to="/sign-up"
+                >
+                  Sign Up
+                </Link>
 
-            {/* <!-- Login Button --> */}
-            <Link
-              className="dui-nav-sch-act__login-btn dui-link dui-link--primary dui-util-txt-sm dui-util-spc-pad-0_8rem-xs dui-util-fw-bld"
-              to="/sign-in"
-            >
-              Login
-            </Link>
+                {/* <!-- Login Button --> */}
+                <Link
+                  className="dui-nav-sch-act__login-btn dui-link dui-link--primary dui-util-txt-sm dui-util-spc-pad-0_8rem-xs dui-util-fw-bld"
+                  to="/sign-in"
+                >
+                  Login
+                </Link>
+              </>
+            )}
           </div>
         </li>
 

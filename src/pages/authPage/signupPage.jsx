@@ -11,7 +11,10 @@ export default function SiginUpPage() {
     password: "",
     confirmPassword: "",
   });
-  console.log(signupState);
+
+  const { auth, checkValidTokenAndSetAuth } = useAuth();
+  const navigate = useNavigate();
+
   return (
     <section className="auth-page-namespace page-wrap">
       <section className="auth-page-namespace page-nav">
@@ -25,9 +28,18 @@ export default function SiginUpPage() {
           <form
             className="dui-auth-card dui-util-bdr-radi-10px-m dui-util-gry-shdw"
             onSubmit={(e) => {
-              e.preventDefault();
-              signupHandler(signupState);
-              signupActionDispatch({ type: "RESET_SIGNUP_FORM" });
+              (async () => {
+                try {
+                  e.preventDefault();
+                  await signupHandler(signupState);
+                  checkValidTokenAndSetAuth();
+                  navigate("/");
+                  signupActionDispatch({ type: "RESET_SIGNUP_FORM" });
+                } catch (err) {
+                  console.log(err);
+                  throw err;
+                }
+              })();
             }}
           >
             <h2 className="dui-auth-card__title dui-util-fw-bld">Signup</h2>

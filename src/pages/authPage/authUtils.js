@@ -44,10 +44,12 @@ const signinHandler = async (loginDetails) => {
   try {
     const response = await axios.post(`/api/auth/login`, loginDetails);
     // saving the encodedToken in the localStorage
+    console.log("Inside try");
     console.log(response.data.encodedToken);
     localStorage.setItem("token", response.data.encodedToken);
-  } catch (error) {
-    console.log(error);
+  } catch (err) {
+    console.log(err);
+    throw err;
   }
 };
 
