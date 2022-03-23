@@ -1,6 +1,12 @@
 import axios from "axios";
 
-const addtoCartAndSetCartContext = (itemDetails, setCart) => {
+/**
+ * Add To Cart And Set Cart Context
+ * @param {Object} Object
+ */
+const addtoCartAndSetCartContext = ({ itemDetails, cart, setCart }) => {
+  setCart((cart) => [...cart, { ...itemDetails }]);
+
   let config = {
     headers: {
       Accept: "*/*",
@@ -11,19 +17,36 @@ const addtoCartAndSetCartContext = (itemDetails, setCart) => {
   (async () => {
     try {
       let res = await axios.post("/api/user/cart", payload, config);
-      setCart(res.data.cart);
+      setCart((cart) => res.data.cart);
     } catch (err) {
       console.log(err);
     }
   })();
 };
-const addtoCart = (setCart) => {
+
+/**
+ * Add To Cart
+ * @param {Object} Object
+ * @return {addtoCartAndSetCartContext} addtoCartAndSetCartContext
+ */
+const addtoCart = ({ cart, setCart }) => {
+  console.log(cart);
   return (itemDetails) => {
-    addtoCartAndSetCartContext(itemDetails, setCart);
+    addtoCartAndSetCartContext({ itemDetails, cart, setCart });
   };
 };
 
-const addToWishlistAndSetWishlist = (itemDetails, setWishlist) => {
+/**
+ * Add To Wishlist And Set Wishlist
+ * @param {Object} Object
+ */
+const addToWishlistAndSetWishlist = ({
+  itemDetails,
+  wishlist,
+  setWishlist,
+}) => {
+  setWishlist((wishlist) => [...wishlist, { ...itemDetails }]);
+
   let config = {
     headers: {
       Accept: "*/*",
@@ -33,16 +56,32 @@ const addToWishlistAndSetWishlist = (itemDetails, setWishlist) => {
   let payload = { product: itemDetails };
   (async () => {
     let res = await axios.post("/api/user/wishlist", payload, config);
-    setWishlist(res.data.wishlist);
+    setWishlist((wishlist) => res.data.wishlist);
   })();
 };
-const addToWishlist = (setWishlist) => {
+
+/**
+ * Add To Wishlist
+ * @param {Object} Object
+ * @return {addToWishlistAndSetWishlist} addToWishlistAndSetWishlist
+ */
+const addToWishlist = ({ wishlist, setWishlist }) => {
   return (itemDetails) => {
-    addToWishlistAndSetWishlist(itemDetails, setWishlist);
+    addToWishlistAndSetWishlist({ itemDetails, wishlist, setWishlist });
   };
 };
 
-const removeFromWishlistAndSetWishlist = (itemDetails, setWishlist) => {
+/**
+ * Remove From Wishlist And Set Wishlist
+ * @param {Object} Object
+ */
+const removeFromWishlistAndSetWishlist = ({
+  itemDetails,
+  wishlist,
+  setWishlist,
+}) => {
+  setWishlist((wishlist) => wishlist.filter((e) => e._id !== itemDetails._id));
+
   let config = {
     headers: {
       Accept: "*/*",
@@ -55,18 +94,29 @@ const removeFromWishlistAndSetWishlist = (itemDetails, setWishlist) => {
         "/api/user/wishlist/" + itemDetails._id,
         config
       );
-      setWishlist(res.data.wishlist);
+      setWishlist((wishlist) => res.data.wishlist);
     } catch (err) {
       console.log(err);
     }
   })();
 };
-const removeFromWishlist = (setWishlist) => {
+
+/**
+ * Remove From Wishlist
+ * @param {Object} Object
+ * @return {removeFromWishlistAndSetWishlist} removeFromWishlistAndSetWishlist
+ */
+const removeFromWishlist = ({ wishlist, setWishlist }) => {
   return (itemDetails) => {
-    removeFromWishlistAndSetWishlist(itemDetails, setWishlist);
+    removeFromWishlistAndSetWishlist({ itemDetails, wishlist, setWishlist });
   };
 };
 
+/**
+ * Get Item Card Data
+ * @param {Object} Object
+ * @return {res} res
+ */
 const getItemCardData = ({ product, cart, setCart, wishlist, setWishlist }) => {
   const isProductInCart =
     cart.filter((cartProduct) => {
@@ -82,23 +132,22 @@ const getItemCardData = ({ product, cart, setCart, wishlist, setWishlist }) => {
   res.itemDetails = { ...product };
 
   res.priAction = isProductInCart
-    ? { name: "Go To Cart", isLink: true, action: () => {} }
+    ? { name: "Go To Cart", toPath: "/cart" }
     : {
         name: "Add To Cart",
-        isLink: false,
-        action: addtoCart(setCart),
+        action: addtoCart({ cart, setCart }),
       };
-  res.secAction = { name: "Buy Now", isLink: true, action: () => {} };
+  res.secAction = { name: "Buy Now", action: () => {} };
   res.wishlistAction = isProductInWishlist
     ? {
         isProductInWishlist: isProductInWishlist,
-        action: removeFromWishlist(setWishlist),
+        action: removeFromWishlist({ wishlist, setWishlist }),
       }
     : {
         isProductInWishlist: isProductInWishlist,
-        action: addToWishlist(setWishlist),
+        action: addToWishlist({ wishlist, setWishlist }),
       };
   return res;
 };
 
-export { addtoCart, addToWishlist, getItemCardData };
+export { getItemCardData };
