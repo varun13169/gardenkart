@@ -1,7 +1,9 @@
 import "./auth-page.css";
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 import { signupHandler, signupReducer } from "./authUtils";
 import { Navbar } from "../../components";
+import { useAuth } from "../../contexts";
+import { useNavigate } from "react-router";
 
 export default function SiginUpPage() {
   const [signupState, signupActionDispatch] = useReducer(signupReducer, {
@@ -10,6 +12,10 @@ export default function SiginUpPage() {
     email: "",
     password: "",
     confirmPassword: "",
+  });
+  const [apiResponse, setApiResponse] = useState({
+    err: null,
+    res: null,
   });
 
   const { auth, checkValidTokenAndSetAuth } = useAuth();
@@ -31,23 +37,33 @@ export default function SiginUpPage() {
               (async () => {
                 try {
                   e.preventDefault();
-                  await signupHandler(signupState);
+                  const res = await signupHandler(signupState);
                   checkValidTokenAndSetAuth();
-                  navigate("/");
                   signupActionDispatch({ type: "RESET_SIGNUP_FORM" });
+                  setApiResponse((apiResponse) => ({
+                    ...apiResponse,
+                    res: res,
+                    err: null,
+                  }));
+                  navigate("/");
                 } catch (err) {
                   console.log(err);
+                  setApiResponse((apiResponse) => ({
+                    ...apiResponse,
+                    err: err,
+                    res: null,
+                  }));
                   throw err;
                 }
               })();
             }}
           >
-            <h2 className="dui-auth-card__title dui-util-fw-bld">Signup</h2>
+            <h2 className="dui-auth-card__title dui-util-fw-bld">Sign Up</h2>
 
             {/* <!-- Input Component Starts --> */}
             <div className="dui-inp-txt">
               <label
-                for="first-name"
+                htmlFor="first-name"
                 className="dui-util-txt-sm dui-util-fw-sbld"
               >
                 First Name
@@ -74,7 +90,7 @@ export default function SiginUpPage() {
             {/* <!-- Input Component Starts --> */}
             <div className="dui-inp-txt">
               <label
-                for="last-name"
+                htmlFor="last-name"
                 className="dui-util-txt-sm dui-util-fw-sbld"
               >
                 Last Name
@@ -101,7 +117,7 @@ export default function SiginUpPage() {
             {/* <!-- Input Component Starts --> */}
             <div className="dui-inp-txt">
               <label
-                for="email-id"
+                htmlFor="email-id"
                 className="dui-util-txt-sm dui-util-fw-sbld"
               >
                 Email Address
@@ -128,8 +144,10 @@ export default function SiginUpPage() {
             {/* <!-- Input Component Starts --> */}
             <div className="dui-inp-txt">
               <label
-                for="password"
-                className="dui-util-txt-sm dui-util-fw-sbld"
+                htmlFor="password"
+                className={`dui-util-txt-sm dui-util-fw-sbld ${
+                  apiResponse.err && "dui-inp-txt__input--error"
+                }`}
               >
                 Password
                 <input
@@ -155,8 +173,10 @@ export default function SiginUpPage() {
             {/* <!-- Input Component Starts --> */}
             <div className="dui-inp-txt">
               <label
-                for="confirm-password"
-                className="dui-util-txt-sm dui-util-fw-sbld"
+                htmlFor="confirm-password"
+                className={`dui-util-txt-sm dui-util-fw-sbld ${
+                  apiResponse.err && "dui-inp-txt__input--error"
+                }`}
               >
                 Confirm Password
                 <input
@@ -184,7 +204,7 @@ export default function SiginUpPage() {
                 {/* <!-- Checkbox Component Starts --> */}
                 <label className="dui-inp-chkbox dui-util-txt-sm dui-util-disp-inline-block">
                   I accept all Terms &amp; Conditions
-                  <input type="checkbox" checked="checked" />
+                  <input type="checkbox" checked={true} onChange={() => {}} />
                   <span className="dui-inp-chkbox__checkmark"></span>
                 </label>
                 {/* <!-- Checkbox Component Ends --> */}
