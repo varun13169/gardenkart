@@ -11,7 +11,8 @@ export const products = [
     categoryId: "89787d42-11e3-4744-a308-934431705bd5",
     categoryName: "Exotic Indoor Plants",
     productName: "Rose",
-    productImg: "someurl",
+    productImg:
+      "https://res.cloudinary.com/duepvqb5b/image/upload/v1648195153/gardenkart-products/dummy-pot-plant_h9fgig.png",
     isOutOfStock: false,
     isOnSale: true,
     productRating: 4,
@@ -24,7 +25,8 @@ export const products = [
     categoryId: "d3fc7d01-923c-48ef-a6fe-415cedbe70da",
     categoryName: "Garden Plants",
     productName: "Hydrangea",
-    productImg: "someurl",
+    productImg:
+      "https://res.cloudinary.com/duepvqb5b/image/upload/v1648195153/gardenkart-products/dummy-pot-plant_h9fgig.png",
     isOutOfStock: false,
     isOnSale: true,
     productRating: 3,
@@ -37,7 +39,8 @@ export const products = [
     categoryId: "152d0358-9f82-4fbd-849e-67c457f3e00d",
     categoryName: "Table Shrubs",
     productName: "Succulent",
-    productImg: "someurl",
+    productImg:
+      "https://res.cloudinary.com/duepvqb5b/image/upload/v1648195153/gardenkart-products/dummy-pot-plant_h9fgig.png",
     isOutOfStock: false,
     isOnSale: true,
     productRating: 2,
@@ -50,7 +53,8 @@ export const products = [
     categoryId: "152d0358-9f82-4fbd-849e-67c457f3e00d",
     categoryName: "Table Shrubs",
     productName: "Herb",
-    productImg: "someurl",
+    productImg:
+      "https://res.cloudinary.com/duepvqb5b/image/upload/v1648195153/gardenkart-products/dummy-pot-plant_h9fgig.png",
     isOutOfStock: false,
     isOnSale: true,
     productRating: 1,
@@ -63,7 +67,8 @@ export const products = [
     categoryId: "152d0358-9f82-4fbd-849e-67c457f3e00d",
     categoryName: "Table Shrubs",
     productName: "Fragrant Plants",
-    productImg: "someurl",
+    productImg:
+      "https://res.cloudinary.com/duepvqb5b/image/upload/v1648195153/gardenkart-products/dummy-pot-plant_h9fgig.png",
     isOutOfStock: false,
     isOnSale: true,
     productRating: 4,
@@ -76,7 +81,8 @@ export const products = [
     categoryId: "ce934218-115a-4faf-b396-14484e2c3fcd",
     categoryName: "Seasonal Flowers",
     productName: "Climbing Vine",
-    productImg: "someurl",
+    productImg:
+      "https://res.cloudinary.com/duepvqb5b/image/upload/v1648195153/gardenkart-products/dummy-pot-plant_h9fgig.png",
     isOutOfStock: false,
     isOnSale: true,
     productRating: 3,
@@ -89,7 +95,8 @@ export const products = [
     categoryId: "152d0358-9f82-4fbd-849e-67c457f3e00d",
     categoryName: "Table Shrubs",
     productName: "Ornamental Tree",
-    productImg: "someurl",
+    productImg:
+      "https://res.cloudinary.com/duepvqb5b/image/upload/v1648195153/gardenkart-products/dummy-pot-plant_h9fgig.png",
     isOutOfStock: false,
     isOnSale: true,
     productRating: 2,
@@ -102,7 +109,8 @@ export const products = [
     categoryId: "ce934218-115a-4faf-b396-14484e2c3fcd",
     categoryName: "Seasonal Flowers",
     productName: "Climbing Vine",
-    productImg: "someurl",
+    productImg:
+      "https://res.cloudinary.com/duepvqb5b/image/upload/v1648195153/gardenkart-products/dummy-pot-plant_h9fgig.png",
     isOutOfStock: false,
     isOnSale: true,
     productRating: 1,
@@ -115,7 +123,8 @@ export const products = [
     categoryId: "152d0358-9f82-4fbd-849e-67c457f3e00d",
     categoryName: "Table Shrubs",
     productName: "Flowering Shrub",
-    productImg: "someurl",
+    productImg:
+      "https://res.cloudinary.com/duepvqb5b/image/upload/v1648195153/gardenkart-products/dummy-pot-plant_h9fgig.png",
     isOutOfStock: false,
     isOnSale: true,
     productRating: 4,

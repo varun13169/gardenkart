@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import Carousal from "../../components/Carousal/Carousal";
 import { Navbar } from "../../components";
 import axios from "axios";
-import imgg from "./dummy-pot-plant.png";
 import { Link } from "react-router-dom";
 import { useAuth, useProductFilter } from "../../contexts";
 
@@ -55,7 +54,7 @@ function HomePage() {
                   className="promo-catagory dui-primary-p2-bdr-s dui-util-gry-shdw dui-util-bdr-radi-m dui-link dui-util-disp-inline-block"
                   to={`/products?${category._id}`}
                 >
-                  <img src={imgg} />
+                  <img src={category.categoryImg} />
                   <p className="promo-catagory__title dui-primary-bg-color-opc-75pct">
                     {category.categoryName}
                   </p>

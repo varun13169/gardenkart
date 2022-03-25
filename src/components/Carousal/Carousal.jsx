@@ -1,10 +1,6 @@
 import "./carousal.css";
 import { useState } from "react";
 
-import carousal_1 from "./carousal_1.jpg";
-// import carousal_2 from "./src/assets/imgaes/carousal_2";
-// import carousal_3 from "./src/assets/imgaes/carousal_3";
-
 function Carousal() {
   const [slidePosition, setSlidePosition] = useState(1);
 
@@ -25,7 +21,7 @@ function Carousal() {
       {/* <!-- Full-width images with number and caption text --> */}
       <div className="slideshow-container__slide fade dui-util-disp-noe">
         <div className="slideshow-container__slide-number">1 / 3</div>
-        <img src={carousal_1} />
+        <img src="https://res.cloudinary.com/duepvqb5b/image/upload/v1648195641/gardenkart-products/carousal/carousal_1_c90lt2.jpg" />
         <div className="slideshow-container__slide-caption dui-util-disp-none">
           Caption Text
         </div>
@@ -33,7 +29,7 @@ function Carousal() {
 
       <div className="slideshow-container__slide fade dui-util-disp-none">
         <div className="slideshow-container__slide-number">2 / 3</div>
-        <img src={carousal_1} />
+        <img src="https://res.cloudinary.com/duepvqb5b/image/upload/v1648195641/gardenkart-products/carousal/carousal_1_c90lt2.jpg" />
         <div className="slideshow-container__slide-caption dui-util-disp-none">
           Caption Two
         </div>
@@ -41,7 +37,7 @@ function Carousal() {
 
       <div className="slideshow-container__slide fade dui-util-disp-none">
         <div className="slideshow-container__slide-number">3 / 3</div>
-        <img src={carousal_1} />
+        <img src="https://res.cloudinary.com/duepvqb5b/image/upload/v1648195641/gardenkart-products/carousal/carousal_1_c90lt2.jpg" />
         <div className="slideshow-container__slide-caption dui-util-disp-none">
           Caption Three
         </div>
