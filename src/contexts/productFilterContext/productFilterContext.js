@@ -5,13 +5,12 @@ const ProductFilterContext = createContext();
 const ProductFilterContextProvider = ({ children }) => {
   const productFilterReducer = (productAndFilterState, action) => {
     const actionType = action.type;
-    const ww = action.data.orgProducts;
     switch (actionType) {
       case "SET_FRESH_DATA":
         return {
           ...productAndFilterState,
-          orgProducts: ww,
-          productsToShow: ww,
+          orgProducts: action.data.orgProducts,
+          productsToShow: action.data.orgProducts,
         };
 
       case "FILTER_PRODUCTS_BY_RATING":
@@ -56,6 +55,18 @@ const ProductFilterContextProvider = ({ children }) => {
           ),
         };
 
+      case "FILTER_PRODUCTS_BY_PRICE_RANGE":
+        return applyFilter({
+          ...productAndFilterState,
+          filters: {
+            ...productAndFilterState.filters,
+            priceRange: {
+              ...productAndFilterState.filters.priceRange,
+              maxPrice: action.data.maxPrice,
+            },
+          },
+        });
+
       case "INIT_CATEGORY_FILTER":
         let newProductAndFilterState = {
           ...productAndFilterState,
@@ -72,7 +83,17 @@ const ProductFilterContextProvider = ({ children }) => {
         return applyFilter(newProductAndFilterState);
 
       case "DEFAULT_ALL_FILTERS":
-        return productAndFilterState;
+        return applyFilter({
+          ...productAndFilterState,
+          filters: {
+            productCategories: {},
+            productRating: -1,
+            priceRange: {
+              minPrice: null,
+              maxPrice: null,
+            },
+          },
+        });
 
       default:
         console.log("");
@@ -132,6 +153,12 @@ const applyFilter = (productAndFilterState) => {
         return listOfCheckedCategories.length != 0
           ? listOfCheckedCategories.includes(product.categoryId)
           : true;
+      })
+      .filter((product) => {
+        return (
+          f.priceRange.maxPrice === null ||
+          Number(product.salePrice) <= Number(f.priceRange.maxPrice)
+        );
       }),
   };
 };
