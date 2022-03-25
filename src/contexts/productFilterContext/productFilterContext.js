@@ -7,11 +7,10 @@ const ProductFilterContextProvider = ({ children }) => {
     const actionType = action.type;
     switch (actionType) {
       case "SET_FRESH_DATA":
-        return {
+        return applyFilter({
           ...productAndFilterState,
           orgProducts: action.data.orgProducts,
-          productsToShow: action.data.orgProducts,
-        };
+        });
 
       case "FILTER_PRODUCTS_BY_RATING":
         return applyFilter({
