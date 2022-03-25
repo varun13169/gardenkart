@@ -65,4 +65,21 @@ const signinReducer = (loginState, loginAction) => {
   }
 };
 
-export { signupHandler, signupReducer, signinHandler, signinReducer };
+const isPassAndConfirmPassMatch = ({ password, confirmPassword }) => {
+  if (password === "" || confirmPassword === "") {
+    return true;
+  }
+
+  if (password === confirmPassword) {
+    return true;
+  }
+  return false;
+};
+
+export {
+  signupHandler,
+  signupReducer,
+  signinHandler,
+  signinReducer,
+  isPassAndConfirmPassMatch,
+};

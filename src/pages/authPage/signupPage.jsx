@@ -1,6 +1,10 @@
 import "./auth-page.css";
 import { useReducer, useState } from "react";
-import { signupHandler, signupReducer } from "./authUtils";
+import {
+  signupHandler,
+  signupReducer,
+  isPassAndConfirmPassMatch,
+} from "./authUtils";
 import { Navbar } from "../../components";
 import { useAuth } from "../../contexts";
 import { useNavigate } from "react-router";
@@ -152,7 +156,10 @@ export default function SiginUpPage() {
                 Password
                 <input
                   id="password"
-                  className="dui-inp-txt__input dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-input-inherit-parent"
+                  className={`dui-inp-txt__input dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-input-inherit-parent  ${
+                    !isPassAndConfirmPassMatch(signupState) &&
+                    "dui-inp-txt__input--error"
+                  }`}
                   type="text"
                   placeholder="Password"
                   value={signupState.password}
@@ -181,7 +188,10 @@ export default function SiginUpPage() {
                 Confirm Password
                 <input
                   id="confirm-password"
-                  className="dui-inp-txt__input dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-input-inherit-parent"
+                  className={`dui-inp-txt__input dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-input-inherit-parent  ${
+                    !isPassAndConfirmPassMatch(signupState) &&
+                    "dui-inp-txt__input--error"
+                  }`}
                   type="text"
                   placeholder="Confirm Password"
                   value={signupState.confirmPassword}
@@ -192,9 +202,11 @@ export default function SiginUpPage() {
                     })
                   }
                 />
-                <p className="dui-util-txt-sm dui-util-disp-none">
-                  *Please enter correct input
-                </p>
+                {!isPassAndConfirmPassMatch(signupState) && (
+                  <p className="dui-inp-txt__info-txt--error dui-util-txt-sm">
+                    *Confirm Password is not same as Password.
+                  </p>
+                )}
               </label>
             </div>
             {/* <!-- Input Component Ends --> */}
