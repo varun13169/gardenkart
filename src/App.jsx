@@ -1,6 +1,7 @@
 import "./styles.css";
 import {
   CartPage,
+  HomePage,
   ProductListingPage,
   SiginInPage,
   SiginUpPage,
@@ -13,6 +14,7 @@ export default function App() {
   return (
     <div className="App">
       <Routes>
+        <Route path="/" element={<HomePage />} />
         <Route path="/products" element={<ProductListingPage />} />
         <Route path="/sign-in" element={<SiginInPage />} />
         <Route path="/sign-up" element={<SiginUpPage />} />

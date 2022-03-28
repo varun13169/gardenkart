@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router";
 import { FilterSVG } from "../../assets/svgReactComponents";
 import { Navbar, Card, Sidebar } from "../../components";
 import { useCart, useProductFilter, useWishlist } from "../../contexts";
@@ -11,22 +12,31 @@ export default function ProductListingPage() {
   const { wishlist, setWishlist } = useWishlist();
   const { productAndFilterState, setProductAndFilterState } =
     useProductFilter();
+  const [categoryArr, setCategoryArr] = useState([]);
+
+  let { search: initCategory } = useLocation();
+  // remove "?" from search
+  initCategory = initCategory.substring(1);
+  console.log(initCategory);
 
   useEffect(() => {
-    // Fetch Products
-    (async function () {
-      const { data } = await axios.get("/api/products");
-      setProductAndFilterState({
-        type: "SET_FRESH_DATA",
-        data: { orgProducts: data.products },
-      });
-    })();
     let config = {
       headers: {
         Accept: "*/*",
         authorization: localStorage.getItem("token"),
       },
     };
+
+    // Fetch Categories
+    (async function () {
+      const { data } = await axios.get("/api/categories");
+      setCategoryArr((categoryArr) => data.categories);
+
+      setProductAndFilterState({
+        type: "INIT_CATEGORY_FILTER",
+        data: { categoryArr: data.categories, initCategory },
+      });
+    })();
 
     // Fetch Cart
     (async () => {
@@ -40,6 +50,7 @@ export default function ProductListingPage() {
       setWishlist(res.data.wishlist);
     })();
   }, []);
+
   return (
     <div className="product-page-namespace page-wrap">
       <section className="product-page-namespace page-nav">

@@ -8,6 +8,7 @@ import { v4 as uuid } from "uuid";
 export const products = [
   {
     _id: uuid(),
+    categoryId: "89787d42-11e3-4744-a308-934431705bd5",
     categoryName: "Exotic Indoor Plants",
     productName: "Rose",
     productImg: "someurl",
@@ -20,6 +21,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    categoryId: "d3fc7d01-923c-48ef-a6fe-415cedbe70da",
     categoryName: "Garden Plants",
     productName: "Hydrangea",
     productImg: "someurl",
@@ -32,6 +34,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    categoryId: "152d0358-9f82-4fbd-849e-67c457f3e00d",
     categoryName: "Table Shrubs",
     productName: "Succulent",
     productImg: "someurl",
@@ -44,6 +47,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    categoryId: "152d0358-9f82-4fbd-849e-67c457f3e00d",
     categoryName: "Table Shrubs",
     productName: "Herb",
     productImg: "someurl",
@@ -56,6 +60,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    categoryId: "152d0358-9f82-4fbd-849e-67c457f3e00d",
     categoryName: "Table Shrubs",
     productName: "Fragrant Plants",
     productImg: "someurl",
@@ -68,6 +73,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    categoryId: "ce934218-115a-4faf-b396-14484e2c3fcd",
     categoryName: "Seasonal Flowers",
     productName: "Climbing Vine",
     productImg: "someurl",
@@ -80,6 +86,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    categoryId: "152d0358-9f82-4fbd-849e-67c457f3e00d",
     categoryName: "Table Shrubs",
     productName: "Ornamental Tree",
     productImg: "someurl",
@@ -92,6 +99,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    categoryId: "ce934218-115a-4faf-b396-14484e2c3fcd",
     categoryName: "Seasonal Flowers",
     productName: "Climbing Vine",
     productImg: "someurl",
@@ -104,6 +112,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    categoryId: "152d0358-9f82-4fbd-849e-67c457f3e00d",
     categoryName: "Table Shrubs",
     productName: "Flowering Shrub",
     productImg: "someurl",
