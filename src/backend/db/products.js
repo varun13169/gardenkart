@@ -12,7 +12,7 @@ export const products = [
     categoryName: "Exotic Indoor Plants",
     productName: "Rose",
     productImg:
-      "https://res.cloudinary.com/duepvqb5b/image/upload/v1648195153/gardenkart-products/dummy-pot-plant_h9fgig.png",
+      "https://res.cloudinary.com/duepvqb5b/image/upload/v1648493127/gardenkart-products/products/helen-oreshchenko-973mk-bKc9k-unsplash_inibl5.jpg",
     isOutOfStock: false,
     isOnSale: true,
     productRating: 4,
@@ -26,7 +26,7 @@ export const products = [
     categoryName: "Garden Plants",
     productName: "Hydrangea",
     productImg:
-      "https://res.cloudinary.com/duepvqb5b/image/upload/v1648195153/gardenkart-products/dummy-pot-plant_h9fgig.png",
+      "https://res.cloudinary.com/duepvqb5b/image/upload/v1648206129/gardenkart-products/products/annie-spratt-vsnISjCT2hY-unsplash_vz0tt4.jpg",
     isOutOfStock: false,
     isOnSale: true,
     productRating: 3,
@@ -40,7 +40,7 @@ export const products = [
     categoryName: "Table Shrubs",
     productName: "Succulent",
     productImg:
-      "https://res.cloudinary.com/duepvqb5b/image/upload/v1648195153/gardenkart-products/dummy-pot-plant_h9fgig.png",
+      "https://res.cloudinary.com/duepvqb5b/image/upload/v1648206129/gardenkart-products/products/stephanie-harvey-N9lmtlOuaDM-unsplash_yyztwm.jpg",
     isOutOfStock: false,
     isOnSale: true,
     productRating: 2,
@@ -54,7 +54,7 @@ export const products = [
     categoryName: "Table Shrubs",
     productName: "Herb",
     productImg:
-      "https://res.cloudinary.com/duepvqb5b/image/upload/v1648195153/gardenkart-products/dummy-pot-plant_h9fgig.png",
+      "https://res.cloudinary.com/duepvqb5b/image/upload/v1648204865/gardenkart-products/products/jason-leung-YteizPtp-l8-unsplash_ev3nxb.jpg",
     isOutOfStock: false,
     isOnSale: true,
     productRating: 1,
@@ -68,7 +68,7 @@ export const products = [
     categoryName: "Table Shrubs",
     productName: "Fragrant Plants",
     productImg:
-      "https://res.cloudinary.com/duepvqb5b/image/upload/v1648195153/gardenkart-products/dummy-pot-plant_h9fgig.png",
+      "https://res.cloudinary.com/duepvqb5b/image/upload/v1648204864/gardenkart-products/products/annie-spratt-0cAlNigDa8Q-unsplash_j3hhto.jpg",
     isOutOfStock: false,
     isOnSale: true,
     productRating: 4,
@@ -82,7 +82,7 @@ export const products = [
     categoryName: "Seasonal Flowers",
     productName: "Climbing Vine",
     productImg:
-      "https://res.cloudinary.com/duepvqb5b/image/upload/v1648195153/gardenkart-products/dummy-pot-plant_h9fgig.png",
+      "https://res.cloudinary.com/duepvqb5b/image/upload/v1648204864/gardenkart-products/products/nguyen-chieu-B1VEQbo0y7o-unsplash_zbatz8.jpg",
     isOutOfStock: false,
     isOnSale: true,
     productRating: 3,
@@ -96,7 +96,7 @@ export const products = [
     categoryName: "Table Shrubs",
     productName: "Ornamental Tree",
     productImg:
-      "https://res.cloudinary.com/duepvqb5b/image/upload/v1648195153/gardenkart-products/dummy-pot-plant_h9fgig.png",
+      "https://res.cloudinary.com/duepvqb5b/image/upload/v1648493127/gardenkart-products/products/galina-n-miziNqvJx5M-unsplash_ea0kwq.jpg",
     isOutOfStock: false,
     isOnSale: true,
     productRating: 2,
@@ -110,7 +110,7 @@ export const products = [
     categoryName: "Seasonal Flowers",
     productName: "Climbing Vine",
     productImg:
-      "https://res.cloudinary.com/duepvqb5b/image/upload/v1648195153/gardenkart-products/dummy-pot-plant_h9fgig.png",
+      "https://res.cloudinary.com/duepvqb5b/image/upload/v1648493134/gardenkart-products/products/engin-akyurt-j1BybobILmA-unsplash_aepjxj.jpg",
     isOutOfStock: false,
     isOnSale: true,
     productRating: 1,
@@ -124,7 +124,7 @@ export const products = [
     categoryName: "Table Shrubs",
     productName: "Flowering Shrub",
     productImg:
-      "https://res.cloudinary.com/duepvqb5b/image/upload/v1648195153/gardenkart-products/dummy-pot-plant_h9fgig.png",
+      "https://res.cloudinary.com/duepvqb5b/image/upload/v1648493127/gardenkart-products/products/annie-spratt-7qotv-1XF2A-unsplash_kuvveu.jpg",
     isOutOfStock: false,
     isOnSale: true,
     productRating: 4,

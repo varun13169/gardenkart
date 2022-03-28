@@ -41,3 +41,10 @@
   width: 4rem;
   height: auto;
 }
+
+.dui-card-prod-hzntl__img {
+  height: 24.4rem;
+  width: 18.9rem;
+  align-items: center;
+  margin: auto;
+}
