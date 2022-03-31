@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
-import { useAuth } from "../../contexts";
+import { useAuth, useWishlist } from "../../contexts";
 import {
   MoonSVG,
   SunSVG,
@@ -12,6 +12,8 @@ export default function Navbar() {
   const { auth, checkValidTokenAndSetAuth } = useAuth();
   const { isSignnedIn, token } = auth;
   const navigate = useNavigate();
+
+  const { wishlist, setWishlist } = useWishlist();
 
   return (
     <nav className="dui-nav-sch-act">
@@ -76,41 +78,45 @@ export default function Navbar() {
           </div>
         </li>
 
-        <li>
-          <Link
-            className="dui-nav-sch-act__wish-lst-btn dui-util-disp-inline-block"
-            to="/wishlist"
-          >
-            <div className="dui-badge dui-badge--round-ele-0_5-top-0_5-right">
-              <div>0</div>
-            </div>
-
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="icon icon-tabler icon-tabler-heart"
-              width="56"
-              height="56"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="#9A9A9A"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+        {isSignnedIn && (
+          <li>
+            <Link
+              className="dui-nav-sch-act__wish-lst-btn dui-util-disp-inline-block"
+              to="/wishlist"
             >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
-            </svg>
-          </Link>
-        </li>
+              <div className="dui-badge dui-badge--round-ele-0_5-top-0_5-right">
+                <div>{wishlist.length}</div>
+              </div>
 
-        <li>
-          <Link className="dui-nav-sch-act__cart_lst-btn dui-link" to="/cart">
-            <div className="dui-util-clr-prim-p2">
-              <ShoppingCartSVG />
-              <p className="dui-util-fw-bld dui-primary-color-p2">Cart</p>
-            </div>
-          </Link>
-        </li>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="icon icon-tabler icon-tabler-heart"
+                width="56"
+                height="56"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="#9A9A9A"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+              </svg>
+            </Link>
+          </li>
+        )}
+
+        {isSignnedIn && (
+          <li>
+            <Link className="dui-nav-sch-act__cart_lst-btn dui-link" to="/cart">
+              <div className="dui-util-clr-prim-p2">
+                <ShoppingCartSVG />
+                <p className="dui-util-fw-bld dui-primary-color-p2">Cart</p>
+              </div>
+            </Link>
+          </li>
+        )}
 
         <li>
           <button className="dui-nav-sch-act__drk-mode-btn dui-btn reset-button-inherit-parent">

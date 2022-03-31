@@ -51,10 +51,21 @@ function HomePage() {
               return (
                 <Link
                   key={category._id}
+                  // style={{ display: "flex" }}
                   className="promo-catagory dui-primary-p2-bdr-s dui-util-gry-shdw dui-util-bdr-radi-m dui-link dui-util-disp-inline-block"
                   to={`/products?${category._id}`}
                 >
-                  <img src={category.categoryImg} />
+                  <img
+                    src={category.categoryImg}
+                    style={{
+                      objectFit: "cover",
+                      width: "100%",
+                      height: "100%",
+
+                      alignItems: "center",
+                      margin: "auto",
+                    }}
+                  />
                   <p className="promo-catagory__title dui-primary-bg-color-opc-75pct">
                     {category.categoryName}
                   </p>
