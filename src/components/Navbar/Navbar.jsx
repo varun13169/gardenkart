@@ -1,6 +1,7 @@
+import "./navbar.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
-import { useAuth, useWishlist } from "../../contexts";
+import { useAuth, useWishlist, useTheme } from "../../contexts";
 import {
   MoonSVG,
   SunSVG,
@@ -14,6 +15,8 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const { wishlist, setWishlist } = useWishlist();
+  const { theme, setTheme } = useTheme();
+  console.log(theme);
 
   return (
     <nav className="dui-nav-sch-act">
@@ -119,10 +122,18 @@ export default function Navbar() {
         )}
 
         <li>
-          <button className="dui-nav-sch-act__drk-mode-btn dui-btn reset-button-inherit-parent">
-            {true && <SunSVG></SunSVG>}
+          <button
+            className="dui-nav-sch-act__drk-mode-btn dui-btn reset-button-inherit-parent"
+            onClick={() => {
+              setTheme({
+                ...theme,
+                currentTheme: theme.currentTheme === "light" ? "dark" : "light",
+              });
+            }}
+          >
+            {theme.currentTheme === "dark" && <SunSVG></SunSVG>}
 
-            {false && <MoonSVG></MoonSVG>}
+            {theme.currentTheme === "light" && <MoonSVG></MoonSVG>}
           </button>
         </li>
       </ul>

@@ -18,7 +18,7 @@ export default function SideBar() {
             setProductAndFilterState({ type: "DEFAULT_ALL_FILTERS", data: {} })
           }
         >
-          Clear
+          <p>Clear</p>
         </button>
       </div>
 

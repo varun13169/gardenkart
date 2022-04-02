@@ -10,10 +10,14 @@ import {
 } from "./pages";
 import { Route, Routes } from "react-router-dom";
 import MockAPI from "./mockman/MockAPI";
+import { initTheme } from "./utils";
+import { useTheme } from "./contexts";
 
 export default function App() {
+  const { theme, setTheme } = useTheme();
+
   return (
-    <div className="App">
+    <div className={"App " + initTheme(theme)}>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/products" element={<ProductListingPage />} />

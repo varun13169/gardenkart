@@ -7,6 +7,7 @@ import {
   CartContextProvider,
   ProductFilterContextProvider,
   AuthContextProvider,
+  ThemeContextProvider,
 } from "./contexts";
 import { makeServer } from "./server";
 import axios from "axios";
@@ -36,17 +37,19 @@ makeServer();
 const rootElement = document.getElementById("root");
 ReactDOM.render(
   <StrictMode>
-    <AuthContextProvider>
-      <BrowserRouter>
-        <CartContextProvider>
-          <WishlistContextProvider>
-            <ProductFilterContextProvider>
-              <App />
-            </ProductFilterContextProvider>
-          </WishlistContextProvider>
-        </CartContextProvider>
-      </BrowserRouter>
-    </AuthContextProvider>
+    <ThemeContextProvider>
+      <AuthContextProvider>
+        <BrowserRouter>
+          <CartContextProvider>
+            <WishlistContextProvider>
+              <ProductFilterContextProvider>
+                <App />
+              </ProductFilterContextProvider>
+            </WishlistContextProvider>
+          </CartContextProvider>
+        </BrowserRouter>
+      </AuthContextProvider>
+    </ThemeContextProvider>
   </StrictMode>,
   rootElement
 );

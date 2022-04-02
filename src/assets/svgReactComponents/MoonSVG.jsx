@@ -4,7 +4,7 @@ export default function MoonSVG() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="dui-nav-sch-act__drk-mode-drk dui-util-disp-none icon icon-tabler icon-tabler-moon"
+      className="dui-nav-sch-act__drk-mode-drk icon icon-tabler icon-tabler-moon"
       width="44"
       height="44"
       viewBox="0 0 24 24"
