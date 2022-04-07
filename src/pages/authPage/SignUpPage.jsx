@@ -1,7 +1,13 @@
 import "./auth-page.css";
-import { useReducer } from "react";
-import { signupHandler, signupReducer } from "./authUtils";
+import { useReducer, useState } from "react";
+import {
+  signupHandler,
+  signupReducer,
+  isPassAndConfirmPassMatch,
+} from "./authUtils";
 import { Navbar } from "../../components";
+import { useAuth } from "../../contexts";
+import { useNavigate } from "react-router";
 
 export default function SiginUpPage() {
   const [signupState, signupActionDispatch] = useReducer(signupReducer, {
@@ -11,7 +17,14 @@ export default function SiginUpPage() {
     password: "",
     confirmPassword: "",
   });
-  console.log(signupState);
+  const [apiResponse, setApiResponse] = useState({
+    err: null,
+    res: null,
+  });
+
+  const { auth, checkValidTokenAndSetAuth } = useAuth();
+  const navigate = useNavigate();
+
   return (
     <section className="auth-page-namespace page-wrap">
       <section className="auth-page-namespace page-nav">
@@ -25,17 +38,36 @@ export default function SiginUpPage() {
           <form
             className="dui-auth-card dui-util-bdr-radi-10px-m dui-util-gry-shdw"
             onSubmit={(e) => {
-              e.preventDefault();
-              signupHandler(signupState);
-              signupActionDispatch({ type: "RESET_SIGNUP_FORM" });
+              (async () => {
+                try {
+                  e.preventDefault();
+                  const res = await signupHandler(signupState);
+                  checkValidTokenAndSetAuth();
+                  signupActionDispatch({ type: "RESET_SIGNUP_FORM" });
+                  setApiResponse((apiResponse) => ({
+                    ...apiResponse,
+                    res: res,
+                    err: null,
+                  }));
+                  navigate("/");
+                } catch (err) {
+                  console.log(err);
+                  setApiResponse((apiResponse) => ({
+                    ...apiResponse,
+                    err: err,
+                    res: null,
+                  }));
+                  throw err;
+                }
+              })();
             }}
           >
-            <h2 className="dui-auth-card__title dui-util-fw-bld">Signup</h2>
+            <h2 className="dui-auth-card__title dui-util-fw-bld">Sign Up</h2>
 
             {/* <!-- Input Component Starts --> */}
             <div className="dui-inp-txt">
               <label
-                for="first-name"
+                htmlFor="first-name"
                 className="dui-util-txt-sm dui-util-fw-sbld"
               >
                 First Name
@@ -62,7 +94,7 @@ export default function SiginUpPage() {
             {/* <!-- Input Component Starts --> */}
             <div className="dui-inp-txt">
               <label
-                for="last-name"
+                htmlFor="last-name"
                 className="dui-util-txt-sm dui-util-fw-sbld"
               >
                 Last Name
@@ -89,7 +121,7 @@ export default function SiginUpPage() {
             {/* <!-- Input Component Starts --> */}
             <div className="dui-inp-txt">
               <label
-                for="email-id"
+                htmlFor="email-id"
                 className="dui-util-txt-sm dui-util-fw-sbld"
               >
                 Email Address
@@ -116,13 +148,18 @@ export default function SiginUpPage() {
             {/* <!-- Input Component Starts --> */}
             <div className="dui-inp-txt">
               <label
-                for="password"
-                className="dui-util-txt-sm dui-util-fw-sbld"
+                htmlFor="password"
+                className={`dui-util-txt-sm dui-util-fw-sbld ${
+                  apiResponse.err && "dui-inp-txt__input--error"
+                }`}
               >
                 Password
                 <input
                   id="password"
-                  className="dui-inp-txt__input dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-input-inherit-parent"
+                  className={`dui-inp-txt__input dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-input-inherit-parent  ${
+                    !isPassAndConfirmPassMatch(signupState) &&
+                    "dui-inp-txt__input--error"
+                  }`}
                   type="text"
                   placeholder="Password"
                   value={signupState.password}
@@ -143,13 +180,18 @@ export default function SiginUpPage() {
             {/* <!-- Input Component Starts --> */}
             <div className="dui-inp-txt">
               <label
-                for="confirm-password"
-                className="dui-util-txt-sm dui-util-fw-sbld"
+                htmlFor="confirm-password"
+                className={`dui-util-txt-sm dui-util-fw-sbld ${
+                  apiResponse.err && "dui-inp-txt__input--error"
+                }`}
               >
                 Confirm Password
                 <input
                   id="confirm-password"
-                  className="dui-inp-txt__input dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-input-inherit-parent"
+                  className={`dui-inp-txt__input dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-input-inherit-parent  ${
+                    !isPassAndConfirmPassMatch(signupState) &&
+                    "dui-inp-txt__input--error"
+                  }`}
                   type="text"
                   placeholder="Confirm Password"
                   value={signupState.confirmPassword}
@@ -160,9 +202,11 @@ export default function SiginUpPage() {
                     })
                   }
                 />
-                <p className="dui-util-txt-sm dui-util-disp-none">
-                  *Please enter correct input
-                </p>
+                {!isPassAndConfirmPassMatch(signupState) && (
+                  <p className="dui-inp-txt__info-txt--error dui-util-txt-sm">
+                    *Confirm Password is not same as Password.
+                  </p>
+                )}
               </label>
             </div>
             {/* <!-- Input Component Ends --> */}
@@ -172,7 +216,7 @@ export default function SiginUpPage() {
                 {/* <!-- Checkbox Component Starts --> */}
                 <label className="dui-inp-chkbox dui-util-txt-sm dui-util-disp-inline-block">
                   I accept all Terms &amp; Conditions
-                  <input type="checkbox" checked="checked" />
+                  <input type="checkbox" checked={true} onChange={() => {}} />
                   <span className="dui-inp-chkbox__checkmark"></span>
                 </label>
                 {/* <!-- Checkbox Component Ends --> */}

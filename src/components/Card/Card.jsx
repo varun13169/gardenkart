@@ -1,5 +1,3 @@
-import axios from "axios";
-import imgg from "./dummy-pot-plant.png";
 import "./card.css";
 import { BinSVG, WishlistHeartSVG } from "../../assets/svgReactComponents";
 import { Link, useLocation } from "react-router-dom";
@@ -46,7 +44,7 @@ export default function Card({ itemCardData }) {
       {/* <!-- Badge Component Ends -- with Text --> */}
 
       <div className="dui-card-prod-hzntl__img-container">
-        <img className="dui-card-prod-hzntl__img" src={imgg} alt="" />
+        <img className="dui-card-prod-hzntl__img" src={productImg} alt="" />
         {isOutOfStock && (
           <div className="dui-card-prod-hzntl__img-prod-status">
             <p className="dui-light-theme-txt">OUT OF STOCK</p>

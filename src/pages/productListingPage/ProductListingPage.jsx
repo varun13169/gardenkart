@@ -38,6 +38,15 @@ export default function ProductListingPage() {
       });
     })();
 
+    // Fetch Products
+    (async function () {
+      const { data } = await axios.get("/api/products");
+      setProductAndFilterState({
+        type: "SET_FRESH_DATA",
+        data: { orgProducts: data.products },
+      });
+    })();
+
     // Fetch Cart
     (async () => {
       let res = await axios.get("/api/user/cart", config);

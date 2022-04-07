@@ -1,14 +1,23 @@
 import "./auth-page.css";
 import "./auth-page.css";
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 import { signinHandler, signinReducer } from "./authUtils";
 import { Navbar } from "../../components";
+import { useAuth } from "../../contexts";
+import { useNavigate } from "react-router";
 
 export default function SiginInPage() {
   const [loginState, loginActionDispatch] = useReducer(signinReducer, {
     email: "",
     password: "",
   });
+  const [apiResponse, setApiResponse] = useState({
+    err: null,
+    res: null,
+  });
+
+  const { auth, checkValidTokenAndSetAuth } = useAuth();
+  const navigate = useNavigate();
 
   return (
     <section className="auth-page-namespace page-wrap">
@@ -23,22 +32,43 @@ export default function SiginInPage() {
           <form
             className="dui-auth-card dui-util-bdr-radi-10px-m dui-util-gry-shdw"
             onSubmit={(e) => {
-              e.preventDefault();
-              signinHandler(loginState);
-              loginActionDispatch({ type: "RESET_LOGIN_FORM" });
+              (async () => {
+                e.preventDefault();
+                try {
+                  const res = await signinHandler(loginState);
+                  checkValidTokenAndSetAuth();
+                  navigate("/");
+                  loginActionDispatch({ type: "RESET_LOGIN_FORM" });
+                  setApiResponse((apiResponse) => ({
+                    ...apiResponse,
+                    res: res,
+                    err: null,
+                  }));
+                } catch (err) {
+                  console.log(err);
+                  setApiResponse((apiResponse) => ({
+                    ...apiResponse,
+                    err: err,
+                    res: null,
+                  }));
+                  throw err;
+                }
+              })();
             }}
           >
-            <h2 className="dui-auth-card__title dui-util-fw-bld">Login</h2>
+            <h2 className="dui-auth-card__title dui-util-fw-bld">Sign In</h2>
             {/* <!-- Input Component Starts --> */}
             <div className="dui-inp-txt">
               <label
-                for="email-id"
+                htmlFor="email-id"
                 className="dui-util-txt-sm dui-util-fw-sbld"
               >
                 Email Address
                 <input
                   id="email-id"
-                  className="dui-inp-txt__input dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-input-inherit-parent"
+                  className={`dui-inp-txt__input dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-input-inherit-parent ${
+                    apiResponse.err && "dui-inp-txt__input--error"
+                  }`}
                   type="text"
                   placeholder="sample@neog.camp"
                   value={loginState.email}
@@ -59,14 +89,16 @@ export default function SiginInPage() {
             {/* <!-- Input Component Starts --> */}
             <div className="dui-inp-txt">
               <label
-                for="password"
+                htmlFor="password"
                 className="dui-util-txt-sm dui-util-fw-sbld"
               >
                 Password
                 <input
                   id="password"
-                  className="dui-inp-txt__input dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-input-inherit-parent"
-                  type="text"
+                  className={`dui-inp-txt__input dui-util-txt-sm dui-util-spc-pad-0_8rem-xs reset-input-inherit-parent ${
+                    apiResponse.err && "dui-inp-txt__input--error"
+                  }`}
+                  type="password"
                   placeholder="Password"
                   value={loginState.password}
                   onChange={(e) =>
@@ -76,9 +108,11 @@ export default function SiginInPage() {
                     })
                   }
                 />
-                <p className="dui-util-txt-sm dui-util-disp-none">
-                  *Please enter correct input
-                </p>
+                {apiResponse.err && (
+                  <p className="dui-inp-txt__info-txt--error dui-util-txt-sm">
+                    *Incorrect login credentials.
+                  </p>
+                )}
               </label>
             </div>
             {/* <!-- Input Component Ends --> */}

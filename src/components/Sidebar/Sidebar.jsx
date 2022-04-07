@@ -18,7 +18,7 @@ export default function SideBar() {
             setProductAndFilterState({ type: "DEFAULT_ALL_FILTERS", data: {} })
           }
         >
-          Clear
+          <p>Clear</p>
         </button>
       </div>
 
@@ -30,10 +30,16 @@ export default function SideBar() {
             className="dui-slider dui-util-bdr-radi-max"
             type="range"
             min="1"
-            max="100"
-            value="50"
+            max="300"
+            value={productAndFilterState.filters.priceRange.maxPrice ?? 150}
+            onChange={(e) => {
+              setProductAndFilterState({
+                type: "FILTER_PRODUCTS_BY_PRICE_RANGE",
+                data: { maxPrice: e.currentTarget.value },
+              });
+            }}
           />
-          <p>1000</p>
+          <p>300</p>
         </div>
       </div>
 

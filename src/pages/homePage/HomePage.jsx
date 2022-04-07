@@ -3,9 +3,8 @@ import { useState, useEffect } from "react";
 import Carousal from "../../components/Carousal/Carousal";
 import { Navbar } from "../../components";
 import axios from "axios";
-import imgg from "./dummy-pot-plant.png";
 import { Link } from "react-router-dom";
-import { useProductFilter } from "../../contexts";
+import { useAuth, useProductFilter } from "../../contexts";
 
 function HomePage() {
   const [categoryArr, setCategoryArr] = useState([]);
@@ -13,7 +12,11 @@ function HomePage() {
   const { productAndFilterState, setProductAndFilterState } =
     useProductFilter();
 
+  const { auth, checkValidTokenAndSetAuth } = useAuth();
+
   useEffect(() => {
+    checkValidTokenAndSetAuth();
+
     // Fetch Categories
     (async function () {
       const { data } = await axios.get("/api/categories");
@@ -48,10 +51,20 @@ function HomePage() {
               return (
                 <Link
                   key={category._id}
+                  // style={{ display: "flex" }}
                   className="promo-catagory dui-primary-p2-bdr-s dui-util-gry-shdw dui-util-bdr-radi-m dui-link dui-util-disp-inline-block"
                   to={`/products?${category._id}`}
                 >
-                  <img src={imgg} />
+                  <img
+                    src={category.categoryImg}
+                    style={{
+                      objectFit: "cover",
+                      width: "100%",
+                      height: "100%",
+                      alignItems: "center",
+                      margin: "auto",
+                    }}
+                  />
                   <p className="promo-catagory__title dui-primary-bg-color-opc-75pct">
                     {category.categoryName}
                   </p>
