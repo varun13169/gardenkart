@@ -82,17 +82,26 @@ const ProductFilterContextProvider = ({ children }) => {
         return applyFilter(newProductAndFilterState);
 
       case "DEFAULT_ALL_FILTERS":
-        return applyFilter({
+        const reProductAndFilterState = {
           ...productAndFilterState,
+          sortByPrice: "HIGH_TO_LOW",
           filters: {
-            productCategories: {},
+            ...productAndFilterState.filters,
             productRating: -1,
             priceRange: {
               minPrice: null,
               maxPrice: null,
             },
           },
-        });
+        };
+        Object.keys(reProductAndFilterState.filters.productCategories).map(
+          (key) => {
+            reProductAndFilterState.filters.productCategories[
+              key
+            ].filterVal = true;
+          }
+        );
+        return applyFilter(reProductAndFilterState);
 
       default:
         console.log("");
