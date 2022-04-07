@@ -19,17 +19,14 @@ makeServer();
 //
 const signupHandler = async () => {
   try {
-    // const response = await axios.post(`/api/auth/signup`, {
-    //   firstName: "Adarsh",
-    //   lastName: "Balika",
-    //   email: "adarshbalika@neog.camp",
-    //   password: "adarshBalika",
-    // });
-    // // saving the encodedToken in the localStorage
-    // localStorage.setItem("token", response.data.encodedToken);
-    const validToken =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJjNzAwNmIwNS1iM2EyLTQ1ZTQtYTZmNy1hNDhhOGJkOGFhNmYiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBuZW9nLmNhbXAiLCJpYXQiOjE2NDkzNTI5MDF9.FHwUgIjjL5RFOtu0ZuJ9JLhZVcFVcqVpDBg-eMxSPOI";
-    localStorage.setItem("token", validToken);
+    const response = await axios.post(`/api/auth/signup`, {
+      firstName: "Adarsh",
+      lastName: "Balika",
+      email: "adarshbalika@neog.camp",
+      password: "adarshBalika",
+    });
+    // saving the encodedToken in the localStorage
+    localStorage.setItem("token", response.data.encodedToken);
   } catch (error) {
     console.log(error);
   }
