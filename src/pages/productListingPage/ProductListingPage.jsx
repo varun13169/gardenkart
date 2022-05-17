@@ -3,7 +3,12 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
 import { FilterSVG } from "../../assets/svgReactComponents";
 import { Navbar, Card, Sidebar } from "../../components";
-import { useCart, useProductFilter, useWishlist } from "../../contexts";
+import {
+  useAuth,
+  useCart,
+  useProductFilter,
+  useWishlist,
+} from "../../contexts";
 import "./product-listing-page.css";
 import { getItemCardData } from "./productListingPageUtils";
 
@@ -13,6 +18,8 @@ export default function ProductListingPage() {
   const { productAndFilterState, setProductAndFilterState } =
     useProductFilter();
   const [categoryArr, setCategoryArr] = useState([]);
+  const { auth, checkValidTokenAndSetAuth } = useAuth();
+  const { isSignnedIn, token } = auth;
 
   let { search: initCategory } = useLocation();
   // remove "?" from search
@@ -47,17 +54,19 @@ export default function ProductListingPage() {
       });
     })();
 
-    // Fetch Cart
-    (async () => {
-      let res = await axios.get("/api/user/cart", config);
-      setCart(res.data.cart);
-    })();
+    if (isSignnedIn === true) {
+      // Fetch Cart
+      (async () => {
+        let res = await axios.get("/api/user/cart", config);
+        setCart(res.data.cart);
+      })();
 
-    // Fetch Wishlist
-    (async () => {
-      let res = await axios.get("/api/user/wishlist", config);
-      setWishlist(res.data.wishlist);
-    })();
+      // Fetch Wishlist
+      (async () => {
+        let res = await axios.get("/api/user/wishlist", config);
+        setWishlist(res.data.wishlist);
+      })();
+    }
   }, []);
 
   return (
