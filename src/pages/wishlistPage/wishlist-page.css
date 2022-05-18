@@ -1,0 +1,55 @@
+@import "/src/styles.css";
+
+.wishlist-page-namespace.page-wrap {
+  grid-template-areas:
+    "p_nav p_nav p_nav p_nav p_nav p_nav"
+    "p_content p_content p_content p_content p_content p_content"
+    "p_content p_content p_content p_content p_content p_content";
+}
+
+.wishlist-page-namespace.page-sidebar {
+  display: none;
+}
+
+.wishlist-page-namespace.page-footer {
+  display: none;
+}
+
+.wishlist-page-namespace.main-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-content_wishlist-holder {
+  padding: 2rem;
+  display: grid;
+  gap: 2rem;
+
+  grid-template-columns: repeat(auto-fit, minmax(50rem, 1fr));
+}
+
+.main-content__wish-list-card {
+  position: relative;
+  margin: auto;
+}
+
+.main-content__wish-list-card-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background-color: var(--dui-light-theme-bg);
+}
+
+.main-content__wish-list-card-btn > svg {
+  width: 4rem;
+  height: auto;
+}
+
+@media only screen and (max-width: 550px) {
+  html {
+    font-size: 40%;
+  }
+}

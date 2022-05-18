@@ -1,0 +1,50 @@
+.product-card-btn {
+  /* while exiting hover */
+  transition: background-color 0.5s, border-radius 1s;
+}
+
+.product-card-btn:hover:not(:disabled) {
+  border-radius: 999px;
+  /* while entering hover */
+  transition: background-color 0.5s, border-radius 5s;
+}
+
+.product-card-btn:disabled {
+  background-color: var(--dui-primary-color-opc-75pct);
+  /* while entering hover */
+  transition: background-color 0.5s, border-radius 5s;
+}
+
+.product-card-link {
+  /* while exiting hover */
+  transition: background-color 0.5s, border-radius 1s;
+}
+
+.product-card-link:hover {
+  border-radius: 999px;
+  /* while entering hover */
+  transition: background-color 0.5s, border-radius 5s;
+}
+
+.dui-card-prod-hzntl {
+  position: relative;
+}
+
+.dui-card-prod-hzntl__wishlist-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background-color: var(--dui-light-theme-bg);
+}
+
+.dui-card-prod-hzntl__wishlist-btn_svg {
+  width: 4rem;
+  height: auto;
+}
+
+.dui-card-prod-hzntl__img {
+  height: 24.4rem;
+  width: 18.9rem;
+  align-items: center;
+  margin: auto;
+}
