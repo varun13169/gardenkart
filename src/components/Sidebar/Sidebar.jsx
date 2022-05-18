@@ -55,12 +55,15 @@ export default function SideBar() {
               const productCategory =
                 productAndFilterState.filters.productCategories[e];
               return (
-                <label className="dui-inp-chkbox dui-util-txt-sm">
+                <label
+                  className="dui-inp-chkbox dui-util-txt-sm"
+                  key={productCategory._id}
+                >
                   {productCategory.categoryName}
                   <input
                     type="checkbox"
                     checked={productCategory.filterVal}
-                    onClick={() =>
+                    onChange={() =>
                       setProductAndFilterState({
                         type: "FILTER_PRODUCTS_BY_CATEGORY",
                         data: { categoryId: productCategory._id },
