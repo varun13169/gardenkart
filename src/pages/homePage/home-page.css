@@ -17,6 +17,8 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  padding: 0rem 0rem 5rem 0rem;
+  overflow: auto;
 }
 
 .home-page-namespace.header {
