@@ -48,7 +48,7 @@ const ProductFilterContextProvider = ({ children }) => {
           sortByPrice: action.data.sortByPrice,
           productsToShow: [...productAndFilterState.productsToShow].sort(
             (a, b) => {
-              const beta = action.data.sortByPrice === "LOW_TO_HIGH" ? +1 : -1;
+              const beta = action.data.sortByPrice === "LOW_TO_HIGH" ? -1 : +1;
               return beta * (Number(b.salePrice) - Number(a.salePrice));
             }
           ),
