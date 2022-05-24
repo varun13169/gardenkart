@@ -17,9 +17,14 @@ export default function Card({ itemCardData }) {
     isOnSale,
     originalPrice,
     salePrice,
-    discountedPctage,
+    // discountedPctage,
     qty,
   } = itemDetails;
+
+  // Calculating Discount %age mannual and not atking it from DB
+  const discountedPctage = parseInt(
+    ((originalPrice - salePrice) / originalPrice) * 100
+  );
 
   const isProductInCart =
     cart.filter((cartProduct) => {

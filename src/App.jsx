@@ -12,6 +12,7 @@ import { Route, Routes } from "react-router-dom";
 import MockAPI from "./mockman/MockAPI";
 import { initTheme } from "./utils";
 import { useTheme } from "./contexts";
+import { RequiresAuth } from "./components";
 
 export default function App() {
   const { theme, setTheme } = useTheme();
@@ -24,8 +25,25 @@ export default function App() {
         <Route path="/sign-in" element={<SiginInPage />} />
         <Route path="/sign-up" element={<SiginUpPage />} />
         <Route path="/sign-out" element={<SignOutPage />} />
-        <Route path="/wishlist" element={<WishlistPage />} />
-        <Route path="/cart" element={<CartPage />} />
+
+        <Route
+          path="/wishlist"
+          element={
+            <RequiresAuth>
+              <WishlistPage />
+            </RequiresAuth>
+          }
+        />
+
+        <Route
+          path="/cart"
+          element={
+            <RequiresAuth>
+              <CartPage />
+            </RequiresAuth>
+          }
+        />
+
         <Route path="/mock-api" element={<MockAPI />} />
       </Routes>
     </div>
