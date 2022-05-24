@@ -58,7 +58,7 @@
 
 .promo-catagory > img:hover {
   transform: scale(1.1);
-  opacity: 50%;
+  opacity: 0.5;
 }
 
 .promo-catagory__title {
